@@ -16,4 +16,9 @@ class CarController extends Controller
     {
         return view('admin.car.addcarview');
     }
+
+    public function storeCar(Request $request)
+    {
+        dd($request->all());
+    }
 }

@@ -5,7 +5,7 @@
 
 
 @push('css')
-
+<link href="{{asset('assets/css/imageuploadify.min.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -50,10 +50,11 @@
                 <!--begin::Content-->
                 <div>
                     <!--begin::Form-->
-                    <form id="kt_account_profile_details_form" class="form">
+                    <form class="form" action="{{ route('admin.carstore') }}" method="POST" enctype="multipart/form-data">
                         <!--begin::Card body-->
                         <div class="card-body border-top p-9">
                             <!--begin::Input group-->
+                            @csrf
                             <div class="row mb-6">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 col-form-label required fw-bold fs-6">Image</label>
@@ -63,7 +64,7 @@
                                     <!--begin::Image input-->
                                     <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url({{asset('assets/media/avatars/blank.png')}})">
                                         <!--begin::Preview existing avatar-->
-                                        <div class="image-input-wrapper w-200px h-150px" style="background-image: url({{asset('assets/media/avatars/blank.png')}})"></div>
+                                        <div class="image-input-wrapper w-300px h-150px" style="background-image: url({{asset('assets/media/avatars/1234.png')}})"></div>
                                         <!--end::Preview existing avatar-->
                                         <!--begin::Label-->
                                         <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
@@ -103,7 +104,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <select name="country" aria-label="Select Type" data-control="select2" data-placeholder="Select Type..." class="form-select form-select-solid form-select-lg fw-bold">
+                                    <select name="type" aria-label="Select Type" data-control="select2" data-placeholder="Select Type..." class="form-select form-select-solid form-select-lg fw-bold">
                                         <option value="">Select Type...</option>
                                         <option value="Sedan">Sedan</option>
                                         <option value="SUV">SUV</option>
@@ -179,14 +180,34 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <select name="condition" id="condition" aria-label="Select Condition" data-control="select2" data-placeholder="Select Condition..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select Condition...</option>
-                                        <option value="Best">Best</option>
-                                        <option value="Good">Good</option>
-                                        <option value="Average">Average</option>
-                                    </select>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="condition" value="Best"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Best
+                                        </label>
+                                    </div>
+                                    
                                 </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="condition" value="Good"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Good
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="condition" value="Average"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Average
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                            
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -200,13 +221,26 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <select name="ac" id="ac" aria-label="Select Ac Type" data-control="select2" data-placeholder="Select Ac Type..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select Ac Type...</option>
-                                        <option value="Single">Single</option>
-                                        <option value="Duel">Duel</option>
-                                    </select>
+
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="ac" value="Single"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Single
+                                        </label>
+                                    </div>
+                                
                                 </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="ac" value="Duel"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Duel
+                                        </label>
+                                    </div>
+                                
+                                </div>
+
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -220,13 +254,39 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <select name="fuel" id="fuel" aria-label="Select Fuel Type" data-control="select2" data-placeholder="Select Fuel Type..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select Fuel Type...</option>
-                                        <option value="Petrol">Petrol</option>
-                                        <option value="CNG ">CNG</option>
-                                        <option value="LPG ">LPG</option>
-                                    </select>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="Petrol"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Petrol
+                                        </label>
+                                    </div> 
+                                </div>
+
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="CNG"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            CNG
+                                        </label>
+                                    </div> 
+                                </div>
+
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="LPG"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            LPG
+                                        </label>
+                                    </div> 
+                                </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="Hybrid"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Hybrid
+                                        </label>
+                                    </div> 
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -235,11 +295,37 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Gearbox</label>
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Gearbox</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input type="text" name="gearbox" class="form-control form-control-lg form-control-solid" placeholder="Enter Gearbox Details" value="" />
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="gearbox" value="Manual"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Manual
+                                        </label>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="gearbox" value="Automatic"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Automatic
+                                        </label>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="gearbox" value="Semi-automatic"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            Semi-automatic
+                                        </label>
+                                    </div>
+                                
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -254,22 +340,64 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <select name="sitting" aria-label="Select Sitting Capasity" data-control="select2" data-placeholder="Select Sitting Capasity..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select Sitting Capasity...</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8 ">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                        <option value="13">13</option>
-                                        <option value="14">14</option>
-                                    </select>
+                                <div class="col-lg-1 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="sitting" value="3"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            3
+                                        </label>
+                                    </div>
+                                
                                 </div>
+                                <div class="col-lg-1 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="sitting" value="5"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            5
+                                        </label>
+                                    </div>
+                                
+                                </div>
+                                <div class="col-lg-1 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="sitting" value="7"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            7
+                                        </label>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="col-lg-1 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="sitting" value="9"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            9
+                                        </label>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="col-lg-1 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="sitting" value="11"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            11
+                                        </label>
+                                    </div>
+                                
+                                </div>
+
+                                <div class="col-lg-1 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="sitting" value="13"/>
+                                        <label class="form-check-label" for="flexRadioLg">
+                                            13
+                                        </label>
+                                    </div>
+                                
+                                </div>
+                                
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -280,7 +408,22 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="color" class="form-control form-control-lg form-control-solid" placeholder="Enter Color" value="" />
+                                    <select name="color" id="color" aria-label="Select Color" data-control="select2" data-placeholder="Select Color..." class="form-select form-select-solid form-select-lg fw-bold">
+                                        <option value="">Select Color...</option>
+                                        <option value="Black">Black</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="Brown">Brown</option>
+                                        <option value="Gold">Gold</option>
+                                        <option value="Gray">Gray</option>
+                                        <option value="Green">Green</option>
+                                        <option value="Orange">Orange</option>
+                                        <option value="Purple">Purple</option>
+                                        <option value="Red">Red</option>
+                                        <option value="Silver">Silver</option>
+                                        <option value="Tan">Tan</option>
+                                        <option value="White">White</option>
+                                        <option value="Yellow">Yellow</option>
+                                    </select>
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -306,12 +449,23 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <select name="isavailable" aria-label="Select isAvailable" data-control="select2" data-placeholder="Select isAvailable..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select isAvailable...</option>
-                                        <option value="True">True</option>
-                                        <option value="False">False</option>
-                                    </select>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="isavailable" value="True"/>
+                                        <label class="form-check-label" for="flexRadioSm">
+                                            True
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="radio" name="isavailable" value="False"/>
+                                        <label class="form-check-label" for="flexRadioSm">
+                                            False
+                                        </label>
+                                    </div>
+                                    
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -363,63 +517,75 @@
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <select name="prefered" aria-label="Select Prefered For" data-control="select2" data-placeholder="Select Prefered For..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select Prefered For...</option>
-                                        <option value="Any">Any</option>
-                                        <option value="Daily">Daily</option>
-                                        <option value="Weekly">Weekly</option>
-                                        <option value="Monthly">Monthly</option>
-                                    </select>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                        <input class="form-check-input" type="radio" name="prefered" value="Any"/>
+                                        <label class="form-check-label" for="flexRadioSm">
+                                            Any
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                        <input class="form-check-input" type="radio" name="prefered" value="Daily"/>
+                                        <label class="form-check-label" for="flexRadioSm">
+                                           Daily
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                        <input class="form-check-input" type="radio" name="prefered" value="Weekly"/>
+                                        <label class="form-check-label" for="flexRadioSm">
+                                           Weekly
+                                        </label>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-lg-2 fv-row">
+                                    <div class="form-check form-check-custom form-check-solid form-check-sm">
+                                        <input class="form-check-input" type="radio" name="prefered" value="Monthly"/>
+                                        <label class="form-check-label" for="flexRadioSm">
+                                           Monthly
+                                        </label>
+                                    </div>
+                                    
                                 </div>
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
 
                             <!--begin::Input group-->
+                            
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Attachments of Papers</label>
+                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Attachment &nbsp;<span style="cursor: pointer" id="addAttachment" class="btn-link m-l-10">+ Add more</span></label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-4 fv-row">
+                                    <input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment"/>
+                                </div>
+                                <div class="col-lg-4 fv-row">
+                                    <input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <div id="setattachment">
+
+                            </div>
+                            <!--end::Input group-->
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label fw-bold fs-6">Gallary Images</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="file" name="attachments_of_papers" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver" multiple/>
+                                    <input class="selectimage" type="file" name="gallery[]" accept="image/*" multiple>
                                 </div>
                                 <!--end::Col-->
                             </div>
-                            <!--end::Input group-->
-
-                            <!--begin::Input group-->
-                            <div class="fv-row mb-8">
-                                <label class="fs-6 fw-bold mb-2">Attachments</label>
-                                <!--begin::Dropzone-->
-                                <div class="dropzone" id="kt_modal_create_ticket_attachments">
-                                    <!--begin::Message-->
-                                    <div class="dz-message needsclick align-items-center">
-                                        <!--begin::Icon-->
-                                        <!--begin::Svg Icon | path: icons/duotone/Files/Uploaded-file.svg-->
-                                        <span class="svg-icon svg-icon-3hx svg-icon-primary">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                                    <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                    <path d="M8.95128003,13.8153448 L10.9077535,13.8153448 L10.9077535,15.8230161 C10.9077535,16.0991584 11.1316112,16.3230161 11.4077535,16.3230161 L12.4310522,16.3230161 C12.7071946,16.3230161 12.9310522,16.0991584 12.9310522,15.8230161 L12.9310522,13.8153448 L14.8875257,13.8153448 C15.1636681,13.8153448 15.3875257,13.5914871 15.3875257,13.3153448 C15.3875257,13.1970331 15.345572,13.0825545 15.2691225,12.9922598 L12.3009997,9.48659872 C12.1225648,9.27584861 11.8070681,9.24965194 11.596318,9.42808682 C11.5752308,9.44594059 11.5556598,9.46551156 11.5378061,9.48659872 L8.56968321,12.9922598 C8.39124833,13.2030099 8.417445,13.5185067 8.62819511,13.6969416 C8.71848979,13.773391 8.8329684,13.8153448 8.95128003,13.8153448 Z" fill="#000000" />
-                                                </g>
-                                            </svg>
-                                        </span>
-                                        <!--end::Svg Icon-->
-                                        <!--end::Icon-->
-                                        <!--begin::Info-->
-                                        <div class="ms-4">
-                                            <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Drop files here or click to upload.</h3>
-                                            <span class="fw-bold fs-7 text-gray-400">Upload up to 10 files</span>
-                                        </div>
-                                        <!--end::Info-->
-                                    </div>
-                                </div>
-                                <!--end::Dropzone-->
-                            </div>
-                            <!--end::Input group-->
                            
                         </div>
                         <!--end::Card body-->
@@ -444,14 +610,7 @@
 @endsection
 
 @push('scripts')
-<script type="text/javascript">
-    let startYear = 1970;
-    let endYear = new Date().getFullYear();
-    for (i = endYear; i > startYear; i--)
-    {
-      $('#yearpicker').append($('<option />').val(i).html(i));
-    }
-    </script>
+
 
 
 
@@ -459,10 +618,29 @@
 <!--begin::Page Custom Javascript(used by this page)-->
 <script src="{{asset('assets/js/custom/apps/support-center/tickets/create.js')}}"></script>
 <script src="{{asset('assets/js/custom/documentation/documentation.js')}}"></script>
-  
+ <script type="text/javascript" src="{{asset('assets/js/imageuploadify.min.js')}}"></script> 
 {{-- <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/permissions/list.js')}}"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/permissions/add-permission.js')}}"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/permissions/update-permission.js')}}"></script> --}}
+<script type="text/javascript">
+    let startYear = 1970;
+    let endYear = new Date().getFullYear();
+    for (i = endYear; i > startYear; i--)
+    {
+      $('#yearpicker').append($('<option />').val(i).html(i));
+    }
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.selectimage').imageuploadify();
+    });
+    $('#addAttachment').click(function () {
+        $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-4 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-4 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-4 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
+    });
+    $("body").on("click",".removeattachment",function(e){
+        $(this).parents('.attachmentunset').remove();
 
+    });
+</script>
 @endpush

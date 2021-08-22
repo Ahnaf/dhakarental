@@ -8,7 +8,7 @@
 <meta name="meta" content="">
 <meta name="author" content="Winmacsystem">
 <meta name="generator" content="Rajkumar Das">
-<link rel="icon" href="{{asset('images/logo-new.png')}}"/>
+<link rel="icon" href="{{asset('assets/media/logos/favicon.png')}}"/>
 <title>@yield('title')</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -32,8 +32,8 @@
 				<!--begin::Brand-->
 				<div class="aside-logo flex-column-auto" id="kt_aside_logo">
 					<!--begin::Logo-->
-					<a href="{{ route('admin.dashboard')}}">
-						<img alt="Logo" src="{{ asset('assets/media/logos/logo-1-dark.svg')}}" class="h-15px logo" />
+					<a href="{{ route('admin.dashboard')}}" class="">
+						<img alt="Logo" src="{{ asset('assets/media/logos/11-01.svg')}}" class="h-200px logo mt-3" />
 					</a>
 					<!--end::Logo-->
 					<!--begin::Aside toggler-->
@@ -472,7 +472,7 @@
 						<!--begin::Mobile logo-->
 						<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
 							<a href="index.html" class="d-lg-none">
-								<img alt="Logo" src="{{ asset('assets/media/logos/logo-3.svg')}}" class="h-30px" />
+								<img alt="Logo" src="{{ asset('assets/media/logos/favicon.png')}}" class="h-45px" />
 							</a>
 						</div>
 						<!--end::Mobile logo-->
