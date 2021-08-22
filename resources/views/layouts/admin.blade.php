@@ -250,8 +250,8 @@
 								</div>
 							</div>
 
-							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-								<span class="menu-link
+							<div class="menu-item">
+								<a href="{{ route('admin.listindex') }}" class="menu-link
 								@if (\Request::is('admin/adminlist') or \Request::is('admin/addadmin') or \Request::is('admin/adminedit/*'))
 									active
 								@endif
@@ -270,32 +270,14 @@
 										<!--end::Svg Icon-->
 									</span>
 									<span class="menu-title">Admin User</span>
-									<span class="menu-arrow"></span>
-								</span>
-								<div class="menu-sub menu-sub-accordion menu-active-bg">
-									<div class="menu-item">
-										<a class="menu-link" href="{{ route('admin.registeradmin') }}">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Add New Admin</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="{{ route('admin.listindex') }}">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Admin List</span>
-										</a>
-									</div>
-								</div>
+									
+								</a>
 							</div>
 							@endif
 
 							@if(hasAnyPermissions('admin.modulelist'))
-							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-								<span class="menu-link
+							<div class="menu-item">
+								<a href="{{ route('admin.modulelist')}}" class="menu-link
 								@if (\Request::is('admin/modulelist'))
 									active
 								@endif
@@ -314,32 +296,13 @@
 											<!--end::Svg Icon-->
 										</span>
 									<span class="menu-title">Module</span>
-									<span class="menu-arrow"></span>
-								</span>
-								<div class="menu-sub menu-sub-accordion menu-active-bg">
-									<div class="menu-item">
-										<a class="menu-link" href="{{ route('admin.modulelist')}}">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Add New Module</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="{{ route('admin.modulelist')}}">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Module List</span>
-										</a>
-									</div>
-								</div>
+								</a>
 							</div>
 							@endif
 
 							@if(hasAnyPermissions('admin.permissionlist'))
-							<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-								<span class="menu-link
+							<div class="menu-item menu-accordion">
+								<a href="{{ route('admin.permissionlist') }}" class="menu-link
 								@if (\Request::is('admin/permissionlist'))
 									active
 								@endif
@@ -358,26 +321,7 @@
 											<!--end::Svg Icon-->
 										</span>
 									<span class="menu-title">Permission</span>
-									<span class="menu-arrow"></span>
-								</span>
-								<div class="menu-sub menu-sub-accordion menu-active-bg">
-									<div class="menu-item">
-										<a class="menu-link" href="{{ route('admin.permissionlist') }}">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Add New Permission</span>
-										</a>
-									</div>
-									<div class="menu-item">
-										<a class="menu-link" href="{{ route('admin.permissionlist') }}">
-											<span class="menu-bullet">
-												<span class="bullet bullet-dot"></span>
-											</span>
-											<span class="menu-title">Permission List</span>
-										</a>
-									</div>
-								</div>
+								</a>
 							</div>
 							@endif
 
