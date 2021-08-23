@@ -65,7 +65,7 @@
 								</div>
 							</div>
 
-							@if(hasAnyPermissions('admin.dashboard')) 
+							@if(hasAnyPermissions('admin.dashboard'))
 							<div class="menu-item">
 								<a class="menu-link
 								@if (\Request::is('admin/dashboard'))
@@ -88,7 +88,7 @@
 							</div>
 							@endif
 
-							@if(hasAnyPermissions('admin.carlist')) 
+							@if(hasAnyPermissions('admin.carlist'))
 							<div class="menu-item">
 								<a class="menu-link
 								@if (\Request::is('admin/carlist') or \Request::is('admin/caradd'))
@@ -200,7 +200,7 @@
 							</div>
 							@endif
 
-							@if(hasAnyPermissions('admin.carownerlist')) 
+							@if(hasAnyPermissions('admin.carownerlist'))
 							<div class="menu-item">
 								<a class="menu-link
 								@if (\Request::is('admin/carownerlist') or \Request::is('admin/overview/*') or \Request::is('admin/carownerprofile/*') or \Request::is('admin/addcarowner'))
@@ -235,7 +235,7 @@
 
 											</svg>
 										</span>
-										
+
 									</span>
 									<span class="menu-title">Cars Owner</span>
 								</a>
@@ -270,7 +270,7 @@
 										<!--end::Svg Icon-->
 									</span>
 									<span class="menu-title">Admin User</span>
-									
+
 								</a>
 							</div>
 							@endif
@@ -370,7 +370,7 @@
 							</div>
 							@endif
 
-							
+
 
 							<div class="menu-item">
 								<div class="menu-content pb-2">
@@ -401,7 +401,7 @@
 								</span>
 								<div class="menu-sub menu-sub-accordion menu-active-bg">
 
-									@if(hasAnyPermissions('admin.activityloglist')) 
+									@if(hasAnyPermissions('admin.activityloglist'))
 									<div class="menu-item">
 										<a class="menu-link" href="{{ route('admin.activityloglist') }}">
 											<span class="menu-icon">
@@ -417,12 +417,12 @@
 									</div>
 									@endif
 
-									@if(hasAnyPermissions('admin.dbbackuplist')) 
+									@if(hasAnyPermissions('admin.dbbackuplist'))
 									<div class="menu-item">
 										<a class="menu-link" href="{{ route('admin.dbbackuplist') }}">
 											<span class="menu-icon">
 												<!--begin::Svg Icon | path: icons/duotone/Design/PenAndRuller.svg-->
-												<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
+												<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 													<g id="Stockholm-icons-/-Files-/-Cloud-download" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 														<polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
 														<path d="M5.74714567,13.0425758 C4.09410362,11.9740356 3,10.1147886 3,8 C3,4.6862915 5.6862915,2 9,2 C11.7957591,2 14.1449096,3.91215918 14.8109738,6.5 L17.25,6.5 C19.3210678,6.5 21,8.17893219 21,10.25 C21,12.3210678 19.3210678,14 17.25,14 L8.25,14 C7.28817895,14 6.41093178,13.6378962 5.74714567,13.0425758 Z" id="Combined-Shape" fill="#000000" opacity="0.3"></path>
@@ -437,7 +437,7 @@
 									@endif
 								</div>
 							</div>
-							
+
 						</div>
 						<!--end::Menu-->
 					</div>
@@ -489,7 +489,7 @@
 												<span class="menu-title">Dashboard</span>
 											</a>
 										</div>
-							
+
 										{{-- <div data-kt-menu-trigger="click" data-kt-menu-placement="bottom-start" class="menu-item menu-lg-down-accordion me-lg-1">
 											<span class="menu-link py-3">
 												<span class="menu-title">Admin Management</span>
@@ -529,12 +529,12 @@
 																</span>
 																<a href=""class="menu-title">Module List</a>
 															</span>
-														
+
 														</div>
-													
+
 													</div>
 												</div>
-										
+
 
 												<div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
 													<span class="menu-link py-3">
@@ -561,7 +561,7 @@
 																	<span class="bullet bullet-dot"></span>
 																</span>
 																<span class="menu-title">Add New Permission</span>
-														
+
 															</span>
 
 															<span class="menu-link py-3">
@@ -569,14 +569,14 @@
 																	<span class="bullet bullet-dot"></span>
 																</span>
 																<span class="menu-title">Permission List</span>
-														
+
 															</span>
-														
+
 														</div>
-														
+
 													</div>
 												</div>
-												
+
 											</div>
 										</div> --}}
 									</div>
@@ -1715,14 +1715,14 @@
 														@else
 															<img alt="Logo" src="{{asset('assets/media/avatars/blank.png')}}" />
 														@endif
-														
+
 													</div>
 													<!--end::Avatar-->
 													<!--begin::Username-->
 													<div class="d-flex flex-column">
 														<div class="fw-bolder d-flex align-items-center fs-5">{{Auth::user()->name}}
 														<span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span></div>
-														
+
 													</div>
 													<!--end::Username-->
 												</div>
@@ -1736,7 +1736,7 @@
 												<a href="{{ route('admin.profileview')}}" class="menu-link px-5">My Profile</a>
 											</div>
 											<!--end::Menu item-->
-							
+
 											<!--begin::Menu separator-->
 											<div class="separator my-2"></div>
 											<!--end::Menu separator-->
@@ -1754,7 +1754,7 @@
 												</form>
 											</div>
 
-				
+
 											<!--end::Menu item-->
 											<!--begin::Menu separator-->
 											<div class="separator my-2"></div>
@@ -1799,7 +1799,7 @@
 						<!--begin::Copyright-->
 						<div class="text-dark order-2 order-md-1">
 							<span class="text-muted fw-bold me-1">2021©</span>
-							<a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+							<a href="https://winmacsystem.com" target="_blank" class="text-gray-800 text-hover-primary">Winmac System</a>
 						</div>
 						<!--end::Copyright-->
 						<!--begin::Menu-->
@@ -1824,7 +1824,7 @@
 		</div>
 		<!--end::Page-->
 	</div>
-	
+
 
 
 
@@ -1877,22 +1877,22 @@
 										<!--end::Svg Icon-->
 									</div>
 								</div>
-							
-								
+
+
 							</div>
 							<!--end::Timeline item-->
 							<!--begin::Timeline item-->
 							<div class="timeline-item">
 								<!--begin::Timeline line-->
 								<div class="timeline-line w-40px"></div>
-							
-							
+
+
 							</div>
-					
+
 						</div>
-				
+
 					</div>
-			
+
 				</div>
 				<!--end::Body-->
 				<!--begin::Footer-->
@@ -1934,7 +1934,7 @@
 						</div>
 						<!--end::User-->
 					</div>
-				
+
 				</div>
 				<!--end::Card header-->
 				<!--begin::Card body-->
@@ -1943,7 +1943,7 @@
 					<div class="scroll-y me-n5 pe-5" data-kt-element="messages" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_drawer_chat_messenger_header, #kt_drawer_chat_messenger_footer" data-kt-scroll-wrappers="#kt_drawer_chat_messenger_body" data-kt-scroll-offset="0px">
 
 					</div>
-		
+
 				</div>
 				<!--end::Card body-->
 				<!--begin::Card footer-->
@@ -2008,7 +2008,7 @@
 					<div id="kt_explore_scroll" class="scroll-y me-n5 pe-5" data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_explore_body" data-kt-scroll-dependencies="#kt_explore_header, #kt_explore_footer" data-kt-scroll-offset="5px">
 						<!--begin::Demos-->
 						<div class="mb-0">
-							
+
 						</div>
 						<!--end::Demos-->
 					</div>

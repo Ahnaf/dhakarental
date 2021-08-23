@@ -140,7 +140,7 @@
                             @csrf
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Image</label>
+                                <label class="col-lg-3 col-form-label required fw-bold fs-6">Image</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
@@ -172,7 +172,7 @@
                                     <!--end::Image input-->
                                     <!--begin::Hint-->
                                     <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-                                     
+
                                     <!--end::Hint-->
                                 </div>
                                 @error('avatar') <span class="text-danger">{{ $message }}</span> @enderror
@@ -182,13 +182,13 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
                                     <span class="required">Type</span>
-                                    
+
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
+                                <div class="col-lg-3 fv-row">
                                     <select name="type" aria-label="Select Type" data-control="select2" data-placeholder="Select Type..." class="form-select form-select-solid form-select-lg fw-bold">
                                         <option value="">Select Type...</option>
                                         <option value="Sedan">Sedan</option>
@@ -197,32 +197,32 @@
                                         <option value="Micro">Micro</option>
                                         <option value="VAN ">VAN</option>
                                     </select>
-                                    
+
                                 </div>
-                                @error('type') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('type') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Reg. Number</label>
+                                <label class="col-lg-3 col-form-label required fw-bold fs-6">Reg. Number</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8">
+                                <div class="col-lg-3">
                                     <!--begin::Row-->
                                     <div class="row">
                                         <!--begin::Col-->
                                         <div class="col-lg-12 fv-row">
                                             <input type="text" name="reg_number" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Enter Reg Number" value="" />
-                                            
+
                                         </div>
                                         <!--end::Col-->
 
                                     </div>
                                     <!--end::Row-->
                                 </div>
-                                @error('reg_number') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('reg_number') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -230,36 +230,36 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
                                     <span class="required">Registration Year</span>
-                                   
+
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
+                                <div class="col-lg-3 fv-row">
                                     <select name="registration_year" id="yearpicker" aria-label="Select Year" data-control="select2" data-placeholder="Select Year..." class="form-select form-select-solid form-select-lg fw-bold">
                                         <option value="">Select Year...</option>
 
                                     </select>
-                                    
+
                                 </div>
-                                @error('registration_year') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('registration_year') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
-                            
+
 
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Car Model</label>
+                                <label class="col-lg-3 col-form-label required fw-bold fs-6">Car Model</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
+                                <div class="col-lg-3 fv-row">
                                     <input type="text" name="model" class="form-control form-control-lg form-control-solid" placeholder="Enter Car Model" value="" />
-                                    
+
                                 </div>
-                                @error('model') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('model') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -267,9 +267,9 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
                                     <span class="required">Condition</span>
-                                   
+
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
@@ -280,7 +280,7 @@
                                             Best
                                         </label>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
@@ -289,7 +289,7 @@
                                             Good
                                         </label>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
@@ -298,9 +298,9 @@
                                             Average
                                         </label>
                                     </div>
-                                    
+
                                 </div>
-                                @error('condition') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('condition') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -308,9 +308,9 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
                                     <span class="required">AC Type</span>
-                                   
+
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
@@ -322,7 +322,7 @@
                                             Single
                                         </label>
                                     </div>
-                                
+
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
@@ -331,9 +331,9 @@
                                             Duel
                                         </label>
                                     </div>
-                                
+
                                 </div>
-                                @error('ac') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('ac') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -341,9 +341,9 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
                                     <span class="required">Fuel Type</span>
-                                    
+
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
@@ -353,7 +353,7 @@
                                         <label class="form-check-label" for="flexRadioLg">
                                             Petrol
                                         </label>
-                                    </div> 
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-2 fv-row">
@@ -362,7 +362,7 @@
                                         <label class="form-check-label" for="flexRadioLg">
                                             CNG
                                         </label>
-                                    </div> 
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-2 fv-row">
@@ -371,7 +371,7 @@
                                         <label class="form-check-label" for="flexRadioLg">
                                             LPG
                                         </label>
-                                    </div> 
+                                    </div>
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
@@ -379,9 +379,9 @@
                                         <label class="form-check-label" for="flexRadioLg">
                                             Hybrid
                                         </label>
-                                    </div> 
+                                    </div>
                                 </div>
-                                @error('fuel') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('fuel') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -389,7 +389,7 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Gearbox</label>
+                                <label class="col-lg-3 col-form-label required fw-bold fs-6">Gearbox</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
@@ -399,7 +399,7 @@
                                             Manual
                                         </label>
                                     </div>
-                                
+
                                 </div>
 
                                 <div class="col-lg-2 fv-row">
@@ -409,7 +409,7 @@
                                             Automatic
                                         </label>
                                     </div>
-                                
+
                                 </div>
 
                                 <div class="col-lg-2 fv-row">
@@ -419,9 +419,9 @@
                                             Semi-automatic
                                         </label>
                                     </div>
-                                
+
                                 </div>
-                                @error('gearbox') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('gearbox') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -429,9 +429,9 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                    <span class="required">Sitting Capasity</span>
-                                    
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
+                                    <span class="required">Sitting Capacity</span>
+
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
@@ -442,7 +442,7 @@
                                             3
                                         </label>
                                     </div>
-                                
+
                                 </div>
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
@@ -451,7 +451,7 @@
                                             5
                                         </label>
                                     </div>
-                                
+
                                 </div>
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
@@ -460,7 +460,7 @@
                                             7
                                         </label>
                                     </div>
-                                
+
                                 </div>
 
                                 <div class="col-lg-1 fv-row">
@@ -470,7 +470,7 @@
                                             9
                                         </label>
                                     </div>
-                                
+
                                 </div>
 
                                 <div class="col-lg-1 fv-row">
@@ -480,7 +480,7 @@
                                             11
                                         </label>
                                     </div>
-                                
+
                                 </div>
 
                                 <div class="col-lg-1 fv-row">
@@ -490,21 +490,21 @@
                                             13
                                         </label>
                                     </div>
-                                
+
                                 </div>
 
-                                @error('sitting') <span class="text-danger">{{ $message }}</span> @enderror 
-                                
+                                @error('sitting') <span class="text-danger">{{ $message }}</span> @enderror
+
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Color</label>
+                                <label class="col-lg-3 col-form-label required fw-bold fs-6">Color</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
+                                <div class="col-lg-4 fv-row">
                                     <select name="color" id="color" aria-label="Select Color" data-control="select2" data-placeholder="Select Color..." class="form-select form-select-solid form-select-lg fw-bold">
                                         <option value="">Select Color...</option>
                                         <option value="Black">Black</option>
@@ -521,21 +521,21 @@
                                         <option value="White">White</option>
                                         <option value="Yellow">Yellow</option>
                                     </select>
-                                    
+
                                 </div>
-                                @error('color') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('color') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Location</label>
+                                <label class="col-lg-3 col-form-label required fw-bold fs-6">Location</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
+                                <div class="col-lg-4 fv-row">
                                     <input type="text" name="location" class="form-control form-control-lg form-control-solid" placeholder="Enter Location" value="" />
-                                     
+
                                 </div>
                                 @error('location') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
@@ -544,7 +544,7 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
                                     <span class="required">isAvailable</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i>
                                 </label>
@@ -557,7 +557,7 @@
                                             True
                                         </label>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
@@ -566,21 +566,21 @@
                                             False
                                         </label>
                                     </div>
-                                    
+
                                 </div>
-                                @error('isavailable') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('isavailable') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Other Features</label>
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">Other Features</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="other_features" class="form-control form-control-lg form-control-solid" placeholder="Enter Other Features" value="" />
-                                    
+
                                 </div>
                                  @error('other_features') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
@@ -589,12 +589,12 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Owner/Driver</label>
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">Owner/Driver</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="owner_driver" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver" value="" />
-                                     
+
                                 </div>
                                 @error('owner_driver') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
@@ -604,14 +604,14 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Note</label>
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">Note</label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="note" class="form-control form-control-lg form-control-solid" placeholder="Enter Note" value="" />
-                                    
+
                                 </div>
-                                @error('note') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('note') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -619,8 +619,8 @@
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                    <span class="required">Prefered For</span>
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">
+                                    <span class="required">Preferred For</span>
                                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i>
                                 </label>
                                 <!--end::Label-->
@@ -632,7 +632,7 @@
                                             Any
                                         </label>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
@@ -641,7 +641,7 @@
                                            Daily
                                         </label>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
@@ -650,7 +650,7 @@
                                            Weekly
                                         </label>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
@@ -659,29 +659,29 @@
                                            Monthly
                                         </label>
                                     </div>
-                                    
+
                                 </div>
-                                @error('prefered') <span class="text-danger">{{ $message }}</span> @enderror 
+                                @error('prefered') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
 
                             <!--begin::Input group-->
-                            
+
                             <div class="row mb-6">
                                 <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label required fw-bold fs-6">Attachment &nbsp;<span style="cursor: pointer" id="addAttachment" class="btn-link m-l-10">+ Add more</span></label>
+                                <label class="col-lg-3 col-form-label required fw-bold fs-6">Attachment &nbsp;<span style="cursor: pointer" id="addAttachment" class="btn-link m-l-10">+ Add more</span></label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-4 fv-row">
+                                <div class="col-lg-3 fv-row">
                                     <input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment"/>
-                                   
-                                    @error('attachments_of_text.*') <span class="text-danger">{{ $message }}</span> @enderror  
+
+                                    @error('attachments_of_text.*') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="col-lg-4 fv-row">
+                                <div class="col-lg-3 fv-row">
                                     <input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/>
-                      
-                                    @error('attachments_of_paper.*') <span class="text-danger">{{ $message }}</span> @enderror  
+
+                                    @error('attachments_of_paper.*') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -692,12 +692,12 @@
                             <div class="row mb-6">
                                 <!--begin::Label-->
 
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">Gallary Images</label>
-                                
+                                <label class="col-lg-3 col-form-label fw-bold fs-6">Gallery Images</label>
+
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 d-flex flex-row">
-                                    
+
                                     <div class="col-lg-3 d-inline">
 
                                         <div class="wrap-custom-file">
@@ -709,14 +709,14 @@
                                             </label>
                                         </div>
                                     </div>
-                      
+
                                     <div id="placegallery">
-                                        
+
                                     </div>
 
                                     <div class="col-lg-3" id="addmoregallery">
                                         <div class="wrap-custom-file" >
-                                          
+
                                             <label  for="">
                                             <span>Add more Image</span>
                                             <i class="fa fa-plus-circle" style="font-size:40px; color: #575653"></i>
@@ -724,12 +724,12 @@
                                         </div>
                                     </div>
 
-                                   
+
 
                                 </div>
-                                 @error('gallery.0') <span class="text-danger">{{ $message }}</span> @enderror 
+                                 @error('gallery.0') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
-                           
+
                         </div>
                         <!--end::Card body-->
                         <!--begin::Actions-->
@@ -761,7 +761,7 @@
 <!--begin::Page Custom Javascript(used by this page)-->
 <script src="{{asset('assets/js/custom/apps/support-center/tickets/create.js')}}"></script>
 <script src="{{asset('assets/js/custom/documentation/documentation.js')}}"></script>
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 {{-- <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/permissions/list.js')}}"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/permissions/add-permission.js')}}"></script>
@@ -778,7 +778,7 @@
 $('#addmoregallery').click(function () {
     let idset = $('.wrap-custom-file').length +1;
     if($('.wrap-custom-file').length == 4){
-        $('#addmoregallery').hide();  
+        $('#addmoregallery').hide();
     }
     $('#placegallery').append('<div class="col-lg-3 col-6 gallaryunset d-inline position-relative"><div class="wrap-custom-file inline"><button type="button" class="btn btn-danger py-1 px-2 glyphicon glyphicon-remove position-absolute start-0 z-index-2 rounded-1 removegallery">&#x2715</button><input type="file" name="gallery[]" id="image'+idset+'" accept=".gif, .jpg, .png .jpeg" /><label  for="image'+idset+'"><span>Select Image</span><i class="fa fa-image" style="font-size:40px;"></i></label></div></div>');
         $('input[type="file"]').each(function(){
@@ -806,7 +806,7 @@ $('#addmoregallery').click(function () {
 
         // End loop of file input elements
     });
- 
+
 
 });
 
