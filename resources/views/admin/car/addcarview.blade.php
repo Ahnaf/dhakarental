@@ -5,7 +5,89 @@
 
 
 @push('css')
-<link href="{{asset('assets/css/imageuploadify.min.css')}}" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" rel="stylesheet" type="text/css">
+<style>
+
+/*** CUSTOM FILE INPUT STYE ***/
+.wrap-custom-file {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin: 0 0.5rem 1rem;
+  text-align: center;
+}
+.wrap-custom-file input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  overflow: hidden;
+  opacity: 0;
+}
+.wrap-custom-file label {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 0.5rem;
+  cursor: pointer;
+  background-color: rgb(218, 211, 211);
+  border-radius: 4px;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+.wrap-custom-file label span {
+  display: block;
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: #777;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+.wrap-custom-file label .fa {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  -webkit-transform: translatex(-50%);
+  transform: translatex(-50%);
+  font-size: 1.5rem;
+  color: lightcoral;
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+}
+.wrap-custom-file label:hover {
+  -webkit-transform: translateY(-1rem);
+  transform: translateY(-1rem);
+}
+.wrap-custom-file label:hover span, .wrap-custom-file label:hover .fa {
+  color: #333;
+}
+.wrap-custom-file label.file-ok {
+  background-size: cover;
+  background-position: center;
+}
+.wrap-custom-file label.file-ok span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.3rem;
+  font-size: 1.1rem;
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.wrap-custom-file label.file-ok .fa {
+  display: none;
+}
+</style>
 @endpush
 
 @section('content')
@@ -37,6 +119,7 @@
         <!--begin::Container-->
         <div id="kt_content_container" class="container">
             <!--begin::Basic info-->
+
             <div class="card mb-5 mb-xl-10">
                 <!--begin::Card header-->
                 <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
@@ -62,7 +145,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8">
                                     <!--begin::Image input-->
-                                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url({{asset('assets/media/avatars/blank.png')}})">
+                                    <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url({{asset('assets/media/avatars/1234.png')}})">
                                         <!--begin::Preview existing avatar-->
                                         <div class="image-input-wrapper w-300px h-150px" style="background-image: url({{asset('assets/media/avatars/1234.png')}})"></div>
                                         <!--end::Preview existing avatar-->
@@ -89,8 +172,10 @@
                                     <!--end::Image input-->
                                     <!--begin::Hint-->
                                     <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                                     
                                     <!--end::Hint-->
                                 </div>
+                                @error('avatar') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -112,7 +197,9 @@
                                         <option value="Micro">Micro</option>
                                         <option value="VAN ">VAN</option>
                                     </select>
+                                    
                                 </div>
+                                @error('type') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -128,12 +215,14 @@
                                         <!--begin::Col-->
                                         <div class="col-lg-12 fv-row">
                                             <input type="text" name="reg_number" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Enter Reg Number" value="" />
+                                            
                                         </div>
                                         <!--end::Col-->
 
                                     </div>
                                     <!--end::Row-->
                                 </div>
+                                @error('reg_number') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -152,7 +241,9 @@
                                         <option value="">Select Year...</option>
 
                                     </select>
+                                    
                                 </div>
+                                @error('registration_year') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -166,7 +257,9 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="model" class="form-control form-control-lg form-control-solid" placeholder="Enter Car Model" value="" />
+                                    
                                 </div>
+                                @error('model') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -207,7 +300,7 @@
                                     </div>
                                     
                                 </div>
-                            
+                                @error('condition') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -240,7 +333,7 @@
                                     </div>
                                 
                                 </div>
-
+                                @error('ac') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -288,6 +381,7 @@
                                         </label>
                                     </div> 
                                 </div>
+                                @error('fuel') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -327,6 +421,7 @@
                                     </div>
                                 
                                 </div>
+                                @error('gearbox') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -397,6 +492,8 @@
                                     </div>
                                 
                                 </div>
+
+                                @error('sitting') <span class="text-danger">{{ $message }}</span> @enderror 
                                 
                                 <!--end::Col-->
                             </div>
@@ -424,7 +521,9 @@
                                         <option value="White">White</option>
                                         <option value="Yellow">Yellow</option>
                                     </select>
+                                    
                                 </div>
+                                @error('color') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -436,7 +535,9 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="location" class="form-control form-control-lg form-control-solid" placeholder="Enter Location" value="" />
+                                     
                                 </div>
+                                @error('location') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -467,6 +568,7 @@
                                     </div>
                                     
                                 </div>
+                                @error('isavailable') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -478,7 +580,9 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="other_features" class="form-control form-control-lg form-control-solid" placeholder="Enter Other Features" value="" />
+                                    
                                 </div>
+                                 @error('other_features') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -490,7 +594,9 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="owner_driver" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver" value="" />
+                                     
                                 </div>
+                                @error('owner_driver') <span class="text-danger">{{ $message }}</span> @enderror
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -503,7 +609,9 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="note" class="form-control form-control-lg form-control-solid" placeholder="Enter Note" value="" />
+                                    
                                 </div>
+                                @error('note') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -553,6 +661,7 @@
                                     </div>
                                     
                                 </div>
+                                @error('prefered') <span class="text-danger">{{ $message }}</span> @enderror 
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
@@ -566,9 +675,13 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-4 fv-row">
                                     <input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment"/>
+                                   
+                                    @error('attachments_of_text.*') <span class="text-danger">{{ $message }}</span> @enderror  
                                 </div>
                                 <div class="col-lg-4 fv-row">
                                     <input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/>
+                      
+                                    @error('attachments_of_paper.*') <span class="text-danger">{{ $message }}</span> @enderror  
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -578,13 +691,43 @@
                             <!--end::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
+
                                 <label class="col-lg-4 col-form-label fw-bold fs-6">Gallary Images</label>
+                                
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <input class="selectimage" type="file" name="gallery[]" accept="image/*" multiple>
+                                <div class="col-lg-8 d-flex flex-row">
+                                    
+                                    <div class="col-lg-3 d-inline">
+
+                                        <div class="wrap-custom-file">
+                                            {{-- <button type="button" class="btn btn-danger p-2 px-3 glyphicon glyphicon-remove position-absolute start-0 z-index-2 removegallery">&#x2715</button> --}}
+                                            <input type="file" name="gallery[]" id="image1" accept=".gif, .jpg, .png .jpeg" />
+                                            <label  for="image1">
+                                            <span>Select Image</span>
+                                            <i class="fa fa-image" style="font-size:40px;"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+                      
+                                    <div id="placegallery">
+                                        
+                                    </div>
+
+                                    <div class="col-lg-3" id="addmoregallery">
+                                        <div class="wrap-custom-file" >
+                                          
+                                            <label  for="">
+                                            <span>Add more Image</span>
+                                            <i class="fa fa-plus-circle" style="font-size:40px; color: #575653"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                   
+
                                 </div>
-                                <!--end::Col-->
+                                 @error('gallery.0') <span class="text-danger">{{ $message }}</span> @enderror 
                             </div>
                            
                         </div>
@@ -618,7 +761,7 @@
 <!--begin::Page Custom Javascript(used by this page)-->
 <script src="{{asset('assets/js/custom/apps/support-center/tickets/create.js')}}"></script>
 <script src="{{asset('assets/js/custom/documentation/documentation.js')}}"></script>
- <script type="text/javascript" src="{{asset('assets/js/imageuploadify.min.js')}}"></script> 
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> 
 {{-- <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/permissions/list.js')}}"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/permissions/add-permission.js')}}"></script>
@@ -632,15 +775,80 @@
     }
 </script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.selectimage').imageuploadify();
-    });
-    $('#addAttachment').click(function () {
-        $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-4 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-4 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-4 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
-    });
-    $("body").on("click",".removeattachment",function(e){
-        $(this).parents('.attachmentunset').remove();
+$('#addmoregallery').click(function () {
+    let idset = $('.wrap-custom-file').length +1;
+    if($('.wrap-custom-file').length == 4){
+        $('#addmoregallery').hide();  
+    }
+    $('#placegallery').append('<div class="col-lg-3 col-6 gallaryunset d-inline position-relative"><div class="wrap-custom-file inline"><button type="button" class="btn btn-danger py-1 px-2 glyphicon glyphicon-remove position-absolute start-0 z-index-2 rounded-1 removegallery">&#x2715</button><input type="file" name="gallery[]" id="image'+idset+'" accept=".gif, .jpg, .png .jpeg" /><label  for="image'+idset+'"><span>Select Image</span><i class="fa fa-image" style="font-size:40px;"></i></label></div></div>');
+        $('input[type="file"]').each(function(){
+        // Refs
+        var $file = $(this),
+            $label = $file.next('label'),
+            $labelText = $label.find('span'),
+            labelDefault = $labelText.text();
 
+        // When a new file is selected
+        $file.on('change', function(event){
+            var fileName = $file.val().split( '\\' ).pop(),
+                tmppath = URL.createObjectURL(event.target.files[0]);
+            //Check successfully selection
+            if( fileName ){
+            $label
+                .addClass('file-ok')
+                .css('background-image', 'url(' + tmppath + ')');
+            $labelText.text(fileName);
+            }else{
+            $label.removeClass('file-ok');
+            $labelText.text(labelDefault);
+            }
+        });
+
+        // End loop of file input elements
     });
+ 
+
+});
+
+$('input[type="file"]').each(function(){
+  // Refs
+  var $file = $(this),
+      $label = $file.next('label'),
+      $labelText = $label.find('span'),
+      labelDefault = $labelText.text();
+
+  // When a new file is selected
+  $file.on('change', function(event){
+    var fileName = $file.val().split( '\\' ).pop(),
+        tmppath = URL.createObjectURL(event.target.files[0]);
+    //Check successfully selection
+    if( fileName ){
+      $label
+        .addClass('file-ok')
+        .css('background-image', 'url(' + tmppath + ')');
+      $labelText.text(fileName);
+    }else{
+      $label.removeClass('file-ok');
+      $labelText.text(labelDefault);
+    }
+  });
+
+// End loop of file input elements
+});
+$('#addAttachment').click(function () {
+    $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-4 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-4 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-4 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
+});
+$("body").on("click",".removeattachment",function(e){
+    $(this).parents('.attachmentunset').remove();
+
+});
+$("body").on("click",".removegallery",function(e){
+    // alert($('.wrap-custom-file').length);
+    if($('.wrap-custom-file').length <= 5){
+        $('#addmoregallery').show();
+    }
+    $(this).parents('.gallaryunset').remove();
+});
+
 </script>
 @endpush
