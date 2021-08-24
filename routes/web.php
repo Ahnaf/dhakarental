@@ -134,6 +134,10 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::post('/caradd', [CarController::class, 'storeCar'])->name('admin.carstore');
 
+        Route::get('/cardetails/{id}', [CarController::class, 'carDetails'])->name('admin.cardetails');
+
+        Route::post('/cardelete', [CarController::class, 'deleteCar'])->name('admin.cardelete');
+
         /*---- Car Owner Route ----*/
 
         Route::get('/carownerlist', [CarownerController::class, 'carOwnerList'])->name('admin.carownerlist');

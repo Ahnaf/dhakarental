@@ -121,7 +121,18 @@
             <!--begin::Basic info-->
 
             <div class="card mb-5 mb-xl-10">
-                <!--begin::Card header-->
+               @if(session('carwarning'))
+                    <!--begin::Alert-->
+                    <div class="alert alert-dismissible bg-warning d-flex flex-column flex-sm-row p-5 mb-10">
+                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+                            <p class="fs-6 mt-3">{{ session('carwarning') }}</p>
+                        </div>
+                        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+                            <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>
+                        </button>
+                    </div>
+                    <!--end::Alert-->
+                @endif
                 <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
                     <!--begin::Card title-->
                     <div class="card-title m-0">
@@ -836,7 +847,7 @@ $('input[type="file"]').each(function(){
 // End loop of file input elements
 });
 $('#addAttachment').click(function () {
-    $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-4 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-4 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-4 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
+    $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-3 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-3 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-3 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
 });
 $("body").on("click",".removeattachment",function(e){
     $(this).parents('.attachmentunset').remove();

@@ -41,6 +41,18 @@
         <div id="kt_content_container" class="container">
             <!--begin::Card-->
             <div class="card">
+                @if(session('carsuccess'))
+                    <!--begin::Alert-->
+                    <div class="alert alert-dismissible bg-success d-flex flex-column flex-sm-row p-5 mb-10">
+                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+                            <p class="fs-6 mt-3">{{ session('carsuccess') }}</p>
+                        </div>
+                        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+                            <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>
+                        </button>
+                    </div>
+                    <!--end::Alert-->
+                @endif
                 <!--begin::Card header-->
                 <div class="card-header border-0 pt-6">
                     <!--begin::Card title-->
@@ -120,26 +132,28 @@
                             <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="w-10px pe-2">
                                     <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                        <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_subscriptions_table .form-check-input" value="1" />
+                                        <input class="form-check-input" type="hidden" data-kt-check="true" data-kt-check-target="#kt_subscriptions_table .form-check-input" value="1" />
                                     </div>
                                 </th>
                                 <th class="min-w-125px">No</th>
-                                <th class="min-w-125px">Name</th>
-                                <th class="min-w-125px">Slug</th>
+                                <th class="min-w-125px">Model</th>
+                                <th class="min-w-125px">Reg No</th>
+                                <th class="min-w-125px">Reg Year</th>
+                                <th class="min-w-125px">Color</th>
                                 <th class="min-w-125px">Created Date</th>
-                                <th class="text-end min-w-70px">Actions</th>
+                                <th class="text-center min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>
                         <!--end::Table head-->
                         <!--begin::Table body-->
                         <tbody class="text-gray-600 fw-bold" id="tablebodycheckbox">
-                            {{-- @foreach ($permissions as $index=> $permission) --}}
+                            @foreach ($cars as $index=> $car)
                             <tr>
                                 <!--begin::Checkbox-->
                                 <td>
                                     <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="" />
+                                        <input class="form-check-input" type="hidden" value="{{ $car->id }}" />
                                     </div>
                                 </td>
                                 <!--end::Checkbox-->
@@ -148,22 +162,34 @@
                                 <!--end::Customer=-->
                                 <!--begin::Status=-->
                                 <td>
-                                    <div class="badge badge-light-success">1</div>
+                                    <div class="badge badge-light-success">{{$index + 1}}</div>
                                 </td>
                                 <!--end::Status=-->
                                 <!--begin::Billing=-->
                                 <td>
-                                    uuuuu
+                                    {{ $car->model }}
+                                </td>
+
+                                <td>
+                                    {{$car->reg_number}}
+                                </td>
+
+                                <td>
+                                    {{$car->registration_year}}
                                 </td>
                                 <!--end::Billing=-->
                                 <!--begin::Product=-->
-                                <td>hujhgg</td>
+                                <td>
+                                    {{ $car->color}}
+                                </td>
                                 <!--end::Product=-->
                                 <!--begin::Date=-->
-                                <td>yhuuu</td>
+                                <td>
+                                    {{$car->created_at->format('l, jS F, Y g:i a')}}
+                                </td>
                                 <!--end::Date=-->
                                 <!--begin::Action=-->
-                                <td class="text-end">
+                                <td class="text-center">
                                     <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">Actions
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                     <span class="svg-icon svg-icon-5 m-0">
@@ -179,7 +205,7 @@
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="{{ route('admin.carowneroverview', ['id' => 1])}}" class="menu-link px-3">View</a>
+                                            <a href="{{ route('admin.cardetails', ['id' => 1])}}" class="menu-link px-3">View</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
@@ -197,13 +223,13 @@
                                 </td>
                                 <!--end::Action=-->
                             </tr>
-                            {{-- @endforeach   --}}
+                            @endforeach  
                             
                         </tbody>
                         <!--end::Table body-->
                     </table>
                     <!--end::Table-->
-                    {{-- {{$permissions->links()}} --}}
+                    {{$cars->links()}}
                 </div>
                 
                 <!--end::Card body-->
@@ -451,8 +477,7 @@ $(document).ready(function(){
 });
 </script>
 <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/permissions/list.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/permissions/add-permission.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/permissions/update-permission.js')}}"></script>
+<script src="{{asset('assets/js/custom/apps/user-management/car/carlist.js')}}"></script>
+
 
 @endpush
