@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin\Car;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\CreateCarRequest;
+use App\Http\Requests\CarUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Car;
@@ -105,5 +107,79 @@ class CarController extends Controller
         $id = $request->carid;
         //Storage::deleteDirectory();
         return response()->json(['success' => 'Car successfully deleted!'. $id, 200]);
+    }
+
+    public function carEditView($id)
+    {
+        $car = Car::findOrFail($id);
+        return view('admin.car.editcar', compact('car'));
+    }
+
+    public function updateCarStore(CarUpdateRequest $request)
+    {
+        $validated = $request->validated();
+        $fule = implode(', ', $validated['fuel']);
+        $token = $validated['cartoken'];
+        $carid = $validated['carid'];
+        $data = [
+            'type' => $validated['type'],
+            'reg_number' => $validated['reg_number'],
+            'registration_year' => $validated['registration_year'],
+            'model' => $validated['model'],
+            'condition' => $validated['condition'],
+            'ac' => $validated['ac'],
+            'fuel' => $fule,
+            'gearbox' => $validated['gearbox'],
+            'sitting' => $validated['sitting'],
+            'color' => $validated['color'],
+            'location' => $validated['location'],
+            'isavailable' => $validated['isavailable'],
+            'other_features' => $validated['other_features'],
+            'owner_driver' => $validated['owner_driver'],
+            'note' => $validated['note'],
+            'prefered' => $validated['prefered']
+        ];
+
+        try {
+
+            $findCar = Car::findOrFail($carid);
+            if (isset($validated['avatar'])) {
+                $image = $validated['avatar'];
+                $serverimgname = uniqid() . '.' . $image->getClientOriginalExtension();
+                $validated['avatar']->storeAs('public/car/' . $token, $serverimgname);
+                $data['avatar'] = $serverimgname;
+
+                if (Storage::exists('public/car/'. $token .'/'. $findCar->avatar)) {
+                    Storage::disk('public')->delete('car/'. $token .'/'. $findCar->avatar);
+                }
+            }
+
+            Car::where('id', $carid)->update($data);
+
+            return redirect(route('admin.carlist'))->with('carsuccess', 'Car successfully updated!');
+        } catch (\Throwable $exception) {
+            return redirect(route('admin.caredit', ['id' => $carid]))->with('carwarning', 'Car not update, Internal error');
+
+        }
+    }
+
+    public function editGallery(Request $request)
+    {
+        // $v = Validator::make($request->all(), [
+        //     'gallery' => 'required|mimes:jpg,gif,jpeg,png'
+        // ]);
+
+        // if ($v->fails()) {
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'errors' => $v->errors()
+        //     ], 422);
+        // }
+
+        $gid = $request->galleryid .'-'.$request->gcarid;
+        $image = $request->gallery;
+        //$ex = $image->getClientOriginalExtension();
+
+        return response()->json(['success' => $request->galleryid, 200]);
     }
 }
