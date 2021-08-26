@@ -135,12 +135,18 @@
                                         <input class="form-check-input" type="hidden" data-kt-check="true" data-kt-check-target="#kt_subscriptions_table .form-check-input" value="1" />
                                     </div>
                                 </th>
+                                <th class="w-10px pe-2">
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
+                                        <input class="form-check-input" type="hidden" data-kt-check="true"/>
+                                    </div>
+                                </th>
                                 <th class="min-w-125px">No</th>
                                 <th class="min-w-125px">Model</th>
                                 <th class="min-w-125px">Reg No</th>
                                 <th class="min-w-125px">Reg Year</th>
                                 <th class="min-w-125px">Color</th>
-                                <th class="min-w-125px">Created Date</th>
+                                <th class="min-w-125px">Image</th>
+                                <th class="min-w-125px">Status</th>
                                 <th class="text-center min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
@@ -157,9 +163,14 @@
                                     </div>
                                 </td>
                                 <!--end::Checkbox-->
-                                <!--begin::Customer=-->
-                               
-                                <!--end::Customer=-->
+
+                                <!--begin::Checkbox-->
+                                <td>
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                        <input class="form-check-input" type="hidden" value="{{ $car->status }}" />
+                                    </div>
+                                </td>
+                                <!--end::Checkbox-->
                                 <!--begin::Status=-->
                                 <td>
                                     <div class="badge badge-light-success">{{$index + 1}}</div>
@@ -185,7 +196,17 @@
                                 <!--end::Product=-->
                                 <!--begin::Date=-->
                                 <td>
-                                    {{$car->created_at->format('l, jS F, Y g:i a')}}
+                                    <img src="{{ asset('storage/car/'.$car->token.'/'.$car->avatar)}}" width="60" height="40">
+                                </td>
+                                <!--end::Date=-->
+
+                                <!--begin::Date=-->
+                                <td>
+                                    @if ($car->status == 1)
+                                       <p class="text-success">Active</p>
+                                    @else
+                                        <p class="text-warning">Dactive</p>  
+                                    @endif
                                 </td>
                                 <!--end::Date=-->
                                 <!--begin::Action=-->
@@ -215,7 +236,13 @@
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="#" data-kt-subscriptions-table-filter="delete_row" class="menu-link px-3">Delete</a>
+                                            <a href="#" data-kt-subscriptions-table-filter="delete_row" class="menu-link px-3">
+                                                @if ($car->status == 1)
+                                                    <p class="text-warning">Dactive</p>
+                                                @else
+                                                    <p class="text-success">Active</p>    
+                                                @endif
+                                            </a>
                                         </div>
                                         <!--end::Menu item-->
                                     </div>

@@ -14,12 +14,10 @@
 			<!--begin::Authentication - Sign-in -->
 			<div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(assets/media/illustrations/development-hd.png)">
 				<!--begin::Content-->
-				<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+				<div class="d-flex flex-center flex-column flex-column-fluid pb-lg-20">
 					<!--begin::Logo-->
-					<a href="/" class="mb-12">
-						{{-- <img alt="Logo" src="assets/media/logos/logo-2-dark.svg" class="h-45px" /> --}}
-                        <h1 class="text-dark mb-3">Sign In to StartUp</h1>
-						
+					<a href="" class="">
+						<img alt="Logo" src="{{ asset('assets/media/logos/11-01.svg') }}" class="h-200px" />
 					</a>
 					<!--end::Logo-->
 					<!--begin::Wrapper-->
@@ -29,9 +27,9 @@
 						<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" action="{{route('adminlogin.submit')}}" method="POST">
 							<!--begin::Heading-->
 							@csrf
-							<div class="text-center mb-10">
+							<div class="text-center mb-5">
 								<!--begin::Title-->
-								<h1 class="text-dark mb-3">Sign In to StartUp</h1>
+								<h1 class="text-dark mb-3">Sign In to Dhaka Rental</h1>
 								@if(session('loginerror'))
 									<div class="alert alert-danger alert-dismissible fade show" role="alert">
 									<strong>Wait!</strong> {{session('loginerror')}}

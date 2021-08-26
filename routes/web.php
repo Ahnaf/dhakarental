@@ -138,11 +138,15 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::post('/cardelete', [CarController::class, 'deleteCar'])->name('admin.cardelete');
 
+        Route::post('/carstatus', [CarController::class, 'changeStatus'])->name('admin.carstatus');
+
         Route::get('/editcar/{id}', [CarController::class, 'carEditView'])->name('admin.caredit');
 
         Route::post('/editcar', [CarController::class, 'updateCarStore'])->name('admin.carupdate');
 
         Route::post('/editgallery', [CarController::class, 'editGallery'])->name('admin.cargalleryupdate');
+
+        Route::post('/editattach', [CarController::class, 'editAttach'])->name('admin.carattachupdate');
 
         /*---- Car Owner Route ----*/
 

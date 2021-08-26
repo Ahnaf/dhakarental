@@ -871,7 +871,7 @@
                                 <td class="text-end">
                                     
                                     <!--begin::Update-->
-                                    <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3 getmoduleeditid" data-bs-toggle="modal" data-bs-target="#kt_modal_update_module">
+                                    <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3 getattacheditid" data-attachid="{{$attach->id}}"" data-attachname="{{$attach->pepar_name}}" data-bs-toggle="modal" data-bs-target="#kt_attach_update_module">
                                         <!--begin::Svg Icon | path: icons/duotone/Interface/Settings-02.svg-->
                                         <span class="svg-icon svg-icon-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -954,7 +954,7 @@
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                 
                 <!--begin::Form-->
-                <form id="kt_modal_update_gallery_form" class="form">
+                <form id="kt_modal_update_gallery_form" class="form" enctype="multipart/form-data">
                     <!--begin::Input group-->
                     <div class="fv-row mb-7">
                         <!--begin::Label-->
@@ -964,7 +964,6 @@
                         </label>
                         <!--end::Label-->
                         <div class="wrap-custom-file">
-                            {{-- <button type="button" class="btn btn-danger p-2 px-3 glyphicon glyphicon-remove position-absolute start-0 z-index-2 removegallery">&#x2715</button> --}}
                             <input type="file" name="gallery" id="image1" accept=".gif, .jpg, .png .jpeg" />
                             <label  for="image1">
                             <span>Select Image</span>
@@ -982,7 +981,7 @@
                     <div class="text-center pt-15">
                         <button type="reset" class="btn btn-light me-3" data-kt-gallery-modal-action="cancel">Discard</button>
                         <button type="submit" class="btn btn-primary" data-kt-gallery-modal-action="submit">
-                            <span class="indicator-label">Submit</span>
+                            <span class="indicator-label">Update</span>
                             <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                         </button>
@@ -999,7 +998,7 @@
 </div>
 <!--end::Modal - Add permissions-->
 <!--begin::Modal - Update permissions-->
-<div class="modal fade" id="kt_modal_update_module" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="kt_attach_update_module" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <!--begin::Modal content-->
@@ -1007,10 +1006,10 @@
             <!--begin::Modal header-->
             <div class="modal-header">
                 <!--begin::Modal title-->
-                <h2 class="fw-bolder">Update Module</h2>
+                <h2 class="fw-bolder">Update Attachment</h2>
                 <!--end::Modal title-->
                 <!--begin::Close-->
-                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-permissions-modal-action="close">
+                <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-attach-modal-action="close">
                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Close.svg-->
                     <span class="svg-icon svg-icon-1">
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -1029,38 +1028,40 @@
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                 
                 <!--begin::Form-->
-                <form id="kt_modal_update_module_form" class="form" action="#">
+                <form id="kt_modal_update_attach_form" class="form" enctype="multipart/form-data">
                     <!--begin::Input group-->
                     <div class="fv-row mb-7">
                         <!--begin::Label-->
                         <label class="fs-6 fw-bold form-label mb-2">
-                            <span class="required">Module Name</span>
-                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Permission names is required to be unique."></i>
+                            <span class="required">Attachments pepar Name</span>
+                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"></i>
                         </label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <input class="form-control form-control-solid" placeholder="Enter a module name" id="mname" name="module_name" />
+                        <input type="text" id="attachname" name="attachments_of_text" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment" value=""/>
                         <!--end::Input-->
                     </div>
 
                     <div class="fv-row mb-7">
                         <!--begin::Label-->
                         <label class="fs-6 fw-bold form-label mb-2">
-                            <span class="required">Module Description</span>
-                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Permission names is required to be unique."></i>
+                            <span class="">Attachments pepar file</span>
+                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"></i>
                         </label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <input class="form-control form-control-solid" placeholder="Enter a module description" id="mdescription" name="module_description" />
+                         <input type="file" name="attachments_of_paper" class="form-control form-control-lg form-control-solid"/>
+                        
                         <!--end::Input-->
-                        <input type="hidden" id="moduleid" name="moduleid" value="">
+                        <input type="hidden" id="attachid" name="attachid" value="">
+                        <input type="hidden" id="attachcarid" name="attachcarid" value="{{$car->id}}">
                     </div>
                     <!--end::Input group-->
                     <!--begin::Actions-->
                     <div class="text-center pt-15">
-                        <button type="reset" class="btn btn-light me-3" data-kt-permissions-modal-action="cancel">Discard</button>
-                        <button type="submit" class="btn btn-primary" data-kt-permissions-modal-action="submit">
-                            <span class="indicator-label">Submit</span>
+                        <button type="reset" class="btn btn-light me-3" data-kt-attach-modal-action="cancel">Discard</button>
+                        <button type="submit" class="btn btn-primary" data-kt-attach-modal-action="submit">
+                            <span class="indicator-label">Update</span>
                             <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                         </button>
@@ -1088,8 +1089,9 @@
 <!--begin::Page Custom Javascript(used by this page)-->
 <script src="{{asset('assets/js/custom/apps/support-center/tickets/create.js')}}"></script>
 <script src="{{asset('assets/js/custom/documentation/documentation.js')}}"></script>
- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="{{asset('assets/js/custom/apps/user-management/car/update-gallery.js')}}"></script>
+<script src="{{asset('assets/js/custom/apps/user-management/car/update-attach.js')}}"></script>
 <script type="text/javascript">
     let startYear = 1970;
     let endYear = new Date().getFullYear();
@@ -1133,7 +1135,14 @@ $('input[type="file"]').each(function(){
     let gid = $(this).attr('data-galleryid');
     $('#gallerycarid').val(gid);
     
- });
+});
+$('.getattacheditid').on('click', function(){
+    let aid = $(this).attr('data-attachid');
+    let attachname = $(this).attr('data-attachname');
+    $('#attachname').val(attachname);
+    $('#attachid').val(aid);
+    
+});
 
 </script>
 @endpush

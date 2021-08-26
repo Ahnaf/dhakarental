@@ -234,5 +234,101 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.deletedbbackupfile',
         ]);
 
+        $moduleDashboardAdmin = Module::updateOrCreate([
+            'name' => 'Car Owner',
+            'description' => 'Car Owner'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Owner List',
+            'slug' => 'admin.carownerlist',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Owner Overview',
+            'slug' => 'admin.carowneroverview',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Owner Profile',
+            'slug' => 'admin.carownerprofile',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Add Car Owner View',
+            'slug' => 'admin.addcarowner',
+        ]);
+
+        $moduleDashboardAdmin = Module::updateOrCreate([
+            'name' => 'Cars',
+            'description' => 'Cars'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car List',
+            'slug' => 'admin.carlist',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Add View',
+            'slug' => 'admin.caradd',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Store Car',
+            'slug' => 'admin.carstore',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Details',
+            'slug' => 'admin.cardetails',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Delete',
+            'slug' => 'admin.cardelete',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Edit View',
+            'slug' => 'admin.caredit',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Update Store',
+            'slug' => 'admin.carupdate',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Edit Gallery',
+            'slug' => 'admin.cargalleryupdate',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Update Attachments',
+            'slug' => 'admin.carattachupdate',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Status Change',
+            'slug' => 'admin.carstatus',
+        ]);
+
+
+
     }
 }

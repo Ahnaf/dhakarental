@@ -1,31 +1,34 @@
 "use strict";
 var KTSubscriptionsList = function () {
 
-    var t, e, n, o, c, singelval, inputval,
+    var t, e, n, o, c, carid, inputval, carstatus,
         r = function () {
             t.querySelectorAll('[data-kt-subscriptions-table-filter="delete_row"]').forEach((t => {
                 t.addEventListener("click", (function (t) {
                     t.preventDefault();
                     const n = t.target.closest("tr"),
-                        o = n.querySelectorAll("td")[1].innerText;
-                    singelval = n.querySelectorAll("td")[0].getElementsByTagName('input')[0].value;
+                        o = n.querySelectorAll("td")[2].innerText;
+                        carid = n.querySelectorAll("td")[0].getElementsByTagName('input')[0].value;
+                        carstatus = n.querySelectorAll("td")[1].getElementsByTagName('input')[0].value;
+                
 
                     Swal.fire({
-                        text: "Are you sure you want to delete " + o + "?",
+                        text: "Are you sure you want to change status " + o + "?",
                         icon: "warning",
                         showCancelButton: !0,
                         buttonsStyling: !1,
-                        confirmButtonText: "Yes, delete!",
+                        confirmButtonText: "Yes!",
                         cancelButtonText: "No, cancel",
                         customClass: {
-                            confirmButton: "btn fw-bold btn-danger",
+                            confirmButton: "btn fw-bold btn-warning",
                             cancelButton: "btn fw-bold btn-active-light-primary"
                         }
                     }).then((function (t) {
-                        t.value ? axios('/admin/cardelete', {
+                        t.value ? axios('/admin/carstatus', {
                             method: 'post',
                             data: {
-                                carid: singelval
+                                carid: carid,
+                                carstatus: carstatus,
                             }
                         }).then(function (response) {
                             Swal.fire({
@@ -36,7 +39,7 @@ var KTSubscriptionsList = function () {
                                     confirmButton: "btn fw-bold btn-primary"
                                 }
                             }).then((function () {
-                                e.row($(n)).remove().draw()
+                                location.reload();
 
                             }))
                         }) : "cancel" === t.dismiss && Swal.fire({
@@ -62,64 +65,7 @@ var KTSubscriptionsList = function () {
 
                     setTimeout((function () { i() }), 50)
                 }))
-            })),
-                a.addEventListener("click", (function () {
-                    var array = [];
-                    Swal.fire({
-                        text: "Are you sure you want to delete selected permission?",
-                        icon: "warning",
-                        showCancelButton: !0,
-                        buttonsStyling: !1,
-                        confirmButtonText: "Yes, delete!",
-                        cancelButtonText: "No, cancel",
-                        customClass: {
-                            confirmButton: "btn fw-bold btn-danger",
-                            cancelButton: "btn fw-bold btn-active-light-primary"
-                        }
-                    }).then((function (n) {
-                        inputval = document.getElementById("tablebodycheckbox").querySelectorAll("input[type=checkbox]:checked");
-                        for (var i = 0; i < inputval.length; i++) {
-                            array.push(inputval[i].value);
-                        }
-
-                        n.value ? axios('/admin/permissiondeletelist', {
-                            method: 'post',
-                            data: {
-                                permissionidlist: array,
-                            }
-                        }).then(function (response) {
-                            Swal.fire({
-                                text: response.data.success,
-                                icon: "success",
-                                buttonsStyling: !1,
-                                confirmButtonText: "Ok, got it!",
-                                customClass: {
-                                    confirmButton: "btn fw-bold btn-primary"
-                                }
-                            }).then((function () {
-                                r.forEach((t => {
-
-                                    t.checked && e.row($(t.closest("tbody tr"))).remove().draw()
-                                }));
-                                t.querySelectorAll('[type="checkbox"]')[0].checked = !1
-                            })).then((function () {
-
-                                l()
-                            }))
-                        }) : "cancel" === n.dismiss && Swal.fire({
-                            text: "Selected customers was not deleted.",
-                            icon: "error",
-                            buttonsStyling: !1,
-                            confirmButtonText: "Ok, got it!",
-                            customClass: {
-                                confirmButton: "btn fw-bold btn-primary"
-                            }
-                        })
-                        array = [];
-                    }))
-
-
-                }))
+            }))
         };
     const i = () => {
         const e = t.querySelectorAll('tbody [type="checkbox"]');

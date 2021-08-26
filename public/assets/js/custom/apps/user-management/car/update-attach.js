@@ -1,22 +1,26 @@
-"use strict"; var KTUsersUpdatePermission = function () {
-    const t = document.getElementById("kt_gallery_update_module"),
-        e = t.querySelector("#kt_modal_update_gallery_form"),
+"use strict"; var KTUsersUpdateAttach = function () {
+    const t = document.getElementById("kt_attach_update_module"),
+        e = t.querySelector("#kt_modal_update_attach_form"),
         n = new bootstrap.Modal(t);
-        let formData;
+    let formData;
     return {
         init: function () {
             (() => {
                 var o = FormValidation.formValidation(e,
                     {
                         fields: {
-                            gallery: {
+                            attachments_of_text: {
                                 validators: {
                                     notEmpty: {
-                                        message: 'Please select an image'
-                                    },
+                                        message: 'Enter attachments pepar name'
+                                    }
+                                }
+                            },
+                            attachments_of_paper: {
+                                validators: {
                                     file: {
-                                        extension: 'jpeg,jpg,png,gif',
-                                        type: 'image/jpeg,image/png,image/jpg,image/gif',
+                                        extension: 'jpeg,jpg,png,pdf,doc',
+                                        type: 'image/jpeg,image/png,image/jpg,application/pdf,application/msword',
                                         maxSize: 2097152,   // 2048 * 1024
                                         message: 'The selected file is not valid'
                                     },
@@ -32,7 +36,7 @@
                             })
                         }
                     });
-                t.querySelector('[data-kt-gallery-modal-action="close"]').addEventListener("click", (t => {
+                t.querySelector('[data-kt-attach-modal-action="close"]').addEventListener("click", (t => {
                     t.preventDefault(),
                         Swal.fire({
                             text: "Are you sure you would like to close?",
@@ -49,7 +53,7 @@
                             t.value && n.hide()
                         }))
                 })),
-                    t.querySelector('[data-kt-gallery-modal-action="cancel"]').addEventListener("click", (t => {
+                    t.querySelector('[data-kt-attach-modal-action="cancel"]').addEventListener("click", (t => {
                         t.preventDefault(),
                             Swal.fire({
                                 text: "Are you sure you would like to cancel?",
@@ -75,52 +79,49 @@
                                     })
                             }))
                     }));
-                const i = t.querySelector('[data-kt-gallery-modal-action="submit"]');
+                const i = t.querySelector('[data-kt-attach-modal-action="submit"]');
                 i.addEventListener("click", (function (t) {
                     t.preventDefault(), o && o.validate().then((function (t) {
-                        
-                            "Valid" == t ? (i.setAttribute("data-kt-indicator", "on"),
-                                i.disabled = !0,
-                            formData = new FormData(document.getElementById("kt_modal_update_gallery_form")),
-                                console.log(formData),
-                                axios({
-                                    
-                                    method: 'post',
-                                    url: '/admin/editgallery',
-                                    data: formData
-                                    
-                                }).then(function (response) {
-                                    e.reset();
-                                    setTimeout((function () {
-                                        i.removeAttribute("data-kt-indicator"),
-                                            i.disabled = !1,
-                                            Swal.fire({
-                                                text: response.data.success,
-                                                icon: "success", buttonsStyling: !1,
-                                                confirmButtonText: "Ok, got it!",
-                                                customClass: { confirmButton: "btn btn-primary" }
-                                            })
-                                                .then((function (t) {
-                                                    t.isConfirmed && n.hide();
-                                                    location.reload();
-                                                }))
 
-                                    }), 2e3);
-                                }).catch(function (error) {
-                                    console.log(error);
-                                })) : Swal.fire({
-                                    text: "Sorry, looks like there are some errors detected, please try again.",
-                                    icon: "error",
-                                    buttonsStyling: !1,
-                                    confirmButtonText: "Ok, got it!",
-                                    customClass: {
-                                        confirmButton: "btn btn-primary"
-                                    }
-                                })
+                        "Valid" == t ? (i.setAttribute("data-kt-indicator", "on"),
+                            i.disabled = !0,
+                            formData = new FormData(document.getElementById("kt_modal_update_attach_form")),
+                            axios({
+                                method: 'post',
+                                url: '/admin/editattach',
+                                data: formData
+                            }).then(function (response) {
+                                e.reset();
+                                setTimeout((function () {
+                                    i.removeAttribute("data-kt-indicator"),
+                                        i.disabled = !1,
+                                        Swal.fire({
+                                            text: response.data.success,
+                                            icon: "success", buttonsStyling: !1,
+                                            confirmButtonText: "Ok, got it!",
+                                            customClass: { confirmButton: "btn btn-primary" }
+                                        })
+                                            .then((function (t) {
+                                                t.isConfirmed && n.hide();
+                                                location.reload();
+                                            }))
+
+                                }), 2e3);
+                            }).catch(function (error) {
+                                console.log(error);
+                            })) : Swal.fire({
+                                text: "Sorry, looks like there are some errors detected, please try again.",
+                                icon: "error",
+                                buttonsStyling: !1,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {
+                                    confirmButton: "btn btn-primary"
+                                }
+                            })
                     }))
                 }))
             })()
         }
     }
 }();
-KTUtil.onDOMContentLoaded((function () { KTUsersUpdatePermission.init() }));
+KTUtil.onDOMContentLoaded((function () { KTUsersUpdateAttach.init() }));

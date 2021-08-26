@@ -109,6 +109,20 @@ class CarController extends Controller
         return response()->json(['success' => 'Car successfully deleted!'. $id, 200]);
     }
 
+    public function changeStatus(Request $request)
+    {
+        $id = $request->carid;
+        $status = $request->carstatus;
+        if($status == 1){
+            Car::where('id', $id)->update(['status' => 0]);
+            return response()->json(['success' => 'Car status successfully dactive !', 200]);  
+        }else{
+            Car::where('id', $id)->update(['status' => 1]);
+            return response()->json(['success' => 'Car status successfully active!', 200]);
+        }
+        
+    }
+
     public function carEditView($id)
     {
         $car = Car::findOrFail($id);
@@ -165,21 +179,71 @@ class CarController extends Controller
 
     public function editGallery(Request $request)
     {
-        // $v = Validator::make($request->all(), [
-        //     'gallery' => 'required|mimes:jpg,gif,jpeg,png'
-        // ]);
+        $v = Validator::make($request->all(), [
+            'gallery' => 'required|mimes:jpg,gif,jpeg,png'
+        ]);
 
-        // if ($v->fails()) {
-        //     return response()->json([
-        //         'status' => 'error',
-        //         'errors' => $v->errors()
-        //     ], 422);
-        // }
+        if ($v->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'errors' => $v->errors()
+            ], 422);
+        }
 
-        $gid = $request->galleryid .'-'.$request->gcarid;
+        $gid = $request->gallerycarid;
+        $findCar = Car::findOrFail($request->setgcarid);
+        $findGallery = Cargallery::findOrFail($gid);
+        $token = $findCar->token;
+        
         $image = $request->gallery;
-        //$ex = $image->getClientOriginalExtension();
+        $serverimgname = uniqid('car') . '.' . $image->getClientOriginalExtension();
+        $request->gallery->storeAs('public/car/' . $token, $serverimgname);
+        $data['gallery_image'] = $serverimgname;
 
-        return response()->json(['success' => $request->galleryid, 200]);
+        if (Storage::exists('public/car/' . $token . '/' . $findGallery->gallery_image)) {
+            Storage::disk('public')->delete('car/' . $token . '/' . $findGallery->gallery_image);
+        }
+
+        Cargallery::where('id', $gid)->update($data);
+        return response()->json(['success' => "Gallery image successfully updated", 200]);
+    }
+
+    public function editAttach(Request $request)
+    {
+        $v = Validator::make($request->all(), [
+            'attachments_of_text' => 'required',
+            'attachments_of_paper' => 'nullable|mimes:jpg,gif,jpeg,png,pdf,doc'
+        ]);
+
+        if ($v->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'errors' => $v->errors()
+            ], 422);
+        }
+
+        $aid = $request->attachid;
+        $findCar = Car::findOrFail($request->attachcarid);
+        $findAttach = Carattach::findOrFail($aid);
+        $token = $findCar->token;
+
+        $data = [
+            'pepar_name' => $request->attachments_of_text,
+        ];
+
+        $file = $request->attachments_of_paper;
+
+        if($file){
+            $serverimgname = uniqid('attachpepar') . '.' . $file->getClientOriginalExtension();
+            $request->attachments_of_paper->storeAs('public/car/' . $token, $serverimgname);
+            $data['pepar_file'] = $serverimgname;
+
+            if (Storage::exists('public/car/' . $token . '/' . $findAttach->pepar_file)) {
+                Storage::disk('public')->delete('car/' . $token . '/' . $findAttach->pepar_file);
+            }
+        }
+
+        Carattach::where('id', $aid)->update($data);
+        return response()->json(['success' => "Attachment successfully updated", 200]);
     }
 }
