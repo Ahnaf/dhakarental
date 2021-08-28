@@ -203,7 +203,7 @@
 							@if(hasAnyPermissions('admin.carownerlist'))
 							<div class="menu-item">
 								<a class="menu-link
-								@if (\Request::is('admin/carownerlist') or \Request::is('admin/overview/*') or \Request::is('admin/carownerprofile/*') or \Request::is('admin/addcarowner'))
+								@if (\Request::is('admin/contactslist') or \Request::is('admin/overview/*') or \Request::is('admin/contactsprofile/*') or \Request::is('admin/addcontacts'))
 									active
 								@endif
 								"
@@ -237,7 +237,7 @@
 										</span>
 
 									</span>
-									<span class="menu-title">Cars Owner</span>
+									<span class="menu-title">Contacts</span>
 								</a>
 							</div>
 							@endif

@@ -20,7 +20,7 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">Add New Car Owner</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">Add New Contacts</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -38,11 +38,22 @@
         <div id="kt_content_container" class="container">
             <!--begin::Basic info-->
             <div class="card mb-5 mb-xl-10">
-                <!--begin::Card header-->
+                @if(session('contactwarning'))
+                    <!--begin::Alert-->
+                    <div class="alert alert-dismissible bg-warning d-flex flex-column flex-sm-row p-5 mb-10">
+                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+                            <p class="fs-6 mt-3">{{ session('contactwarning') }}</p>
+                        </div>
+                        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+                            <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>
+                        </button>
+                    </div>
+                    <!--end::Alert-->
+                @endif
                 <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
                     <!--begin::Card title-->
                     <div class="card-title m-0">
-                        <h3 class="fw-bolder m-0">Set Car Owner Profile</h3>
+                        <h3 class="fw-bolder m-0">Set Contacts Profile</h3>
                     </div>
                     <!--end::Card title-->
                 </div>
@@ -50,9 +61,33 @@
                 <!--begin::Content-->
                 <div>
                     <!--begin::Form-->
-                    <form id="kt_account_profile_details_form" class="form">
+                    <form action="{{ route('admin.addcontactstore') }}" id="kt_account_profile_details_form" class="form" method="POST" enctype="multipart/form-data">
                         <!--begin::Card body-->
+                        @csrf
                         <div class="card-body border-top p-9">
+
+                            <!--begin::Input group-->
+                            <div class="row mb-6">
+                                <!--begin::Label-->
+                                <label class="col-lg-4 col-form-label fw-bold fs-6">
+                                    <span class="required">Contacts Type</span>
+                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Contacts Type"></i>
+                                </label>
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-lg-6 fv-row">
+                                    <select name="contact_type" aria-label="Contacts Type" data-placeholder="Contacts Type..." class="form-select form-select-solid form-select-lg fw-bold">
+                                        <option value="">Select a Type...</option>
+                                        <option value="Driver">Driver</option>
+                                        <option value="Carowner">Carowner</option>
+                                        <option value="Customer">Customer</option>
+                                        <option value="Lead">Lead</option>
+                                    </select>
+                                    @error('contact_type') <span class="text-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Input group-->
                             <!--begin::Input group-->
                             <div class="row mb-6">
                                 <!--begin::Label-->
@@ -69,7 +104,7 @@
                                         <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                                             <i class="bi bi-pencil-fill fs-7"></i>
                                             <!--begin::Inputs-->
-                                            <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+                                            <input type="file" name="avatar" accept=".png, .jpg, .jpeg .gif" />
                                             <input type="hidden" name="avatar_remove" />
                                             <!--end::Inputs-->
                                         </label>
@@ -88,6 +123,7 @@
                                     <!--end::Image input-->
                                     <!--begin::Hint-->
                                     <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
+                                    @error('avatar') <span class="text-danger">{{ $message }}</span> @enderror
                                     <!--end::Hint-->
                                 </div>
                                 <!--end::Col-->
@@ -103,15 +139,12 @@
                                     <!--begin::Row-->
                                     <div class="row">
                                         <!--begin::Col-->
-                                        <div class="col-lg-6 fv-row">
-                                            <input type="text" name="fname" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="First name" value="" />
+                                        <div class="col-lg-12 fv-row">
+                                            <input type="text" name="fname" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Full name" value="" />
+                                            @error('fname') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <!--end::Col-->
-                                        <!--begin::Col-->
-                                        <div class="col-lg-6 fv-row">
-                                            <input type="text" name="lname" class="form-control form-control-lg form-control-solid" placeholder="Last name" value="" />
-                                        </div>
-                                        <!--end::Col-->
+                                        
                                     </div>
                                     <!--end::Row-->
                                 </div>
@@ -126,6 +159,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="email" name="email" class="form-control form-control-lg form-control-solid" placeholder="example@your.com" value="" />
+                                    @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -139,6 +173,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="phone" class="form-control form-control-lg form-control-solid" placeholder="01919999999" value="" />
+                                    @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -151,6 +186,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="address" class="form-control form-control-lg form-control-solid" placeholder="Address" value="" />
+                                    @error('address') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -164,6 +200,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
                                     <input type="text" name="nid" class="form-control form-control-lg form-control-solid" placeholder="23333635553333" value="" />
+                                    @error('nid') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <!--end::Col-->
                             </div>
@@ -172,19 +209,20 @@
                             <div class="row mb-6">
                                 <!--begin::Label-->
                                 <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                    <span class="required">Country</span>
-                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i>
+                                    <span class="required">Contacts Type</span>
+                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Contacts Type"></i>
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="Select a country..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select a Country...</option>
-                                        <option data-kt-flag="flags/afghanistan.svg" value="AF">Afghanistan</option>
-                                        <option data-kt-flag="flags/aland-islands.svg" value="AX">Aland Islands</option>
-                                        
-                                        <option data-kt-flag="flags/zimbabwe.svg" value="ZW">Zimbabwe</option>
+                                    <select name="contact_type" aria-label="Contacts Type" data-placeholder="Contacts Type..." class="form-select form-select-solid form-select-lg fw-bold">
+                                        <option value="">Select a Type...</option>
+                                        <option value="Driver">Driver</option>
+                                        <option value="Carowner">Carowner</option>
+                                        <option value="Customer">Customer</option>
+                                        <option value="Lead">Lead</option>
                                     </select>
+                                    @error('contact_type') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <!--end::Col-->
                             </div>

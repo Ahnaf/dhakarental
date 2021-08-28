@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Car Owner List')
+@section('title','Contact List')
 {{-- @section('description', 'Admin Login')
 @section('meta', 'Admin Login') --}}
 
@@ -19,7 +19,7 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3" id="testtest">Car Owner List</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3" id="testtest">Contacts List</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -161,7 +161,18 @@
         <div id="kt_content_container" class="container">
             <!--begin::Card-->
             <div class="card">
-                <!--begin::Card header-->
+                @if(session('carsuccess'))
+                    <!--begin::Alert-->
+                    <div class="alert alert-dismissible bg-success d-flex flex-column flex-sm-row p-5 mb-10">
+                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+                            <p class="fs-6 mt-3">{{ session('carsuccess') }}</p>
+                        </div>
+                        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+                            <span class="svg-icon svg-icon-6x svg-icon-light p-3">&times;</span>
+                        </button>
+                    </div>
+                    <!--end::Alert-->
+                @endif
                 <div class="card-header border-0 pt-6">
                     <!--begin::Card title-->
                     <div class="card-title">
@@ -178,7 +189,7 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->
-                            <input type="text" data-kt-subscription-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Car Owner" />
+                            <input type="text" data-kt-subscription-table-filter="search" class="form-control form-control-solid w-250px ps-14" placeholder="Search Contacts" />
                         </div>
                         <!--end::Search-->
                     </div>
@@ -303,7 +314,7 @@
                                     <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Add Car Owner</a>
+                            <!--end::Svg Icon-->Add Contacts</a>
                             <!--end::Add subscription-->
                         </div>
                         <!--end::Toolbar-->
@@ -328,26 +339,28 @@
                             <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
                                 <th class="w-10px pe-2">
                                     <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                        <input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_subscriptions_table .form-check-input" value="1" />
+                                        <input class="form-check-input" type="hidden" data-kt-check="true" data-kt-check-target="#kt_subscriptions_table .form-check-input" value="1" />
                                     </div>
                                 </th>
                                 <th class="min-w-125px">No</th>
                                 <th class="min-w-125px">Name</th>
-                                <th class="min-w-125px">Slug</th>
-                                <th class="min-w-125px">Created Date</th>
-                                <th class="text-end min-w-70px">Actions</th>
+                                <th class="min-w-125px">Email</th>
+                                <th class="min-w-125px">Phone</th>
+                                <th class="min-w-125px">Contacts Type</th>
+                                <th class="min-w-125px">Profile Pic</th>
+                                <th class="text-center min-w-70px">Actions</th>
                             </tr>
                             <!--end::Table row-->
                         </thead>
                         <!--end::Table head-->
                         <!--begin::Table body-->
                         <tbody class="text-gray-600 fw-bold" id="tablebodycheckbox">
-                            {{-- @foreach ($permissions as $index=> $permission) --}}
+                            @foreach ($contacts as $index=> $contact)
                             <tr>
                                 <!--begin::Checkbox-->
                                 <td>
                                     <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="" />
+                                        <input class="form-check-input" type="hidden" value="{{ $contact->id }}" />
                                     </div>
                                 </td>
                                 <!--end::Checkbox-->
@@ -356,22 +369,34 @@
                                 <!--end::Customer=-->
                                 <!--begin::Status=-->
                                 <td>
-                                    <div class="badge badge-light-success">1</div>
+                                    <div class="badge badge-light-success">{{ $index + 1}}</div>
                                 </td>
                                 <!--end::Status=-->
                                 <!--begin::Billing=-->
                                 <td>
-                                    uuuuu
+                                   {{ $contact->fname }}
+                                </td>
+                                <!--end::Billing=-->
+                                <!--begin::Billing=-->
+                                <td>
+                                    {{ $contact->email }}
+                                </td>
+                                <!--end::Billing=-->
+                                <!--begin::Billing=-->
+                                <td>
+                                    {{ $contact->phone }}
                                 </td>
                                 <!--end::Billing=-->
                                 <!--begin::Product=-->
-                                <td>hujhgg</td>
+                                <td>{{ $contact->contats_type }}</td>
                                 <!--end::Product=-->
                                 <!--begin::Date=-->
-                                <td>yhuuu</td>
+                                <td>
+                                    <img src="{{ asset('storage/contacts/'.$contact->profile_pic)}}" width="60" height="50">
+                                </td>
                                 <!--end::Date=-->
                                 <!--begin::Action=-->
-                                <td class="text-end">
+                                <td class="text-center">
                                     <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">Actions
                                     <!--begin::Svg Icon | path: icons/duotone/Navigation/Angle-down.svg-->
                                     <span class="svg-icon svg-icon-5 m-0">
@@ -387,12 +412,12 @@
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="{{ route('admin.carowneroverview', ['id' => 1])}}" class="menu-link px-3">View</a>
+                                            <a href="{{ route('admin.carowneroverview', ['id' => $contact->id])}}" class="menu-link px-3">View</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
                                         <div class="menu-item px-3">
-                                            <a href="{{ route('admin.carownerprofile', ['id' => 1])}}" class="menu-link px-3">Edit</a>
+                                            <a href="{{ route('admin.carownerprofile', ['id' => $contact->id])}}" class="menu-link px-3">Edit</a>
                                         </div>
                                         <!--end::Menu item-->
                                         <!--begin::Menu item-->
@@ -405,13 +430,13 @@
                                 </td>
                                 <!--end::Action=-->
                             </tr>
-                            {{-- @endforeach   --}}
+                            @endforeach  
                             
                         </tbody>
                         <!--end::Table body-->
                     </table>
                     <!--end::Table-->
-                    {{-- {{$permissions->links()}} --}}
+                    {{$contacts->links()}}
                 </div>
                 
                 <!--end::Card body-->

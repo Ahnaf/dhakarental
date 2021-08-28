@@ -235,32 +235,50 @@ class PermissionSeeder extends Seeder
         ]);
 
         $moduleDashboardAdmin = Module::updateOrCreate([
-            'name' => 'Car Owner',
-            'description' => 'Car Owner'
+            'name' => 'Contacts',
+            'description' => 'Contacts'
         ]);
 
         Permission::updateOrCreate([
             'module_id' => $moduleDashboardAdmin->id,
-            'name' => 'Car Owner List',
+            'name' => 'Contacts List',
             'slug' => 'admin.carownerlist',
         ]);
 
         Permission::updateOrCreate([
             'module_id' => $moduleDashboardAdmin->id,
-            'name' => 'Car Owner Overview',
+            'name' => 'Contacts Overview',
             'slug' => 'admin.carowneroverview',
         ]);
 
         Permission::updateOrCreate([
             'module_id' => $moduleDashboardAdmin->id,
-            'name' => 'Car Owner Profile',
+            'name' => 'Contacts Profile Update',
             'slug' => 'admin.carownerprofile',
         ]);
 
         Permission::updateOrCreate([
             'module_id' => $moduleDashboardAdmin->id,
-            'name' => 'Add Car Owner View',
+            'name' => 'Contacts Profile Update',
+            'slug' => 'admin.carownerprofile',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Update Contacts',
+            'slug' => 'admin.updatecontactstore',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Add Contacts View',
             'slug' => 'admin.addcarowner',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Contacts Update Store',
+            'slug' => 'admin.updatecontactstore',
         ]);
 
         $moduleDashboardAdmin = Module::updateOrCreate([

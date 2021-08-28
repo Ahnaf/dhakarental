@@ -150,13 +150,17 @@ Route::middleware(['auth:admin'])->group(function () {
 
         /*---- Car Owner Route ----*/
 
-        Route::get('/carownerlist', [CarownerController::class, 'carOwnerList'])->name('admin.carownerlist');
+        Route::get('/contactslist', [CarownerController::class, 'carOwnerList'])->name('admin.carownerlist');
 
-        Route::get('/addcarowner', [CarownerController::class, 'addCarOwner'])->name('admin.addcarowner');
+        Route::get('/addcontacts', [CarownerController::class, 'addCarOwner'])->name('admin.addcarowner');
+
+        Route::post('/addcontacts', [CarownerController::class, 'storeContacts'])->name('admin.addcontactstore');
 
         Route::get('/overview/{id}', [CarownerController::class, 'carOwnerOverview'])->name('admin.carowneroverview');
 
-        Route::get('/carownerprofile/{id}', [CarownerController::class, 'carOwnerProfile'])->name('admin.carownerprofile');
+        Route::get('/contactsprofile/{id}', [CarownerController::class, 'carOwnerProfile'])->name('admin.carownerprofile');
+
+        Route::post('/contactsprofile', [CarownerController::class, 'carOwnerUpdateStore'])->name('admin.updatecontactstore');
 
     });
 
