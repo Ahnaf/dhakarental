@@ -360,7 +360,7 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="Petrol"/>
+                                        <input class="form-check-input" type="radio" name="fuel" value="Petrol"/>
                                         <label class="form-check-label" for="flexRadioLg">
                                             Petrol
                                         </label>
@@ -369,7 +369,7 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="CNG"/>
+                                        <input class="form-check-input" type="radio" name="fuel" value="CNG"/>
                                         <label class="form-check-label" for="flexRadioLg">
                                             CNG
                                         </label>
@@ -378,7 +378,7 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="LPG"/>
+                                        <input class="form-check-input" type="radio" name="fuel" value="LPG"/>
                                         <label class="form-check-label" for="flexRadioLg">
                                             LPG
                                         </label>
@@ -386,7 +386,7 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="Hybrid"/>
+                                        <input class="form-check-input" type="radio" name="fuel" value="Hybrid"/>
                                         <label class="form-check-label" for="flexRadioLg">
                                             Hybrid
                                         </label>

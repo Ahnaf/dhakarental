@@ -148,6 +148,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::post('/editattach', [CarController::class, 'editAttach'])->name('admin.carattachupdate');
 
+        Route::get('/carfilter', [CarController::class, 'carFilter'])->name('admin.carFilter');
+
         /*---- Car Owner Route ----*/
 
         Route::get('/contactslist', [CarownerController::class, 'carOwnerList'])->name('admin.carownerlist');

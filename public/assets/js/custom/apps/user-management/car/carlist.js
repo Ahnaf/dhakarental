@@ -43,7 +43,7 @@ var KTSubscriptionsList = function () {
 
                             }))
                         }) : "cancel" === t.dismiss && Swal.fire({
-                            text: o + " was not deleted.",
+                            text: o + " status was not changed.",
                             icon: "error", buttonsStyling: !1,
                             confirmButtonText: "Ok, got it!",
                             customClass: {

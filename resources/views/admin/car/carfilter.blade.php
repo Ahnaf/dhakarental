@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Car List')
+@section('title','Car Filter')
 {{-- @section('description', 'Admin Login')
 @section('meta', 'Admin Login') --}}
 
@@ -19,7 +19,7 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3" id="testtest">Car List</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3" id="testtest">Car Filter List</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -36,193 +36,6 @@
     </div>
     <!--end::Toolbar-->
 
-    <!--begin::Post-->
-    <div class="post d-flex flex-column-fluid" id="kt_post">
-        <!--begin::Container-->
-        <div id="kt_content_container" class="container mb-3">
-            <!--begin::Card-->
-            <div class="card">
-                <!--begin::Card body-->
-                <div class="card-body pt-0">
-                    <!--begin::Input group-->
-                    <form class="form" action="{{ route('admin.carFilter') }}" method="GET">
-                        <!--begin::Step 4-->
-                        <div data-kt-stepper-element="content">
-                            <div class="w-100 mt-7">
-                                <!--begin::Input group-->
-                                <div class="row mb-10">
-                                    <!--begin::Col-->
-                                    <div class="col-md-8 fv-row">
-                                        <!--begin::Label-->
-                                        <!--end::Label-->
-                                        <!--begin::Row-->
-                                        <div class="row fv-row">
-                                            <!--begin::Col-->
-                                            <div class="col-6">
-                                                <label class="required fs-6 fw-bold form-label mb-2">Type</label>
-                                                <select name="type" aria-label="Select Type" data-control="select2" data-placeholder="Select Type..." class="form-select form-select-solid form-select-lg fw-bold">
-                                                    <option value="">Select Type...</option>
-                                                    <option value="Sedan">Sedan</option>
-                                                    <option value="SUV">SUV</option>
-                                                    <option value="CUV">CUV</option>
-                                                    <option value="Micro">Micro</option>
-                                                    <option value="VAN ">VAN</option>
-                                                </select>
-                                            </div>
-                                            <!--end::Col-->
-                                            <!--begin::Col-->
-                                            
-                                            <div class="col-6">
-                                                <label class="required fs-6 fw-bold form-label mb-2">Car Model</label>
-                                                 <input type="text" class="form-control form-control-solid" placeholder="Car Model" name="model" />
-                                            </div>
-                                            <!--end::Col-->
-                                        </div>
-                                        <!--end::Row-->
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-md-4">
-                                        <label class="required fs-6 fw-bold form-label mb-2">Condition</label><br>
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-4">
-                                           
-                                                <input class="form-check-input mt-3" type="radio" name="condition" value="Best"/>
-                                                <label class="form-check-label mt-3" for="flexRadioLg">
-                                                    Best
-                                                </label>
-                                            
-                                        </div>
-
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-4">
-                                            
-                                                <input class="form-check-input mt-3" type="radio" name="condition" value="Good"/>
-                                                <label class="form-check-label" for="flexRadioLg">
-                                                    Good
-                                                </label>
-                                            
-                                        </div>
-
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-4">
-                                            
-                                                <input class="form-check-input mt-3" type="radio" name="condition" value="Average"/>
-                                                <label class="form-check-label" for="flexRadioLg">
-                                                    Average
-                                                </label>
-                                            
-                                        </div>
-                                        
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="row">
-
-                                    <!--begin::Col-->
-                                    <div class="col-md-4">
-                                        <label class="required fs-6 fw-bold form-label mb-2">Fuel Type</label><br>
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                            <input class="form-check-input mt-3" type="radio" name="fuel" value="Petrol"/>
-                                            <label class="form-check-label mt-3" for="flexRadioLg">
-                                                Petrol
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                            <input class="form-check-input mt-3" type="radio" name="fuel" value="CNG"/>
-                                            <label class="form-check-label" for="flexRadioLg">
-                                                CNG
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                            <input class="form-check-input mt-3" type="radio" name="fuel" value="LPG"/>
-                                            <label class="form-check-label" for="flexRadioLg">
-                                                LPG
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                                <input class="form-check-input mt-3" type="radio" name="fuel" value="Hybrid"/>
-                                                <label class="form-check-label" for="flexRadioLg">
-                                                    Hybrid
-                                                </label>
-                                        </div>
-                                        
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-md-4 fv-row">
-                                        <div class="row fv-row">
-                                            <div class="col-12">
-                                                <label class="required fs-6 fw-bold form-label mb-2">Location</label>
-                                                 <input type="text" class="form-control form-control-solid" placeholder="Location" name="location" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-md-4">
-                                        <label class="required fs-6 fw-bold form-label mb-2">isAvailable</label><br>
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-4">
-                                            <input class="form-check-input mt-3" type="radio" name="isavailable" value="True"/>
-                                            <label class="form-check-label mt-3" for="flexRadioLg">
-                                                True
-                                            </label>
-                                        </div>
-
-                                        <div class="form-check form-check-custom form-check-solid d-inline me-5">
-                                            <input class="form-check-input mt-3" type="radio" name="isavailable" value="False"/>
-                                            <label class="form-check-label" for="flexRadioLg">
-                                                False
-                                            </label>
-                                        </div>  
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Input group-->
-
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-stack">
-                                    <!--begin::Label-->
-                                    <div class="me-5">
-
-                                    </div>
-                                    <!--end::Label-->
-                                    <!--begin::Switch-->
-                                    <label class="form-check form-switch form-check-custom form-check-solid">
-                                        <button type="submit" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000" />
-                                                </g>
-                                            </svg>
-                                        </span>
-                                        Filter</button>
-                                    </label>
-                                    <!--end::Switch-->
-                                </div>
-                                <!--end::Input group-->
-                            </div>
-                        </div>
-                        <!--end::Step 4-->
-                        
-                    </form>
-                    <!--end::Input group-->
-                    
-                </div>
-                
-                <!--end::Card body-->
-            </div>
-            <!--end::Card-->
-          
-
-        </div>
-        <!--end::Container-->
-    </div>
-    <!--end::Post-->
 
     <!--begin::Post-->
     <div class="post d-flex flex-column-fluid" id="kt_post">
@@ -242,6 +55,7 @@
                     </div>
                     <!--end::Alert-->
                 @endif
+                
                 <!--begin::Card header-->
                 <div class="card-header border-0 pt-6">
                     <!--begin::Card title-->
@@ -312,6 +126,7 @@
                 </div>
                 <!--end::Card header-->
                 <!--begin::Card body-->
+                @if(count($cars) > 0)
                 <div class="card-body pt-0">
                     <!--begin::Table-->
                     <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_subscriptions_table">
@@ -447,7 +262,9 @@
                     <!--end::Table-->
                     {{$cars->links()}}
                 </div>
-                
+                @else
+               <h5 class="text-center mb-10"> {{'No result found'}}</h5>
+                @endif
                 <!--end::Card body-->
             </div>
             <!--end::Card-->

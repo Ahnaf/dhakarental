@@ -246,4 +246,18 @@ class CarController extends Controller
         Carattach::where('id', $aid)->update($data);
         return response()->json(['success' => "Attachment successfully updated", 200]);
     }
+
+    public function carFilter(Request $request)
+    {
+        $cars = Car::where('type', $request->type)
+                ->where('model', $request->model)
+                ->where('condition', $request->condition)
+                ->where('fuel', $request->fuel)
+                ->where('location', $request->location)
+                ->where('isavailable', $request->isavailable)
+                ->where('status', 1)->paginate(10);
+
+        return view('admin.car.carfilter', compact('cars'));
+
+    }
 }

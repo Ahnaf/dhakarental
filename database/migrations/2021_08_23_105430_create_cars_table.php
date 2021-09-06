@@ -23,7 +23,7 @@ class CreateCarsTable extends Migration
             $table->string('model')->nullable();
             $table->string('condition')->nullable();
             $table->string('ac')->nullable();
-            $table->text('fuel')->nullable();
+            $table->string('fuel')->nullable();
             $table->string('gearbox')->nullable();
             $table->string('sitting')->nullable();
             $table->string('color')->nullable();
