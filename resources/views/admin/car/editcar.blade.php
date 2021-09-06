@@ -361,18 +361,14 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
-                                    @php
-                                        $newFule = explode(", ", $car->fuel); 
-                                    @endphp
+                                   
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="Petrol"
-                                        @foreach ($newFule as $fule)
-                                          @if ($fule == 'Petrol')
+                                        <input class="form-check-input" type="radio" name="fuel" value="Petrol"
+                                          @if ($car->fuel == 'Petrol')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
-                                        @endforeach
                                         />
                                         <label class="form-check-label" for="flexRadioLg">
                                             Petrol
@@ -382,14 +378,12 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="CNG"
-                                        @foreach ($newFule as $fule)
-                                          @if ($fule == 'CNG')
+                                        <input class="form-check-input" type="radio" name="fuel" value="CNG"
+                                          @if ($car->fuel == 'CNG')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
-                                        @endforeach
                                         />
                                         <label class="form-check-label" for="flexRadioLg">
                                             CNG
@@ -399,14 +393,12 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="LPG"
-                                        @foreach ($newFule as $fule)
-                                          @if ($fule == 'LPG')
+                                        <input class="form-check-input" type="radio" name="fuel" value="LPG"
+                                          @if ($car->fuel == 'LPG')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
-                                        @endforeach
                                         />
                                         <label class="form-check-label" for="flexRadioLg">
                                             LPG
@@ -415,14 +407,12 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" name="fuel[]" value="Hybrid"
-                                        @foreach ($newFule as $fule)
-                                          @if ($fule == 'Hybrid')
+                                        <input class="form-check-input" type="radio" name="fuel" value="Hybrid"
+                                          @if ($car->fuel == 'Hybrid')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
-                                        @endforeach
                                         />
                                         <label class="form-check-label" for="flexRadioLg">
                                             Hybrid
