@@ -121,7 +121,7 @@
                     </div>
                     <!--end::Card title-->
                     <!--begin::Action-->
-                    <a href="{{ route('admin.carowneroverview', ['id' => $contact->id])}}" class="btn btn-primary align-self-center">Edit Profile</a>
+                    <a href="{{ route('admin.carownerprofile', ['id' => $contact->id])}}" class="btn btn-primary align-self-center">Edit Profile</a>
                     <!--end::Action-->
                 </div>
                 <!--begin::Card header-->
