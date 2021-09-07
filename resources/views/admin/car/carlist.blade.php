@@ -183,28 +183,103 @@
                                 <!--end::Input group-->
 
                                 <!--begin::Input group-->
-                                <div class="d-flex flex-stack">
-                                    <!--begin::Label-->
-                                    <div class="me-5">
+                                <div class="row">
 
+                                    <!--begin::Col-->
+                                    <div class="col-md-8 mt-2">
+                                        <label class="required fs-6 fw-bold form-label mb-2">Sitting Capacity</label><br>
+                                       
+                                            <div class="form-check form-check-custom form-check-solid d-inline me-4">
+                                                <input class="form-check-input mt-3" type="radio" id="sitting3" name="sitting" value="3" {{ (old('sitting') == '3') ? 'checked' : ''}}/>
+                                                <label class="form-check-label mt-3" for="sitting3">
+                                                    3
+                                                </label>
+                                            </div>
+
+                                     
+                                      
+                                            <div class="form-check form-check-custom form-check-solid d-inline me-4">
+                                                <input class="form-check-input mt-3" type="radio" id="sitting5" name="sitting" value="5" {{ (old('sitting') == '5') ? 'checked' : ''}}/>
+                                                <label class="form-check-label mt-3" for="sitting5">
+                                                    5
+                                                </label>
+                                            </div>
+
+                                       
+                                       
+                                            <div class="form-check form-check-custom form-check-solid d-inline me-4">
+                                                <input class="form-check-input mt-3" type="radio" id="sitting7" name="sitting" value="7" {{ (old('sitting') == '7') ? 'checked' : ''}}/>
+                                                <label class="form-check-label mt-3" for="sitting7">
+                                                    7
+                                                </label>
+                                            </div>
+
+                                      
+
+                                        
+                                            <div class="form-check form-check-custom form-check-solid d-inline me-4">
+                                                <input class="form-check-input mt-3" type="radio" id="sitting9" name="sitting" value="9" {{ (old('sitting') == '9') ? 'checked' : ''}}/>
+                                                <label class="form-check-label mt-3" for="sitting9">
+                                                    9
+                                                </label>
+                                            </div>
+
+                                        
+
+                                        
+                                            <div class="form-check form-check-custom form-check-solid d-inline me-4">
+                                                <input class="form-check-input mt-3" type="radio" id="sitting11" name="sitting" value="11" {{ (old('sitting') == '11') ? 'checked' : ''}}/>
+                                                <label class="form-check-label mt-3" for="sitting11">
+                                                    11
+                                                </label>
+                                            </div>
+
+                                       
+
+                                        
+                                            <div class="form-check form-check-custom form-check-solid d-inline me-4">
+                                                <input class="form-check-input mt-3" type="radio" id="sitting13" name="sitting" value="13" {{ (old('sitting') == '13') ? 'checked' : ''}}/>
+                                                <label class="form-check-label mt-3" for="sitting13">
+                                                    13
+                                                </label>
+                                            </div>
+
+                                        
+                                        
                                     </div>
-                                    <!--end::Label-->
-                                    <!--begin::Switch-->
-                                    <label class="form-check form-switch form-check-custom form-check-solid">
-                                        <button type="submit" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
-                                        <span class="svg-icon svg-icon-2">
-                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000" />
-                                                </g>
-                                            </svg>
-                                        </span>
-                                        Filter</button>
-                                    </label>
-                                    <!--end::Switch-->
+                                    <!--end::Col-->
+                                   
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2">
+                                        <!--begin::Input group-->
+                                        <div class="d-flex flex-stack">
+                                            <!--begin::Label-->
+                                            <div class="me-5">
+
+                                            </div>
+                                            <!--end::Label-->
+                                            <!--begin::Switch-->
+                                            <label class="form-check form-switch form-check-custom form-check-solid">
+                                                <button type="submit" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+                                                <span class="svg-icon svg-icon-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                            <rect x="0" y="0" width="24" height="24" />
+                                                            <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000" />
+                                                        </g>
+                                                    </svg>
+                                                </span>
+                                                Filter</button>
+                                            </label>
+                                            <!--end::Switch-->
+                                        </div>
+                                        <!--end::Input group--> 
+                                    </div>
+                                    <!--end::Col-->
                                 </div>
                                 <!--end::Input group-->
+
+                                
                             </div>
                         </div>
                         <!--end::Step 4-->

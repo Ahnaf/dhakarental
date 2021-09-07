@@ -255,6 +255,7 @@ class CarController extends Controller
                 ->where('fuel', $request->fuel)
                 ->where('location', $request->location)
                 ->where('isavailable', $request->isavailable)
+                ->where('sitting', $request->sitting)
                 ->where('status', 1)->paginate(10);
 
         return view('admin.car.carfilter', compact('cars'));
