@@ -288,8 +288,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->condition == 'Best') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="condition" value="Best"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->condition == 'Best') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="best" name="condition" value="Best"/>
+                                        <label class="form-check-label" for="best">
                                             Best
                                         </label>
                                     </div>
@@ -297,8 +297,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->condition == 'Good') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="condition" value="Good"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->condition == 'Good') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="good" name="condition" value="Good"/>
+                                        <label class="form-check-label" for="good">
                                             Good
                                         </label>
                                     </div>
@@ -306,8 +306,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->condition == 'Average') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="condition" value="Average"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->condition == 'Average') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="average" name="condition" value="Average"/>
+                                        <label class="form-check-label" for="average">
                                             Average
                                         </label>
                                     </div>
@@ -330,8 +330,8 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->ac == 'Single') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="ac" value="Single"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->ac == 'Single') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="singel" name="ac" value="Single"/>
+                                        <label class="form-check-label" for="singel">
                                             Single
                                         </label>
                                     </div>
@@ -339,8 +339,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->ac == 'Duel') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="ac" value="Duel"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->ac == 'Duel') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="duel" name="ac" value="Duel"/>
+                                        <label class="form-check-label" for="duel">
                                             Duel
                                         </label>
                                     </div>
@@ -363,14 +363,14 @@
                                 <div class="col-lg-2 fv-row">
                                    
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="Petrol"
+                                        <input class="form-check-input" type="radio" id="petrol" name="fuel" value="Petrol"
                                           @if ($car->fuel == 'Petrol')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
                                         />
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <label class="form-check-label" for="petrol">
                                             Petrol
                                         </label>
                                     </div>
@@ -378,14 +378,14 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="CNG"
+                                        <input class="form-check-input" type="radio" id="cng" name="fuel" value="CNG"
                                           @if ($car->fuel == 'CNG')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
                                         />
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <label class="form-check-label" for="cng">
                                             CNG
                                         </label>
                                     </div>
@@ -393,28 +393,28 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="LPG"
+                                        <input class="form-check-input" type="radio" id="lpg" name="fuel" value="LPG"
                                           @if ($car->fuel == 'LPG')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
                                         />
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <label class="form-check-label" for="lpg">
                                             LPG
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="Hybrid"
+                                        <input class="form-check-input" type="radio" id="hybrid" name="fuel" value="Hybrid"
                                           @if ($car->fuel == 'Hybrid')
                                             {{'checked'}}
                                           @else
                                             {{''}}
                                           @endif  
                                         />
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <label class="form-check-label" for="hybrid">
                                             Hybrid
                                         </label>
                                     </div>
@@ -432,8 +432,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->gearbox == 'Manual') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="gearbox" value="Manual"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->gearbox == 'Manual') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="manual" name="gearbox" value="Manual"/>
+                                        <label class="form-check-label" for="manual">
                                             Manual
                                         </label>
                                     </div>
@@ -442,8 +442,8 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->gearbox == 'Automatic') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="gearbox" value="Automatic"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->gearbox == 'Automatic') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="automatic" name="gearbox" value="Automatic"/>
+                                        <label class="form-check-label" for="automatic">
                                             Automatic
                                         </label>
                                     </div>
@@ -452,8 +452,8 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->gearbox == 'Semi-automatic') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="gearbox" value="Semi-automatic"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->gearbox == 'Semi-automatic') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="semiautomatic" name="gearbox" value="Semi-automatic"/>
+                                        <label class="form-check-label" for="semiautomatic">
                                             Semi-automatic
                                         </label>
                                     </div>
@@ -475,8 +475,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->sitting == 3) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="sitting" value="3"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->sitting == 3) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="sitting3" name="sitting" value="3"/>
+                                        <label class="form-check-label" for="sitting3">
                                             3
                                         </label>
                                     </div>
@@ -484,8 +484,8 @@
                                 </div>
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->sitting == 5) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="sitting" value="5"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->sitting == 5) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="sitting5" name="sitting" value="5"/>
+                                        <label class="form-check-label" for="sitting5">
                                             5
                                         </label>
                                     </div>
@@ -493,8 +493,8 @@
                                 </div>
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->sitting == 7) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="sitting" value="7"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->sitting == 7) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="sitting7" name="sitting" value="7"/>
+                                        <label class="form-check-label" for="sitting7">
                                             7
                                         </label>
                                     </div>
@@ -503,8 +503,8 @@
 
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->sitting == 9) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="sitting" value="9"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->sitting == 9) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="sitting9" name="sitting" value="9"/>
+                                        <label class="form-check-label" for="sitting9">
                                             9
                                         </label>
                                     </div>
@@ -513,8 +513,8 @@
 
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->sitting == 11) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="sitting" value="11"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->sitting == 11) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="sitting11" name="sitting" value="11"/>
+                                        <label class="form-check-label" for="sitting11">
                                             11
                                         </label>
                                     </div>
@@ -523,8 +523,8 @@
 
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->sitting == 13) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="sitting" value="13"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input @if ($car->sitting == 13) {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="sitting13" name="sitting" value="13"/>
+                                        <label class="form-check-label" for="sitting13">
                                             13
                                         </label>
                                     </div>
@@ -590,8 +590,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->isavailable == 'True') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="isavailable" value="True"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input @if ($car->isavailable == 'True') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="isavailable1" name="isavailable" value="True"/>
+                                        <label class="form-check-label" for="isavailable1">
                                             True
                                         </label>
                                     </div>
@@ -599,8 +599,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input @if ($car->isavailable == 'False') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="isavailable" value="False"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input @if ($car->isavailable == 'False') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="isavailable2" name="isavailable" value="False"/>
+                                        <label class="form-check-label" for="isavailable2">
                                             False
                                         </label>
                                     </div>
@@ -665,8 +665,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input @if ($car->prefered == 'Any') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="prefered" value="Any"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input @if ($car->prefered == 'Any') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="any" name="prefered" value="Any"/>
+                                        <label class="form-check-label" for="any">
                                             Any
                                         </label>
                                     </div>
@@ -674,8 +674,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input @if ($car->prefered == 'Daily') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="prefered" value="Daily"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input @if ($car->prefered == 'Daily') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="daily" name="prefered" value="Daily"/>
+                                        <label class="form-check-label" for="daily">
                                            Daily
                                         </label>
                                     </div>
@@ -683,8 +683,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input @if ($car->prefered == 'Weekly') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="prefered" value="Weekly"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input @if ($car->prefered == 'Weekly') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="weekly" name="prefered" value="Weekly"/>
+                                        <label class="form-check-label" for="weekly">
                                            Weekly
                                         </label>
                                     </div>
@@ -692,8 +692,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input @if ($car->prefered == 'Monthly') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" name="prefered" value="Monthly"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input @if ($car->prefered == 'Monthly') {{'checked'}} @else {{''}} @endif class="form-check-input" type="radio" id="monthly" name="prefered" value="Monthly"/>
+                                        <label class="form-check-label" for="monthly">
                                            Monthly
                                         </label>
                                     </div>

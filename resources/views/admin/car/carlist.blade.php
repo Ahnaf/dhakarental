@@ -86,8 +86,8 @@
                                         <label class="required fs-6 fw-bold form-label mb-2">Condition</label><br>
                                         <div class="form-check form-check-custom form-check-solid d-inline me-4">
                                            
-                                                <input class="form-check-input mt-3" type="radio" name="condition" value="Best"/>
-                                                <label class="form-check-label mt-3" for="flexRadioLg">
+                                                <input class="form-check-input mt-3" type="radio" id="best" name="condition" value="Best"/>
+                                                <label class="form-check-label mt-3" for="best">
                                                     Best
                                                 </label>
                                             
@@ -95,8 +95,8 @@
 
                                         <div class="form-check form-check-custom form-check-solid d-inline me-4">
                                             
-                                                <input class="form-check-input mt-3" type="radio" name="condition" value="Good"/>
-                                                <label class="form-check-label" for="flexRadioLg">
+                                                <input class="form-check-input mt-3" type="radio" id="good" name="condition" value="Good"/>
+                                                <label class="form-check-label" for="good">
                                                     Good
                                                 </label>
                                             
@@ -104,8 +104,8 @@
 
                                         <div class="form-check form-check-custom form-check-solid d-inline me-4">
                                             
-                                                <input class="form-check-input mt-3" type="radio" name="condition" value="Average"/>
-                                                <label class="form-check-label" for="flexRadioLg">
+                                                <input class="form-check-input mt-3" type="radio" id="average" name="condition" value="Average"/>
+                                                <label class="form-check-label" for="average">
                                                     Average
                                                 </label>
                                             
@@ -122,29 +122,29 @@
                                     <div class="col-md-4">
                                         <label class="required fs-6 fw-bold form-label mb-2">Fuel Type</label><br>
                                         <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                            <input class="form-check-input mt-3" type="radio" name="fuel" value="Petrol"/>
-                                            <label class="form-check-label mt-3" for="flexRadioLg">
+                                            <input class="form-check-input mt-3" type="radio" id="petrol" name="fuel" value="Petrol"/>
+                                            <label class="form-check-label mt-3" for="petrol">
                                                 Petrol
                                             </label>
                                         </div>
 
                                         <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                            <input class="form-check-input mt-3" type="radio" name="fuel" value="CNG"/>
-                                            <label class="form-check-label" for="flexRadioLg">
+                                            <input class="form-check-input mt-3" type="radio" id="cng" name="fuel" value="CNG"/>
+                                            <label class="form-check-label" for="cng">
                                                 CNG
                                             </label>
                                         </div>
 
                                         <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                            <input class="form-check-input mt-3" type="radio" name="fuel" value="LPG"/>
-                                            <label class="form-check-label" for="flexRadioLg">
+                                            <input class="form-check-input mt-3" type="radio" id="lpg" name="fuel" value="LPG"/>
+                                            <label class="form-check-label" for="lpg">
                                                 LPG
                                             </label>
                                         </div>
 
                                         <div class="form-check form-check-custom form-check-solid d-inline me-2">
-                                                <input class="form-check-input mt-3" type="radio" name="fuel" value="Hybrid"/>
-                                                <label class="form-check-label" for="flexRadioLg">
+                                                <input class="form-check-input mt-3" type="radio" id="hybrid" name="fuel" value="Hybrid"/>
+                                                <label class="form-check-label" for="hybrid">
                                                     Hybrid
                                                 </label>
                                         </div>
@@ -165,15 +165,15 @@
                                     <div class="col-md-4">
                                         <label class="required fs-6 fw-bold form-label mb-2">isAvailable</label><br>
                                         <div class="form-check form-check-custom form-check-solid d-inline me-4">
-                                            <input class="form-check-input mt-3" type="radio" name="isavailable" value="True"/>
-                                            <label class="form-check-label mt-3" for="flexRadioLg">
+                                            <input class="form-check-input mt-3" type="radio" id="isavailable1" name="isavailable" value="True"/>
+                                            <label class="form-check-label mt-3" for="isavailable1">
                                                 True
                                             </label>
                                         </div>
 
                                         <div class="form-check form-check-custom form-check-solid d-inline me-5">
-                                            <input class="form-check-input mt-3" type="radio" name="isavailable" value="False"/>
-                                            <label class="form-check-label" for="flexRadioLg">
+                                            <input class="form-check-input mt-3" type="radio" id="isavailable2" name="isavailable" value="False"/>
+                                            <label class="form-check-label" for="isavailable2">
                                                 False
                                             </label>
                                         </div>  

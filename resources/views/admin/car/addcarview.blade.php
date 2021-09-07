@@ -202,11 +202,11 @@
                                 <div class="col-lg-3 fv-row">
                                     <select name="type" aria-label="Select Type" data-control="select2" data-placeholder="Select Type..." class="form-select form-select-solid form-select-lg fw-bold">
                                         <option value="">Select Type...</option>
-                                        <option value="Sedan">Sedan</option>
-                                        <option value="SUV">SUV</option>
-                                        <option value="CUV">CUV</option>
-                                        <option value="Micro">Micro</option>
-                                        <option value="VAN ">VAN</option>
+                                        <option value="Sedan" {{ (old('type') == 'Sedan') ? 'selected' : '' }}>Sedan</option>
+                                        <option value="SUV" {{ (old('type') == 'SUV') ? 'selected' : '' }}>SUV</option>
+                                        <option value="CUV" {{ (old('type') == 'CUV') ? 'selected' : '' }}>CUV</option>
+                                        <option value="Micro" {{ (old('type') == 'Micro') ? 'selected' : '' }}>Micro</option>
+                                        <option value="VAN" {{ (old('type') == 'VAN') ? 'selected' : '' }}>VAN</option>
                                     </select>
 
                                 </div>
@@ -225,7 +225,7 @@
                                     <div class="row">
                                         <!--begin::Col-->
                                         <div class="col-lg-12 fv-row">
-                                            <input type="text" name="reg_number" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Enter Reg Number" value="" />
+                                            <input type="text" name="reg_number" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Enter Reg Number" value="{{ old('reg_number')}}" />
 
                                         </div>
                                         <!--end::Col-->
@@ -267,7 +267,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-3 fv-row">
-                                    <input type="text" name="model" class="form-control form-control-lg form-control-solid" placeholder="Enter Car Model" value="" />
+                                    <input type="text" name="model" class="form-control form-control-lg form-control-solid" placeholder="Enter Car Model" value="{{ old('model') }}" />
 
                                 </div>
                                 @error('model') <span class="text-danger">{{ $message }}</span> @enderror
@@ -286,8 +286,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="condition" value="Best"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="best" name="condition" value="Best" {{ (old('condition') == 'Best') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="best">
                                             Best
                                         </label>
                                     </div>
@@ -295,8 +295,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="condition" value="Good"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="good" name="condition" value="Good" {{ (old('condition') == 'Good') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="good">
                                             Good
                                         </label>
                                     </div>
@@ -304,8 +304,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="condition" value="Average"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="average" name="condition" value="Average" {{ (old('condition') == 'Average') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="average">
                                             Average
                                         </label>
                                     </div>
@@ -328,8 +328,8 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="ac" value="Single"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="singel" name="ac" value="Single" {{ (old('ac') == 'Single') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="singel">
                                             Single
                                         </label>
                                     </div>
@@ -337,8 +337,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="ac" value="Duel"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="duel" name="ac" value="Duel" {{ (old('ac') == 'Duel') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="duel">
                                             Duel
                                         </label>
                                     </div>
@@ -360,8 +360,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="Petrol"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="petrol" name="fuel" value="Petrol" {{ (old('fuel') == 'Petrol') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="petrol">
                                             Petrol
                                         </label>
                                     </div>
@@ -369,8 +369,8 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="CNG"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" name="fuel" id="cng" value="CNG" {{ (old('fuel') == 'CNG') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="cng">
                                             CNG
                                         </label>
                                     </div>
@@ -378,16 +378,16 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="LPG"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="lpg" name="fuel" value="LPG" {{ (old('fuel') == 'LPG') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="lpg">
                                             LPG
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="fuel" value="Hybrid"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="hybrid" name="fuel" value="Hybrid" {{ (old('fuel') == 'Hybrid') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="hybrid">
                                             Hybrid
                                         </label>
                                     </div>
@@ -405,8 +405,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="gearbox" value="Manual"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="manual" name="gearbox" value="Manual" {{ (old('gearbox') == 'Manual') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="manual">
                                             Manual
                                         </label>
                                     </div>
@@ -415,8 +415,8 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="gearbox" value="Automatic"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="automatic" name="gearbox" value="Automatic" {{ (old('gearbox') == 'Automatic') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="automatic">
                                             Automatic
                                         </label>
                                     </div>
@@ -425,8 +425,8 @@
 
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="gearbox" value="Semi-automatic"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="semiautomatic" name="gearbox" value="Semi-automatic" {{ (old('gearbox') == 'Semi-automatic') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="semiautomatic">
                                             Semi-automatic
                                         </label>
                                     </div>
@@ -448,8 +448,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="sitting" value="3"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="sitting3" name="sitting" value="3" {{ (old('sitting') == '3') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="sitting3">
                                             3
                                         </label>
                                     </div>
@@ -457,8 +457,8 @@
                                 </div>
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="sitting" value="5"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="sitting5" name="sitting" value="5" {{ (old('sitting') == '5') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="sitting5">
                                             5
                                         </label>
                                     </div>
@@ -466,8 +466,8 @@
                                 </div>
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="sitting" value="7"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="sitting7" name="sitting" value="7" {{ (old('sitting') == '7') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="sitting7">
                                             7
                                         </label>
                                     </div>
@@ -476,8 +476,8 @@
 
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="sitting" value="9"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="sitting9" name="sitting" value="9" {{ (old('sitting') == '9') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="sitting9">
                                             9
                                         </label>
                                     </div>
@@ -486,8 +486,8 @@
 
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="sitting" value="11"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="sitting11" name="sitting" value="11" {{ (old('sitting') == '11') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="sitting11">
                                             11
                                         </label>
                                     </div>
@@ -496,8 +496,8 @@
 
                                 <div class="col-lg-1 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="sitting" value="13"/>
-                                        <label class="form-check-label" for="flexRadioLg">
+                                        <input class="form-check-input" type="radio" id="sitting13" name="sitting" value="13" {{ (old('sitting') == '13') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="sitting13">
                                             13
                                         </label>
                                     </div>
@@ -518,19 +518,19 @@
                                 <div class="col-lg-4 fv-row">
                                     <select name="color" id="color" aria-label="Select Color" data-control="select2" data-placeholder="Select Color..." class="form-select form-select-solid form-select-lg fw-bold">
                                         <option value="">Select Color...</option>
-                                        <option value="Black">Black</option>
-                                        <option value="Blue">Blue</option>
-                                        <option value="Brown">Brown</option>
-                                        <option value="Gold">Gold</option>
-                                        <option value="Gray">Gray</option>
-                                        <option value="Green">Green</option>
-                                        <option value="Orange">Orange</option>
-                                        <option value="Purple">Purple</option>
-                                        <option value="Red">Red</option>
-                                        <option value="Silver">Silver</option>
-                                        <option value="Tan">Tan</option>
-                                        <option value="White">White</option>
-                                        <option value="Yellow">Yellow</option>
+                                        <option value="Black" {{ (old('color') == 'Black') ? 'selected' : ''}}>Black</option>
+                                        <option value="Blue" {{ (old('color') == 'Blue') ? 'selected' : ''}}>Blue</option>
+                                        <option value="Brown" {{ (old('color') == 'Brown') ? 'selected' : ''}}>Brown</option>
+                                        <option value="Gold" {{ (old('color') == 'Gold') ? 'selected' : ''}}>Gold</option>
+                                        <option value="Gray" {{ (old('color') == 'Gray') ? 'selected' : ''}}>Gray</option>
+                                        <option value="Green" {{ (old('color') == 'Green') ? 'selected' : ''}}>Green</option>
+                                        <option value="Orange" {{ (old('color') == 'Orange') ? 'selected' : ''}}>Orange</option>
+                                        <option value="Purple" {{ (old('color') == 'Purple') ? 'selected' : ''}}>Purple</option>
+                                        <option value="Red" {{ (old('color') == 'Red') ? 'selected' : ''}}>Red</option>
+                                        <option value="Silver" {{ (old('color') == 'Silver') ? 'selected' : ''}}>Silver</option>
+                                        <option value="Tan" {{ (old('color') == 'Tan') ? 'selected' : ''}}>Tan</option>
+                                        <option value="White" {{ (old('color') == 'White') ? 'selected' : ''}}>White</option>
+                                        <option value="Yellow" {{ (old('color') == 'Yellow') ? 'selected' : ''}}>Yellow</option>
                                     </select>
 
                                 </div>
@@ -545,7 +545,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-4 fv-row">
-                                    <input type="text" name="location" class="form-control form-control-lg form-control-solid" placeholder="Enter Location" value="" />
+                                    <input type="text" name="location" class="form-control form-control-lg form-control-solid" placeholder="Enter Location" value="{{ old('location') }}" />
 
                                 </div>
                                 @error('location') <span class="text-danger">{{ $message }}</span> @enderror
@@ -563,8 +563,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="isavailable" value="True"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input class="form-check-input" type="radio" id="isavailable1" name="isavailable" value="True" {{ (old('isavailable') == "True") ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="isavailable1">
                                             True
                                         </label>
                                     </div>
@@ -572,8 +572,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="radio" name="isavailable" value="False"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input class="form-check-input" type="radio" id="isavailable2" name="isavailable" value="False" {{ (old('isavailable') == "False") ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="isavailable2">
                                             False
                                         </label>
                                     </div>
@@ -590,7 +590,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="other_features" class="form-control form-control-lg form-control-solid" placeholder="Enter Other Features" value="" />
+                                    <input type="text" name="other_features" class="form-control form-control-lg form-control-solid" placeholder="Enter Other Features" value="{{ old('other_features') }}" />
 
                                 </div>
                                  @error('other_features') <span class="text-danger">{{ $message }}</span> @enderror
@@ -604,7 +604,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="owner_driver" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver" value="" />
+                                    <input type="text" name="owner_driver" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver" value="{{ old('owner_driver') }}" />
 
                                 </div>
                                 @error('owner_driver') <span class="text-danger">{{ $message }}</span> @enderror
@@ -619,7 +619,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="note" class="form-control form-control-lg form-control-solid" placeholder="Enter Note" value="" />
+                                    <input type="text" name="note" class="form-control form-control-lg form-control-solid" placeholder="Enter Note" value="{{ old('note') }}" />
 
                                 </div>
                                 @error('note') <span class="text-danger">{{ $message }}</span> @enderror
@@ -638,8 +638,8 @@
                                 <!--begin::Col-->
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" type="radio" name="prefered" value="Any"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input class="form-check-input" type="radio" id="any" name="prefered" value="Any" {{ (old('prefered') == 'Any') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="any">
                                             Any
                                         </label>
                                     </div>
@@ -647,8 +647,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" type="radio" name="prefered" value="Daily"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input class="form-check-input" type="radio" id="daily" name="prefered" value="Daily" {{ (old('prefered') == 'Daily') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="daily">
                                            Daily
                                         </label>
                                     </div>
@@ -656,8 +656,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" type="radio" name="prefered" value="Weekly"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input class="form-check-input" type="radio" id="weekly" name="prefered" value="Weekly" {{ (old('prefered') == 'Weekly') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="weekly">
                                            Weekly
                                         </label>
                                     </div>
@@ -665,8 +665,8 @@
                                 </div>
                                 <div class="col-lg-2 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" type="radio" name="prefered" value="Monthly"/>
-                                        <label class="form-check-label" for="flexRadioSm">
+                                        <input class="form-check-input" type="radio" id="monthly" name="prefered" value="Monthly" {{ (old('prefered') == 'Monthly') ? 'checked' : ''}}/>
+                                        <label class="form-check-label" for="monthly">
                                            Monthly
                                         </label>
                                     </div>
@@ -684,12 +684,12 @@
                                 <label class="col-lg-3 col-form-label required fw-bold fs-6">Attachment &nbsp;<span style="cursor: pointer" id="addAttachment" class="btn-link m-l-10">+ Add more</span></label>
                                 <!--end::Label-->
                                 <!--begin::Col-->
-                                <div class="col-lg-3 fv-row">
+                                <div class="col-lg-4 fv-row">
                                     <input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment"/>
 
                                     @error('attachments_of_text.*') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="col-lg-3 fv-row">
+                                <div class="col-lg-4 fv-row">
                                     <input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/>
 
                                     @error('attachments_of_paper.*') <span class="text-danger">{{ $message }}</span> @enderror
@@ -847,7 +847,7 @@ $('input[type="file"]').each(function(){
 // End loop of file input elements
 });
 $('#addAttachment').click(function () {
-    $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-3 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-3 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-3 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
+    $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-3 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-4 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-4 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
 });
 $("body").on("click",".removeattachment",function(e){
     $(this).parents('.attachmentunset').remove();

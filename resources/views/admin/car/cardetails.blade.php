@@ -154,54 +154,54 @@
                                 <h4 class="text-black mb-7">Configuration</h4>
                                 <!--begin::Item-->
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Type</p>
+                                    <p class="text-muted text-hover-primary pe-2">Type:</p>
                                     <div class="m-0">{{ $car->type}}</div>
                                 </div>
 
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Color</p>
+                                    <p class="text-muted text-hover-primary pe-2">Color:</p>
                                     <div class="m-0">{{ $car->color }}</div>
                                 </div>
                                
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Reg number</p>
+                                    <p class="text-muted text-hover-primary pe-2">Reg number:</p>
                                     <div class="m-0">{{$car->reg_number}}</div>
                                 </div>
                             
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Registration year</p>
+                                    <p class="text-muted text-hover-primary pe-2">Registration year:</p>
                                     <div class="m-0">{{ $car->registration_year }}</div>
                                 </div>
         
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Condition</p>
+                                    <p class="text-muted text-hover-primary pe-2">Condition:</p>
                                     <div class="m-0">{{ $car->condition}}</div>
                                 </div>
                                
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Ac</p>
+                                    <p class="text-muted text-hover-primary pe-2">Ac:</p>
                                     <div class="m-0">{{ $car->ac}}</div>
                                 </div>
 
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Fuel</p>
+                                    <p class="text-muted text-hover-primary pe-2">Fuel:</p>
                                     <div class="m-0">{{ $car->fuel}}</div>
                                 </div>
                                
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Gearbox</p>
+                                    <p class="text-muted text-hover-primary pe-2">Gearbox:</p>
                                     <div class="m-0">{{$car->gearbox}}</div>
                                 </div>
                             
                                 
         
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Prefered</p>
+                                    <p class="text-muted text-hover-primary pe-2">Prefered:</p>
                                     <div class="m-0">{{ $car->prefered}}</div>
                                 </div>
                                
                                 <div class="d-flex flex-stack fw-bold fs-5 text-muted mb-4">
-                                    <p class="text-muted text-hover-primary pe-2">Isavailable</p>
+                                    <p class="text-muted text-hover-primary pe-2">Isavailable:</p>
                                     <div class="m-0">{{ $car->isavailable}}</div>
                                 </div>
                                
