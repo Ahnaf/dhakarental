@@ -846,13 +846,7 @@ $('input[type="file"]').each(function(){
 
 // End loop of file input elements
 });
-$('#addAttachment').click(function () {
-    $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-3 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-4 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-4 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
-});
-$("body").on("click",".removeattachment",function(e){
-    $(this).parents('.attachmentunset').remove();
 
-});
 $("body").on("click",".removegallery",function(e){
     // alert($('.wrap-custom-file').length);
     if($('.wrap-custom-file').length <= 5){
@@ -860,6 +854,26 @@ $("body").on("click",".removegallery",function(e){
     }
     $(this).parents('.gallaryunset').remove();
 });
+
+$('#addAttachment').click(function () {
+     var count = $('.attachmentunset').length;
+     if(count == 5){
+        $('#addAttachment').hide();
+     }
+    $('#setattachment').append('<div class="row mb-6 attachmentunset"><label class="col-lg-3 col-form-label fw-bold fs-6">Attachment &nbsp;<a style="cursor: pointer" class="removeattachment"><i class="fa fa-trash"></i></a></label><div class="col-lg-4 fv-row"><input type="text" name="attachments_of_text[]" class="form-control form-control-lg form-control-solid" placeholder="Name of attachment paper"/></div><div class="col-lg-4 fv-row"><input type="file" name="attachments_of_paper[]" class="form-control form-control-lg form-control-solid" placeholder="Enter Owner/Driver"/></div></div>');
+
+   
+});
+
+$("body").on("click",".removeattachment",function(e){
+    var count = $('.attachmentunset').length;
+    if(count <= 6){
+        $('#addAttachment').show();
+     }
+    $(this).parents('.attachmentunset').remove();
+    
+});
+
 
 </script>
 @endpush

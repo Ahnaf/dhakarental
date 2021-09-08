@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Winmacsystem">
     <meta name="generator" content="Rajkumar Das">
-    <link rel="icon" href="{{asset('images/logo-new.png')}}"/>
+    <link rel="icon" href="{{asset('assets/media/logos/favicon.png')}}"/>
     <title>@yield('title')</title>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <!--begin::Fonts-->
