@@ -44,12 +44,16 @@ class ModuleSeeder extends Seeder
                 'description' => 'Database Backup'
             ],
             [
-                'name' => 'Car Owner',
-                'description' => 'Car Owner'
+                'name' => 'Contacts',
+                'description' => 'Contacts'
             ],
             [
                 'name' => 'Cars',
                 'description' => 'Cars'
+            ],
+            [
+                'name' => 'Invoices',
+                'description' => 'Invoices'
             ],
             
         ];

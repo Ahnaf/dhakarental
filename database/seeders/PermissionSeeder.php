@@ -346,6 +346,23 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.carstatus',
         ]);
 
+        $moduleDashboardAdmin = Module::updateOrCreate([
+            'name' => 'Invoices',
+            'description' => 'Invoices'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Invoice List',
+            'slug' => 'admin.invoicelist',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Add Invoice View',
+            'slug' => 'admin.addinvoiceview',
+        ]);
+
 
 
     }

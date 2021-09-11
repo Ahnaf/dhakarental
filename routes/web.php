@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Activitylog\ActivitylogController;
 use App\Http\Controllers\Admin\Databasebackup\DatabasebackupController;
 use App\Http\Controllers\Admin\Carowner\CarownerController;
 use App\Http\Controllers\Admin\Car\CarController;
+use App\Http\Controllers\Admin\Invoice\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -163,6 +164,12 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/contactsprofile/{id}', [CarownerController::class, 'carOwnerProfile'])->name('admin.carownerprofile');
 
         Route::post('/contactsprofile', [CarownerController::class, 'carOwnerUpdateStore'])->name('admin.updatecontactstore');
+
+        /*---- Invoice Route ----*/
+
+        Route::get('/invoicelist', [InvoiceController::class, 'invoiceIndex'])->name('admin.invoicelist');
+
+        Route::get('/addinvoice', [InvoiceController::class, 'addInvoiceView'])->name('admin.addinvoiceview');
 
     });
 

@@ -205,28 +205,6 @@
                                 <!--end::Col-->
                             </div>
                             <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="row mb-6">
-                                <!--begin::Label-->
-                                <label class="col-lg-4 col-form-label fw-bold fs-6">
-                                    <span class="required">Contacts Type</span>
-                                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Contacts Type"></i>
-                                </label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-lg-8 fv-row">
-                                    <select name="contact_type" aria-label="Contacts Type" data-placeholder="Contacts Type..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select a Type...</option>
-                                        <option value="Driver">Driver</option>
-                                        <option value="Carowner">Carowner</option>
-                                        <option value="Customer">Customer</option>
-                                        <option value="Lead">Lead</option>
-                                    </select>
-                                    @error('contact_type') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-                                <!--end::Col-->
-                            </div>
-                            <!--end::Input group-->
                            
                         </div>
                         <!--end::Card body-->
