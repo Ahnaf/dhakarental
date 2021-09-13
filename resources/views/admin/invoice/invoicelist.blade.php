@@ -43,11 +43,11 @@
         <div id="kt_content_container" class="container">
             <!--begin::Card-->
             <div class="card">
-                @if(session('carsuccess'))
+                @if(session('invoicewarning'))
                     <!--begin::Alert-->
-                    <div class="alert alert-dismissible bg-success d-flex flex-column flex-sm-row p-5 mb-10">
+                    <div class="alert alert-dismissible bg-warning d-flex flex-column flex-sm-row p-5 mb-10">
                         <div class="d-flex flex-column text-light pe-0 pe-sm-10">
-                            <p class="fs-6 mt-3">{{ session('carsuccess') }}</p>
+                            <p class="fs-6 mt-3">{{ session('invoicewarning') }}</p>
                         </div>
                         <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
                             <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>

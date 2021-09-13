@@ -42,68 +42,25 @@
         <div id="kt_content_container" class="container mb-3">
             <!--begin::Card-->
             <div class="card">
-                <!--begin::Card header-->
-                <div class="card-header border-0 pt-6">
-                    <!--begin::Card title-->
-                    <div class="card-title">
-                        <!--begin::Search-->
-                        <div class="d-flex align-items-center position-relative my-1">
-                            
+                @if(session('carsuccess'))
+                    <!--begin::Alert-->
+                    <div class="alert alert-dismissible bg-success d-flex flex-column flex-sm-row p-5 mb-10">
+                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+                            <p class="fs-6 mt-3">{{ session('carsuccess') }}</p>
                         </div>
-                        <!--end::Search-->
+                        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+                            <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>
+                        </button>
                     </div>
-                    <!--begin::Card title-->
-                    <!--begin::Card toolbar-->
-                    <div class="card-toolbar">
-                        <!--begin::Toolbar-->
-                        <div class="d-flex justify-content-end" data-kt-subscription-table-toolbar="base">
-                            <!--begin::Filter-->
-                            {{-- <button type="button" class="btn btn-light-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
-                            
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="0" y="0" width="24" height="24" />
-                                        <path d="M5,4 L19,4 C19.2761424,4 19.5,4.22385763 19.5,4.5 C19.5,4.60818511 19.4649111,4.71345191 19.4,4.8 L14,12 L14,20.190983 C14,20.4671254 13.7761424,20.690983 13.5,20.690983 C13.4223775,20.690983 13.3458209,20.6729105 13.2763932,20.6381966 L10,19 L10,12 L4.6,4.8 C4.43431458,4.5790861 4.4790861,4.26568542 4.7,4.1 C4.78654809,4.03508894 4.89181489,4 5,4 Z" fill="#000000" />
-                                    </g>
-                                </svg>
-                            </span>
-                            Filter</button> --}}
-                           
-                             <div class="menu menu-sub menu-sub-dropdown w-300px w-md-325px" data-kt-menu="true">
-                               
-                            </div> 
-                            <!--end::Menu 1-->
-                            <!--end::Filter-->
-                            
-                            <!--begin::Add subscription-->
-                            <button type="button" class="btn btn-primary addmoreitem">
-                            <!--begin::Svg Icon | path: icons/duotone/Navigation/Plus.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                    <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1" />
-                                    <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->Add More Item</button>
-                            <!--end::Add subscription-->
-                        </div>
-                        <!--end::Toolbar-->
-                        <!--begin::Group actions-->
-                        <div class="d-flex justify-content-end align-items-center d-none" data-kt-subscription-table-toolbar="selected">
-                            <div class="fw-bolder me-5">
-                            <span class="me-2" data-kt-subscription-table-select="selected_count"></span>Selected</div>
-                            <button type="button" class="btn btn-danger" data-kt-subscription-table-select="delete_selected">Delete Selected</button>
-                        </div>
-                        <!--end::Group actions-->
-                    </div>
-                    <!--end::Card toolbar-->
-                </div>
+                    <!--end::Alert-->
+                @endif
+
                 <!--end::Card header-->
                 <!--begin::Card body-->
                 <div class="card-body pt-0">
                     <!--begin::Input group-->
-                    <form class="form" action="" method="POST">
+                    <form action="{{ route('admin.storeinvoice')}}" method="POST" class="form">
+                        @csrf
                         <!--begin::Step 4-->
                         <div data-kt-stepper-element="content">
                             <div class="w-100 mt-7">
@@ -111,29 +68,52 @@
                                 <div class="row mb-10">
                                     <!--begin::Col-->
                                     <div class="col-md-9 fv-row">
+                                        <label class="required fs-6 fw-bold form-label mb-2">Customer</label>
+                                        <select name="customer" aria-label="Select Type" data-control="select2" data-placeholder="Select Customer..." class="form-select form-select-solid form-select-lg fw-bold" required>
+                                        <option value="">Select Customer...</option>
+                                        @foreach ($contacts as $contact)
+                                         <option value="{{$contact->id}}" {{ (old('customer') == $contact->fname) ? 'selected' : '' }}>{{$contact->fname}}</option>   
+                                        @endforeach
+                                        </select>
+                                        @error('customer') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-3">
+                                        <button type="button" class="btn btn-primary mt-9 float-end addmoreitem">
+                                            <span class="svg-icon svg-icon-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <rect fill="#000000" x="4" y="11" width="16" height="2" rx="1" />
+                                                    <rect fill="#000000" opacity="0.5" transform="translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000)" x="4" y="11" width="16" height="2" rx="1" />
+                                                </svg>
+                                            </span>
+                                            Add More Item
+                                        </button>
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="row mb-10 item">
+                                    <!--begin::Col-->
+                                    <div class="col-md-9 fv-row">
                                         <!--begin::Label-->
                                         <!--end::Label-->
                                         <!--begin::Row-->
-                                        <div class="row fv-row">
+                                        <div class="row fv-row ">
                                             <!--begin::Col-->
                                             <div class="col-8">
                                                 <label class="required fs-6 fw-bold form-label mb-2">Item</label>
-                                                <input type="text" class="form-control form-control-solid" placeholder="Item" name="item[]" />
-                                                {{-- <select name="type" aria-label="Select Type" data-control="select2" data-placeholder="Select Type..." class="form-select form-select-solid form-select-lg fw-bold">
-                                                    <option value="">Select Type...</option>
-                                                    <option value="Sedan">Sedan</option>
-                                                    <option value="SUV">SUV</option>
-                                                    <option value="CUV">CUV</option>
-                                                    <option value="Micro">Micro</option>
-                                                    <option value="VAN ">VAN</option>
-                                                </select> --}}
+                                                <input type="text" class="form-control form-control-solid" placeholder="Item" name="item[]" required/>
+                                                 @error('item.*') <span class="text-danger">{{ $message }}</span> @enderror
                                             </div>
                                             <!--end::Col-->
                                             <!--begin::Col-->
                                             
                                             <div class="col-4">
                                                 <label class="required fs-6 fw-bold form-label mb-2">Qty</label>
-                                                 <input type="number" class="form-control form-control-solid" placeholder="Qty" name="qty[]" />
+                                                 <input type="number" class="form-control form-control-solid qty" placeholder="Qty" name="qty[]" required/>
+                                                 @error('qty.*') <span class="text-danger">{{ $message }}</span> @enderror
                                             </div>
                                             <!--end::Col-->
                                         </div>
@@ -143,7 +123,8 @@
                                     <!--begin::Col-->
                                     <div class="col-md-3">
                                         <label class="required fs-6 fw-bold form-label mb-2">Price</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="50000" name="price[]" />
+                                        <input type="number" class="form-control form-control-solid price" placeholder="50000" name="price[]" required/>
+                                        @error('price.*') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -151,26 +132,36 @@
                                 <div id="setmoreitem">
                                 </div>
                                 <!--begin::Input group-->
+                                    <div class="row">
+
+                                        <!--begin::Col-->
+                                        <div class="col-md-8 mt-2">
+                                    
+                                        </div>
+                                        <!--end::Col-->
+                                    
+                                        <!--begin::Col-->
+                                        <div class="col-md-4 mt-2">
+                                            <label class="required fs-6 fw-bold form-label mb-2">Total</label>
+                                            <input type="number" class="form-control form-control-solid" placeholder="10000" id="total" name="total" value="" required/>
+                                            @error('total') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Input group-->
+                                <!--begin::Input group-->
                                 <div class="row">
 
                                     <!--begin::Col-->
                                     <div class="col-md-8 mt-2">
-                                        <label class="required fs-6 fw-bold form-label mb-2">Customer</label>
-                                        <select name="customer" aria-label="Select Type" data-control="select2" data-placeholder="Select Customer..." class="form-select form-select-solid form-select-lg fw-bold">
-                                        <option value="">Select Customer...</option>
-                                        <option value="Sedan" {{ (old('type') == 'Sedan') ? 'selected' : '' }}>Sedan</option>
-                                        <option value="SUV" {{ (old('type') == 'SUV') ? 'selected' : '' }}>SUV</option>
-                                        <option value="CUV" {{ (old('type') == 'CUV') ? 'selected' : '' }}>CUV</option>
-                                        <option value="Micro" {{ (old('type') == 'Micro') ? 'selected' : '' }}>Micro</option>
-                                        <option value="VAN" {{ (old('type') == 'VAN') ? 'selected' : '' }}>VAN</option>
-                                    </select>
+                                        
                                     </div>
                                     <!--end::Col-->
-                                   
                                     <!--begin::Col-->
                                     <div class="col-md-4 mt-2">
                                         <label class="required fs-6 fw-bold form-label mb-2">Vat</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="1000" name="vat" />
+                                        <input type="number" class="form-control form-control-solid" placeholder="1000" id="vat" name="vat" value="" required/>
+                                        @error('vat') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -186,8 +177,28 @@
                                    
                                     <!--begin::Col-->
                                     <div class="col-md-4 mt-2">
+                                        
                                         <label class="required fs-6 fw-bold form-label mb-2">Discount</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="1000" name="discount" />
+                                        <input type="number" class="form-control form-control-solid" placeholder="1000" id="discount" name="discount" value="" required/>
+                                        @error('disount') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="row">
+
+                                    <!--begin::Col-->
+                                    <div class="col-md-8 mt-2">
+                                   
+                                    </div>
+                                    <!--end::Col-->
+                                   
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2">
+                                        <label class="required fs-6 fw-bold form-label mb-2">Grand Total</label>
+                                        <input type="number" class="form-control form-control-solid" placeholder="10000" id="grandtotal" name="grandtotal" value="" required/>
+                                        @error('grandtotal') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -204,7 +215,8 @@
                                     <!--begin::Col-->
                                     <div class="col-md-4 mt-2">
                                         <label class="required fs-6 fw-bold form-label mb-2">Paid Amount</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="10000" name="paidamount" />
+                                        <input type="number" class="form-control form-control-solid" placeholder="10000" name="paidamount" required/>
+                                        @error('paidamount') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -222,7 +234,8 @@
                                     <!--begin::Col-->
                                     <div class="col-md-4 mt-2">
                                         <label class="required fs-6 fw-bold form-label mb-2">Due Amount</label>
-                                        <input type="text" class="form-control form-control-solid" placeholder="10000" name="dueamount" />
+                                        <input type="number" class="form-control form-control-solid" placeholder="10000" name="dueamount" required/>
+                                        @error('dueamount') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -247,8 +260,9 @@
                                             </div>
                                             <!--end::Label-->
                                             <!--begin::Switch-->
+                                            <span id="result"></span>
                                             <label class="form-check form-switch form-check-custom form-check-solid">
-                                                <button type="submit" class="btn btn-primary me-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end" data-kt-menu-flip="top-end">
+                                                <button type="submit" class="btn btn-primary me-3">
                                                
                                                 Save Invoice</button>
                                             </label>
@@ -286,6 +300,9 @@
 @endsection
 
 @push('scripts')
+
+<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+<script src="{{asset('assets/js/custom/apps/user-management/car/carlist.js')}}"></script>
 <script>
 
 //console.log(array);
@@ -298,20 +315,101 @@
 //   array.push(inputval[i].value)
 // }
 // });
+function addUp(){
+    var total = 0;
+        $(".item").each(function() {
+
+            var qty = $(this).find("[name='qty[]']").val();
+            // console.log($(this).find("[name='price[]']").val());
+            var newp = $(this).find("[name='price[]']").val();
+            var allprice = (newp * qty);
+            total += Number(allprice);
+            
+        });
+        //alert(total);
+        $('#total').val(total);
+}
+$(".price").on("keyup", addUp);
+addUp();
 
 $(document).ready(function(){
+   
     $('.addmoreitem').click(function () {
-       $('#setmoreitem').append('<div class="row mb-10 itemunset"><div class="col-md-9 fv-row"><div class="row fv-row"><div class="col-8"><label class="required fs-6 fw-bold form-label mb-2">Item &nbsp;<a style="cursor: pointer" class="removeitem"><i class="fa fa-trash"></i></a></label><input type="text" class="form-control form-control-solid" placeholder="Item" name="item[]"/></div><div class="col-4"><label class="required fs-6 fw-bold form-label mb-2">Qty</label><input type="number" class="form-control form-control-solid" placeholder="Qty" name="qty[]"/></div></div></div><div class="col-md-3"><label class="required fs-6 fw-bold form-label mb-2">Price</label><input type="text" class="form-control form-control-solid" placeholder="50000" name="price[]"/></div></div>');
+      
+       $('#setmoreitem').append('<div class="row mb-10 itemunset item"><div class="col-md-9 fv-row"><div class="row fv-row"><div class="col-8"><label class="required fs-6 fw-bold form-label mb-2">Item &nbsp;<a style="cursor: pointer" class="removeitem"><i class="fa fa-trash"></i></a></label><input type="text" class="form-control form-control-solid" placeholder="Item" name="item[]" required/></div><div class="col-4"><label class="required fs-6 fw-bold form-label mb-2">Qty</label><input type="number" class="form-control form-control-solid" placeholder="Qty" name="qty[]" required/></div></div></div><div class="col-md-3"><label class="required fs-6 fw-bold form-label mb-2">Price</label><input type="number" class="form-control form-control-solid price" placeholder="50000" name="price[]" required/></div></div>');
+          function addUp(){
+            var total = 0;
+                $(".item").each(function() {
+
+                    var qty = $(this).find("[name='qty[]']").val();
+                    //console.log($(this).find("[name='price[]']").val());
+                    var newp = $(this).find("[name='price[]']").val();
+                    var allprice = (newp * qty);
+                    total += Number(allprice);
+                    
+                });
+                //alert(total);
+                $('#total').val(total);
+        }
+        $(".price").on("keyup", addUp);
+        addUp();
+        
     });
 
     $("body").on("click",".removeitem",function(e){
-    $(this).parents('.itemunset').remove();
+       
+        var removeprice = $(this).parents('.itemunset').find("[name='price[]']").val();
+        var removeqty = $(this).parents('.itemunset').find("[name='qty[]']").val();
+        var gettotal = $('#total').val();
+        var withoutprice = (removeprice * removeqty); 
+        var updateprice = (gettotal - withoutprice);
+        var setupdateprice = Number(updateprice);
+        $('#total').val(setupdateprice);           
+        $(this).parents('.itemunset').remove();
     
     });
-});
-</script>
-<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/car/carlist.js')}}"></script>
 
+    // $("[name='vat']").on("keyup", function(){
+    //     var getvat = $("#vat").val();
+    //     var setvat = Number(getvat)
+    //     var getforvattotal = $('#total').val();
+    //     var setforvattotal = Number(getforvattotal);
+
+    //     var setwithvattotal = setforvattotal + setvat;
+    //     $('#grandtotal').val(setwithvattotal);
+    // });
+    
+    // $("[name='discount']").on("keypress", function(){
+    //     var getdiscount = $("[name='discount']").val();
+    //     var setdiscount = Number(getdiscount)
+    //     var getfordiscounttotal = $('#grandtotal').val();
+    //     var setfordiscounttotal = Number(getfordiscounttotal);
+
+    //     var setwithdiscounttotal = (setfordiscounttotal - setdiscount);
+    //     $('#grandtotal').val(setwithdiscounttotal);
+    // });
+   
+});
+
+$(document).on("change keyup blur", "#discount", function() {
+
+    var getvat = $("#vat").val();
+    var setvat = Number(getvat)
+    var getforvattotal = $('#total').val();
+    var setforvattotal = Number(getforvattotal);
+    var setwithvattotal = setforvattotal + setvat;
+    var getdiscount = $("#discount").val();
+    //var getfordiscounttotal = $('#grandtotal').val();
+
+    if (getdiscount != '' && setwithvattotal != '') {
+       
+        $('#grandtotal').val((Number(setwithvattotal)) - (Number(getdiscount)));
+    }else{
+        $('#grandtotal').val(Number(setwithvattotal));
+    }
+});
+
+
+</script>
 
 @endpush

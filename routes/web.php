@@ -171,6 +171,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::get('/addinvoice', [InvoiceController::class, 'addInvoiceView'])->name('admin.addinvoiceview');
 
+        Route::post('/storeinvoice', [InvoiceController::class, 'storeInvoice'])->name('admin.storeinvoice');
+
     });
 
 });
