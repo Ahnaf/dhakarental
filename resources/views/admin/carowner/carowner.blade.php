@@ -684,8 +684,7 @@ $(document).ready(function(){
 });
 </script>
 <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/permissions/list.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/permissions/add-permission.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/permissions/update-permission.js')}}"></script>
+<script src="{{asset('assets/js/custom/apps/user-management/contact/contactlist.js')}}"></script>
+
 
 @endpush

@@ -246,7 +246,7 @@
 							@if(hasAnyPermissions('admin.invoicelist'))
 							<div class="menu-item">
 								<a class="menu-link
-								@if (\Request::is('admin/invoicelist') or \Request::is('admin/addinvoice'))
+								@if (\Request::is('admin/invoicelist') or \Request::is('admin/addinvoice') or \Request::is('admin/editinvoice/*') or \Request::is('admin/invoicedetails/*'))
 									active
 								@endif
 								"

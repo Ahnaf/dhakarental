@@ -42,11 +42,11 @@
         <div id="kt_content_container" class="container mb-3">
             <!--begin::Card-->
             <div class="card">
-                @if(session('invoicewarning'))
+                @if(session('carsuccess'))
                     <!--begin::Alert-->
-                    <div class="alert alert-dismissible bg-warning d-flex flex-column flex-sm-row p-5 mb-10">
+                    <div class="alert alert-dismissible bg-success d-flex flex-column flex-sm-row p-5 mb-10">
                         <div class="d-flex flex-column text-light pe-0 pe-sm-10">
-                            <p class="fs-6 mt-3">{{ session('invoicewarning') }}</p>
+                            <p class="fs-6 mt-3">{{ session('carsuccess') }}</p>
                         </div>
                         <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
                             <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>
@@ -174,17 +174,17 @@
 
                                     <!--begin::Col-->
                                     <div class="col-md-4 mt-2">
-                                        <label class="required fs-6 fw-bold form-label mb-2">Paid Amount</label>
-                                        <input type="number" class="form-control form-control-solid" placeholder="10000" name="paidamount" required/>
-                                        @error('paidamount') <span class="text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                    <!--end::Col-->
-
-                                    <!--begin::Col-->
-                                    <div class="col-md-4 mt-2">
                                         <label class="required fs-6 fw-bold form-label mb-2">Due Amount</label>
                                         <input type="number" class="form-control form-control-solid" placeholder="10000" name="dueamount" required/>
                                         @error('dueamount') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                   
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2">
+                                        <label class="required fs-6 fw-bold form-label mb-2">Paid Amount</label>
+                                        <input type="number" class="form-control form-control-solid" placeholder="10000" name="paidamount" required/>
+                                        @error('paidamount') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>

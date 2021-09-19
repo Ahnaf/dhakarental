@@ -281,6 +281,12 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.updatecontactstore',
         ]);
 
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Delete Contact',
+            'slug' => 'admin.deletecontact',
+        ]);
+
         $moduleDashboardAdmin = Module::updateOrCreate([
             'name' => 'Cars',
             'description' => 'Cars'
@@ -362,6 +368,26 @@ class PermissionSeeder extends Seeder
             'name' => 'Add Invoice View',
             'slug' => 'admin.addinvoiceview',
         ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Delete Invoice',
+            'slug' => 'admin.deleteinvoice',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Edit Invoice View',
+            'slug' => 'admin.editinvoice',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Update Invoice',
+            'slug' => 'admin.updateinvoice',
+        ]);
+
+        
 
 
 

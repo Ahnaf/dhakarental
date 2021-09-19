@@ -165,6 +165,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::post('/contactsprofile', [CarownerController::class, 'carOwnerUpdateStore'])->name('admin.updatecontactstore');
 
+        Route::post('/contactsdelete', [CarownerController::class, 'deleteContact'])->name('admin.deletecontact');
+
         /*---- Invoice Route ----*/
 
         Route::get('/invoicelist', [InvoiceController::class, 'invoiceIndex'])->name('admin.invoicelist');
@@ -172,6 +174,16 @@ Route::middleware(['auth:admin'])->group(function () {
         Route::get('/addinvoice', [InvoiceController::class, 'addInvoiceView'])->name('admin.addinvoiceview');
 
         Route::post('/storeinvoice', [InvoiceController::class, 'storeInvoice'])->name('admin.storeinvoice');
+
+        Route::post('/deleteinvoice', [InvoiceController::class, 'deleteInvoice'])->name('admin.deleteinvoice');
+
+        Route::get('/editinvoice/{id}', [InvoiceController::class, 'editInvoiceView'])->name('admin.editinvoice');
+
+        Route::post('/updateinvoice', [InvoiceController::class, 'updateInvoice'])->name('admin.updateinvoice');
+
+        Route::post('/deleteinvoiceitem', [InvoiceController::class, 'deleteInvoiceItem'])->name('admin.deleteinvoiceitem');
+
+        Route::get('/invoicedetails/{id}', [InvoiceController::class, 'invoiceDetail'])->name('admin.invoicedetails');
 
     });
 

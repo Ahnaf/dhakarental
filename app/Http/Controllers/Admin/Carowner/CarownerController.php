@@ -92,5 +92,16 @@ class CarownerController extends Controller
             return redirect(route('admin.carownerprofile', ['id' => $validated['contact_id']]))->with('contactwarning', 'Contacts not update, Internal error');
         }
     }
+
+    public function deleteContact(Request $request)
+    {
+        $id = $request->contactid;
+        $find = Contact::findorFail($id);
+        if (Storage::exists('public/contacts/'. $find->profile_pic)) {
+            Storage::disk('public')->delete('contacts/'. $find->profile_pic);
+        }
+        $find->delete();
+        return response()->json(['success' => 'Contact successfully deleted!' . $id, 200]);
+    }
    
 }

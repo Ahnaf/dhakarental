@@ -24,6 +24,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('dueamount')->nullable();
             $table->foreignId('created_by')->nullable();
             $table->foreignId('customer_id')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }
