@@ -185,6 +185,10 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::get('/invoicedetails/{id}', [InvoiceController::class, 'invoiceDetail'])->name('admin.invoicedetails');
 
+        // Route::get('/invoicepdf/{id}', [InvoiceController::class, 'makePdf'])->name('admin.invoicepdf');
+
+
+
     });
 
 });

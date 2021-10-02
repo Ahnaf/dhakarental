@@ -12,6 +12,7 @@ use App\Models\Contact;
 use App\Models\Invoice;
 use App\Models\Item;
 use App\Models\Transection;
+use PDF;
 
 class InvoiceController extends Controller
 {
@@ -165,4 +166,10 @@ class InvoiceController extends Controller
         $invoice = Invoice::findOrFail($id);
         return view('admin.invoice.invoicedetails', compact('invoice'));
     }
+
+    // public function makePdf($id)
+    // {
+    //     $pdf = PDF::loadView('invoice.pdf');
+    //     //return $pdf->download('invoice.pdf');
+    // }
 }
