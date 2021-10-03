@@ -57,20 +57,20 @@
                                 </a>
                                 <!--end::Logo-->
                                 <!--begin::Text-->
-                                <div class="text-sm-end fw-bold fs-4 text-muted mt-7">
+                                <div class="text-sm-end fw-bold fs-4 text-muted mt-5">
                                     <div>Dhaka rental</div>
                                     <div>Sector# 11, Uttara, Dhaka</div>
                                     
                                 </div>
                                 <!--end::Text-->
-                                <div class="text-sm-end fw-bold fs-4 text-muted mt-7">
+                                <div class="text-sm-end fw-bold fs-4 text-muted mt-5">
                                     <div class="text-gray-600 fs-6 fw-bold mb-5">INVOICE NO: {{$invoice->id}}</div>
                                 </div>
                             </div>
                         </div>
                         <!--end::Header-->
                         <!--begin::Body-->
-                        <div class="border-bottom pb-12">
+                        <div class="border-bottom pb-5">
                             <!--begin::Image-->
                             {{-- <div class="d-flex flex-row-fluid bgi-no-repeat bgi-position-x-center bgi-size-cover card-rounded h-150px h-lg-250px mb-lg-20" style="background-image: url(assets/media/misc/pattern-4.jpg)"></div> --}}
                             <!--end::Image-->
