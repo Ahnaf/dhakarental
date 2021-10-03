@@ -47,13 +47,13 @@
                     <!-- begin::Wrapper-->
                     <div class="mw-lg-950px mx-auto w-100">
                         <!-- begin::Header-->
-                        <div class="d-flex justify-content-between flex-column flex-sm-row mb-19">
+                        <div class="d-flex justify-content-between flex-column flex-sm-row mb-0">
                             <h4 class="fw-boldest text-gray-800 fs-2qx pe-5 pb-7">INVOICE</h4>
                             <!--end::Logo-->
                             <div class="text-sm-end">
                                 <!--begin::Logo-->
                                 <a href="#">
-                                    <img alt="Logo" class="float-end" src="{{ asset('assets/media/logos/11-01.svg')}}" width="260" height="100" />
+                                    <img alt="Logo" class="float-end" src="{{ asset('assets/media/logos/11-01.svg')}}" width="300" height="120" />
                                 </a>
                                 <!--end::Logo-->
                                 <!--begin::Text-->
@@ -63,6 +63,9 @@
                                     
                                 </div>
                                 <!--end::Text-->
+                                <div class="text-sm-end fw-bold fs-4 text-muted mt-7">
+                                    <div class="text-gray-600 fs-6 fw-bold mb-5">INVOICE NO: {{$invoice->id}}</div>
+                                </div>
                             </div>
                         </div>
                         <!--end::Header-->
@@ -74,9 +77,9 @@
                             <!--begin::Wrapper-->
                             <div class="d-flex justify-content-between flex-column flex-md-row">
                                 <!--begin::Content-->
-                                <div class="flex-grow-1 pt-8 mb-13">
+                                <div class="flex-grow-1 pt-8 mb-0">
                                     <!--begin::Table-->
-                                    <div class="table-responsive border-bottom mb-14">
+                                    <div class="table-responsive border-bottom mb-0">
                                         <table class="table">
                                             <thead>
                                                 <tr class="border-bottom fs-6 fw-bolder text-muted text-uppercase">
@@ -145,37 +148,33 @@
                                 <!--begin::Content-->
                                 <div class="text-end pt-10">
                                     <!--begin::Total Amount-->
-                                    <div class="fs-4 fw-bolder text-muted mb-3">TOTAL AMOUNT</div>
-                                    <div class="fs-xl-2x fs-2 fw-boldest">{{$invoice->total}}</div>
+                                    <div class="fs-5 fw-bolder text-muted mb-1">TOTAL AMOUNT</div>
+                                    <div class="fs-md-1x fs-4 fw-boldest">{{$invoice->total}}</div>
                                     {{-- <div class="text-muted fw-bold">Taxes included</div> --}}
 
-                                    <div class="fs-4 fw-bolder text-muted mb-3">Vat</div>
-                                    <div class="fs-xl-2x fs-2 fw-boldest">{{$invoice->vat}}</div>
+                                    <div class="fs-5 fw-bolder text-muted mb-1">Vat</div>
+                                    <div class="fs-md-1x fs-4 fw-boldest">{{$invoice->vat}}</div>
 
-                                    <div class="fs-4 fw-bolder text-muted mb-3">Discount</div>
-                                    <div class="fs-xl-2x fs-2 fw-boldest">{{$invoice->discount}}</div>
+                                    <div class="fs-5 fw-bolder text-muted mb-1">Discount</div>
+                                    <div class="fs-md-1x fs-4 fw-boldest">{{$invoice->discount}}</div>
 
-                                    <div class="fs-4 fw-bolder text-muted mb-3">Grandtotal</div>
-                                    <div class="fs-xl-2x fs-2 fw-boldest">{{$invoice->grandtotal}}</div>
+                                    <div class="fs-5 fw-bolder text-muted mb-1">Grandtotal</div>
+                                    <div class="fs-md-1x fs-4 fw-boldest">{{$invoice->grandtotal}}</div>
 
-                                    <div class="fs-4 fw-bolder text-muted mb-3">Paid Amount</div>
-                                    <div class="fs-xl-2x fs-2 fw-boldest">{{$invoice->paidamount}}</div>
+                                    <div class="fs-5 fw-bolder text-muted mb-1">Paid Amount</div>
+                                    <div class="fs-md-1x fs-4 fw-boldest">{{$invoice->paidamount}}</div>
 
-                                    <div class="fs-4 fw-bolder text-muted mb-3">Due Amount</div>
-                                    <div class="fs-xl-2x fs-2 fw-boldest">{{$invoice->dueamount}}</div>
+                                    <div class="fs-5 fw-bolder text-muted mb-1">Due Amount</div>
+                                    <div class="fs-md-1x fs-4 fw-boldest">{{$invoice->dueamount}}</div>
                                     <!--end::Total Amount-->
                                     <div class="border-bottom w-100 my-7 my-lg-16"></div>
                                     <!--begin::Invoice To-->
-                                    <div class="text-gray-600 fs-6 fw-bold mb-3">INVOICE TO.</div>
-                                    <div class="fs-6 text-gray-800 fw-bold mb-8">{{ $invoice->contact->fname}}</div>
-                                    <div class="fs-6 text-gray-800 fw-bold mb-8">{{ $invoice->contact->phone}}</div>
+                                    <div class="text-gray-600 fs-6 fw-bold mb-1">INVOICE TO.</div>
+                                    <div class="fs-6 text-gray-800 fw-bold">{{ $invoice->contact->fname}}</div>
+                                    <div class="fs-6 text-gray-800 fw-bold">{{ $invoice->contact->phone}}</div>
                                     <!--end::Invoice To-->
-                                    <!--begin::Invoice No-->
-                                    <div class="text-gray-600 fs-6 fw-bold mb-3">INVOICE NO.</div>
-                                    <div class="fs-6 text-gray-800 fw-bold mb-8">{{$invoice->id}}</div>
-                                    <!--end::Invoice No-->
                                     <!--begin::Invoice Date-->
-                                    <div class="text-gray-600 fs-6 fw-bold mb-3">DATE</div>
+                                    <div class="text-gray-600 fs-6 fw-bold mb-1">DATE</div>
                                     <div class="fs-6 text-gray-800 fw-bold">{{$invoice->created_at->format('D-m-y')}}</div>
                                     <!--end::Invoice Date-->
                                 </div>
@@ -192,12 +191,12 @@
                                 <button type="button" class="btn btn-success my-1 me-12" onclick="window.print();">Print Invoice</button>
                                 <!-- end::Pint-->
                                 <!-- begin::Download-->
-                                <button type="button" class="btn btn-light-success my-1">Download</button>
+                                {{-- <button type="button" class="btn btn-light-success my-1">Download</button> --}}
                                 <!-- end::Download-->
                             </div>
                             <!-- end::Actions-->
                             <!-- begin::Action-->
-                            <button type="button" class="btn btn-primary my-1">Create Invoice</button>
+                            <a href="{{ route('admin.addinvoiceview') }}" class="btn btn-primary my-1">Create Invoice</a>
                             <!-- end::Action-->
                         </div>
                         <!-- end::Footer-->
