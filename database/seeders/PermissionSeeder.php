@@ -387,6 +387,29 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.updateinvoice',
         ]);
 
+        $moduleDashboardAdmin = Module::updateOrCreate([
+            'name' => 'Request For Car',
+            'description' => 'Request For Car'
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Request car list',
+            'slug' => 'admin.requestcarlist',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Request Details',
+            'slug' => 'admin.requestcardetails',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Request Delete',
+            'slug' => 'admin.requestcardelete',
+        ]);
+
         
 
 

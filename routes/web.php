@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\Databasebackup\DatabasebackupController;
 use App\Http\Controllers\Admin\Carowner\CarownerController;
 use App\Http\Controllers\Admin\Car\CarController;
 use App\Http\Controllers\Admin\Invoice\InvoiceController;
+use App\Http\Controllers\Admin\Requestcar\RequestcarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -185,7 +186,11 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::get('/invoicedetails/{id}', [InvoiceController::class, 'invoiceDetail'])->name('admin.invoicedetails');
 
-        // Route::get('/invoicepdf/{id}', [InvoiceController::class, 'makePdf'])->name('admin.invoicepdf');
+        Route::get('/requestall', [RequestcarController::class, 'requestCarList'])->name('admin.requestcarlist');
+
+        Route::get('/carrequestdetails/{id}', [RequestcarController::class, 'carRequestDetails'])->name('admin.requestcardetails');
+
+        Route::post('/carrequestdelete', [RequestcarController::class, 'deleteCarRequest'])->name('admin.requestcardelete');
 
 
 

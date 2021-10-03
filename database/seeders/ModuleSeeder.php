@@ -55,6 +55,10 @@ class ModuleSeeder extends Seeder
                 'name' => 'Invoices',
                 'description' => 'Invoices'
             ],
+            [
+                'name' => 'Request For Car',
+                'description' => 'Request For Car'
+            ],
             
         ];
 
