@@ -196,7 +196,7 @@
                             </div>
                             <!-- end::Actions-->
                             <!-- begin::Action-->
-                            <a href="{{ route('admin.addinvoiceview') }}" class="btn btn-primary my-1">Create Invoice</a>
+                            <a href="{{ route('admin.invoiceconfirm', ['id' => $invoice->id]) }}" class="btn btn-primary my-1">Confirm Invoice</a>
                             <!-- end::Action-->
                         </div>
                         <!-- end::Footer-->

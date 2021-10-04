@@ -172,4 +172,24 @@ class InvoiceController extends Controller
     //     $pdf = PDF::loadView('invoice.pdf');
     //     //return $pdf->download('invoice.pdf');
     // }
+
+    public function confirmInvoice($id)
+    {
+        $findInvoice = Invoice::findOrFail($id);
+        $invoice = [
+            'status' => 'confirm'
+        ];
+        Invoice::where('id', $findInvoice->id)->update($invoice);
+
+        $transection = [
+            'invoice_id' => $findInvoice->id,
+            'tr_type' => "credit",
+            'grandtotal' => $findInvoice->grandtotal,
+            'due' => $findInvoice->dueamount,
+            'created_by' => Auth::user()->id
+        ];
+        Transection::create($transection);
+        return redirect(route('admin.invoicelist'))->with('invoicesuccess', 'Invoice successfully confirm!');
+
+    }
 }

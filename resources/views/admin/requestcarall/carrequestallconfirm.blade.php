@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','All Car Request')
+@section('title','Confirm Car Request')
 {{-- @section('description', 'Admin Login')
 @section('meta', 'Admin Login') --}}
 
@@ -45,7 +45,7 @@
             
             <div class="card ">
                 <div class="card-header card-header-stretch">
-                    <h3 class="card-title">Car Request List</h3>
+                    <h3 class="card-title">Car Request Confirm List</h3>
                     <div class="card-title">
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
@@ -67,13 +67,13 @@
                     <div class="card-toolbar">
                         <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0">
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('admin.requestcarlist')}}">Panding</a>
+                                <a class="nav-link" href="{{ route('admin.requestcarlist')}}">Panding</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.requestcarlisthold')}}">Hold</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
+                                <a class="nav-link active" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
                             </li>
                         </ul>
                     </div>
@@ -104,7 +104,7 @@
                                 <!--end::Table head-->
                                 <!--begin::Table body-->
                                 <tbody class="text-gray-600 fw-bold" id="tablebodycheckbox">
-                                    @foreach ($requestlist as $index=> $list)
+                                    @foreach ($requestlistconfirm as $index=> $list)
                                     <tr>
                                         <!--begin::Checkbox-->
                                         {{-- <td>
@@ -194,7 +194,7 @@
                                 <!--end::Table body-->
                             </table>
                             <!--end::Table-->
-                            {{$requestlist->links()}}
+                            {{$requestlistconfirm->links()}}
                         </div>
                         </div>
 

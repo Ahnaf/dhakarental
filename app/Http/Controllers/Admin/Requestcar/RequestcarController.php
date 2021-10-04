@@ -40,7 +40,7 @@ class RequestcarController extends Controller
             'to' => $request->to,
             'other_information' => $request->other_information,
             'notification' => 0,
-            'status' => 'panding'
+            'status' => 'pandding'
 
         ];
 
@@ -52,9 +52,22 @@ class RequestcarController extends Controller
 
     public function requestCarList()
     {
-        $requestlist = Requestcar::orderBy('id', 'DESC')->paginate(20);
+        $requestlist = Requestcar::where('status', 'panding')->orderBy('id', 'DESC')->paginate(20);
         return view('admin.requestcarall.carrequestlist', compact('requestlist'));
     }
+
+    public function requestCarListHold()
+    {
+        $requestlisthold = Requestcar::where('status', 'hold')->orderBy('id', 'DESC')->paginate(20);
+        return view('admin.requestcarall.carrequesthold', compact('requestlisthold'));
+    }
+
+    public function requestCarListConfirm()
+    {
+        $requestlistconfirm = Requestcar::where('status', 'confirm')->orderBy('id', 'DESC')->paginate(40);
+        return view('admin.requestcarall.carrequestallconfirm', compact('requestlistconfirm'));
+    }
+
 
     public function carRequestDetails($id)
     {
@@ -67,5 +80,14 @@ class RequestcarController extends Controller
         $find = Requestcar::findOrFail($request->rcarid);
         $find->delete();
         return response()->json(['success' => "Car Request successfully deleted!", 200]);
+    }
+
+    public function carRequestConfirm($id)
+    {
+        $data = [
+            'status' => 'confirm'
+        ];
+        Requestcar::where('id', $id)->update($data);
+        return redirect(route('admin.requestcarlist'))->with('requestsuccess', 'Car request successfully confirm!');
     }
 }

@@ -91,7 +91,7 @@
 							@if(hasAnyPermissions('admin.requestcarlist'))
 							<div class="menu-item">
 								<a class="menu-link
-								@if (\Request::is('admin/requestall') or \Request::is('admin/carrequestdetails/*'))
+								@if (\Request::is('admin/requestall') or \Request::is('admin/carrequestdetails/*') or \Request::is('admin/requestallhold') or \Request::is('admin/requestallconfirm'))
 									active
 								@endif
 								"

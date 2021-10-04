@@ -186,11 +186,19 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::get('/invoicedetails/{id}', [InvoiceController::class, 'invoiceDetail'])->name('admin.invoicedetails');
 
+        Route::get('/invoiceconfirm/{id}', [InvoiceController::class, 'confirmInvoice'])->name('admin.invoiceconfirm');
+
         Route::get('/requestall', [RequestcarController::class, 'requestCarList'])->name('admin.requestcarlist');
+
+        Route::get('/requestallhold', [RequestcarController::class, 'requestCarListHold'])->name('admin.requestcarlisthold');
+
+        Route::get('/requestallconfirm', [RequestcarController::class, 'requestCarListConfirm'])->name('admin.requestcarlistconfirm');
 
         Route::get('/carrequestdetails/{id}', [RequestcarController::class, 'carRequestDetails'])->name('admin.requestcardetails');
 
         Route::post('/carrequestdelete', [RequestcarController::class, 'deleteCarRequest'])->name('admin.requestcardelete');
+
+        //Route::get('/carrequestconfirm/{id}', [RequestcarController::class, 'carRequestConfirm'])->name('admin.requestcardetails');
 
 
 
