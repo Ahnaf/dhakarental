@@ -89,7 +89,10 @@
                         <!--end::Sidebar-->
                     </div>
                     <!--end::Layout-->
-                    <a href="" class="btn btn-primary">Confirm Request</a>
+                    <a href="{{ route('admin.requestcarstatus', ['id' => $requestcar->id, 'status' => 'confirm'])}}" class="btn btn-success">Confirm Request</a>
+                    <a href="{{ route('admin.requestcarstatus', ['id' => $requestcar->id, 'status' => 'processing'])}}" class="btn btn-primary">Processing Request</a>
+                    <a href="{{ route('admin.requestcarstatus', ['id' => $requestcar->id, 'status' => 'hold'])}}" class="btn btn-warning">Hold Request</a>
+                    <a href="{{ route('admin.requestcarstatus', ['id' => $requestcar->id, 'status' => 'cancel'])}}" class="btn btn-danger">Cancel Request</a>
                  
                 </div>
                 <!--end::Body-->

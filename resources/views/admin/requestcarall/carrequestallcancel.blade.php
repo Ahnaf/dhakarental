@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Confirm Car Request')
+@section('title','Cancel Car Request')
 {{-- @section('description', 'Admin Login')
 @section('meta', 'Admin Login') --}}
 
@@ -45,7 +45,7 @@
             
             <div class="card ">
                 <div class="card-header card-header-stretch">
-                    <h3 class="card-title">Car Request Confirm List</h3>
+                    <h3 class="card-title">Car Request Cancel List</h3>
                     <div class="card-title">
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
@@ -76,10 +76,10 @@
                                 <a class="nav-link" href="{{ route('admin.requestcarlisthold')}}">Hold</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
+                                <a class="nav-link" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.requestcarlistcancel')}}">Cancle</a>
+                                <a class="nav-link active" href="{{ route('admin.requestcarlistcancel')}}">Cancle</a>
                             </li>
                         </ul>
                     </div>
@@ -110,7 +110,7 @@
                                 <!--end::Table head-->
                                 <!--begin::Table body-->
                                 <tbody class="text-gray-600 fw-bold" id="tablebodycheckbox">
-                                    @foreach ($requestlistconfirm as $index=> $list)
+                                    @foreach ($requestlistcancel as $index=> $list)
                                     <tr>
                                         <!--begin::Checkbox-->
                                         {{-- <td>
@@ -200,7 +200,7 @@
                                 <!--end::Table body-->
                             </table>
                             <!--end::Table-->
-                            {{$requestlistconfirm->links()}}
+                            {{$requestlistcancel->links()}}
                         </div>
                         </div>
 

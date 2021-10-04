@@ -70,10 +70,16 @@
                                 <a class="nav-link" href="{{ route('admin.requestcarlist')}}">Panding</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.requestcarlistprocessing')}}">Processing</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link active" href="{{ route('admin.requestcarlisthold')}}">Hold</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.requestcarlistcancel')}}">Cancle</a>
                             </li>
                         </ul>
                     </div>

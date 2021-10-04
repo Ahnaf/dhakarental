@@ -68,6 +68,18 @@ class RequestcarController extends Controller
         return view('admin.requestcarall.carrequestallconfirm', compact('requestlistconfirm'));
     }
 
+    public function requestCarListCancel()
+    {
+        $requestlistcancel = Requestcar::where('status', 'cancel')->orderBy('id', 'DESC')->paginate(40);
+        return view('admin.requestcarall.carrequestallcancel', compact('requestlistcancel'));
+    }
+
+    public function requestCarListProcessing()
+    {
+        $requestlistprocessing = Requestcar::where('status', 'processing')->orderBy('id', 'DESC')->paginate(40);
+        return view('admin.requestcarall.carrequestallprocessing', compact('requestlistprocessing'));
+    }
+
 
     public function carRequestDetails($id)
     {
@@ -82,12 +94,12 @@ class RequestcarController extends Controller
         return response()->json(['success' => "Car Request successfully deleted!", 200]);
     }
 
-    public function carRequestConfirm($id)
+    public function carRequestConfirm($id, $status)
     {
         $data = [
-            'status' => 'confirm'
+            'status' => $status
         ];
         Requestcar::where('id', $id)->update($data);
-        return redirect(route('admin.requestcarlist'))->with('requestsuccess', 'Car request successfully confirm!');
+        return redirect(route('admin.requestcarlist'))->with('requestsuccess', 'Car request status successfully updated!');
     }
 }

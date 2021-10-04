@@ -194,11 +194,15 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::get('/requestallconfirm', [RequestcarController::class, 'requestCarListConfirm'])->name('admin.requestcarlistconfirm');
 
+        Route::get('/requestallcancel', [RequestcarController::class, 'requestCarListCancel'])->name('admin.requestcarlistcancel');
+
+        Route::get('/requestallprocessing', [RequestcarController::class, 'requestCarListProcessing'])->name('admin.requestcarlistprocessing');
+
         Route::get('/carrequestdetails/{id}', [RequestcarController::class, 'carRequestDetails'])->name('admin.requestcardetails');
 
         Route::post('/carrequestdelete', [RequestcarController::class, 'deleteCarRequest'])->name('admin.requestcardelete');
 
-        //Route::get('/carrequestconfirm/{id}', [RequestcarController::class, 'carRequestConfirm'])->name('admin.requestcardetails');
+        Route::get('/carrequestconfirm/{id}/{status}', [RequestcarController::class, 'carRequestConfirm'])->name('admin.requestcarstatus');
 
 
 

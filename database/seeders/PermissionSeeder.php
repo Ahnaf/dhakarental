@@ -418,6 +418,18 @@ class PermissionSeeder extends Seeder
 
         Permission::updateOrCreate([
             'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Cancel Request',
+            'slug' => 'admin.requestcarlistcancel',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Car Request Processing',
+            'slug' => 'admin.requestcarlistprocessing',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
             'name' => 'Car Request Details',
             'slug' => 'admin.requestcardetails',
         ]);

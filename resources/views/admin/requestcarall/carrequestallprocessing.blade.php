@@ -45,7 +45,7 @@
             
             <div class="card ">
                 <div class="card-header card-header-stretch">
-                    <h3 class="card-title">Car Request Confirm List</h3>
+                    <h3 class="card-title">Car Request Processing List</h3>
                     <div class="card-title">
                 <!--begin::Search-->
                 <div class="d-flex align-items-center position-relative my-1">
@@ -70,13 +70,13 @@
                                 <a class="nav-link" href="{{ route('admin.requestcarlist')}}">Panding</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.requestcarlistprocessing')}}">Processing</a>
+                                <a class="nav-link active" href="{{ route('admin.requestcarlistprocessing')}}">Processing</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.requestcarlisthold')}}">Hold</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
+                                <a class="nav-link" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.requestcarlistcancel')}}">Cancle</a>
@@ -110,7 +110,7 @@
                                 <!--end::Table head-->
                                 <!--begin::Table body-->
                                 <tbody class="text-gray-600 fw-bold" id="tablebodycheckbox">
-                                    @foreach ($requestlistconfirm as $index=> $list)
+                                    @foreach ($requestlistprocessing as $index=> $list)
                                     <tr>
                                         <!--begin::Checkbox-->
                                         {{-- <td>
@@ -200,7 +200,7 @@
                                 <!--end::Table body-->
                             </table>
                             <!--end::Table-->
-                            {{$requestlistconfirm->links()}}
+                            {{$requestlistprocessing->links()}}
                         </div>
                         </div>
 

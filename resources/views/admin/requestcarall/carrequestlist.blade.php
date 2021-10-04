@@ -44,6 +44,18 @@
             <!--begin::Card title-->
             
             <div class="card ">
+                @if(session('requestsuccess'))
+                    <!--begin::Alert-->
+                    <div class="alert alert-dismissible bg-success d-flex flex-column flex-sm-row p-5 mb-10">
+                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
+                            <p class="fs-6 mt-3">{{ session('requestsuccess') }}</p>
+                        </div>
+                        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
+                            <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>
+                        </button>
+                    </div>
+                    <!--end::Alert-->
+                @endif
                 <div class="card-header card-header-stretch">
                     <h3 class="card-title">Car Request List</h3>
                     <div class="card-title">
@@ -70,10 +82,16 @@
                                 <a class="nav-link active" href="{{ route('admin.requestcarlist')}}">Panding</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.requestcarlistprocessing')}}">Processing</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.requestcarlisthold')}}">Hold</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.requestcarlistconfirm')}}">Confirm</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.requestcarlistcancel')}}">Cancle</a>
                             </li>
                         </ul>
                     </div>
