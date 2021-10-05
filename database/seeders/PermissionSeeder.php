@@ -440,7 +440,17 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.requestcardelete',
         ]);
 
-        
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Add Comment',
+            'slug' => 'admin.addcomment',
+        ]);
+
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Add Request To Contact',
+            'slug' => 'admin.addrequesttocontact',
+        ]);
 
 
 

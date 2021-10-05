@@ -204,6 +204,10 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::get('/carrequestconfirm/{id}/{status}', [RequestcarController::class, 'carRequestConfirm'])->name('admin.requestcarstatus');
 
+        Route::post('/addcomment', [RequestcarController::class, 'storeCommentCarRequest'])->name('admin.addcomment');
+
+        Route::post('/addrequesttocontact', [RequestcarController::class, 'addContactFor'])->name('admin.addrequesttocontact');
+
 
 
     });

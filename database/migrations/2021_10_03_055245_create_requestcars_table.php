@@ -25,6 +25,7 @@ class CreateRequestcarsTable extends Migration
             $table->string('other_information')->nullable();
             $table->integer('notification')->nullable();
             $table->string('status')->nullable();
+            $table->longText('comment')->nullable();
             $table->timestamps();
         });
     }

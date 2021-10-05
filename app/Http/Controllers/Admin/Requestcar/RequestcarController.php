@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Requestcar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 use App\Models\Requestcar;
 
 class RequestcarController extends Controller
@@ -40,7 +41,7 @@ class RequestcarController extends Controller
             'to' => $request->to,
             'other_information' => $request->other_information,
             'notification' => 0,
-            'status' => 'pandding'
+            'status' => 'panding'
 
         ];
 
@@ -101,5 +102,28 @@ class RequestcarController extends Controller
         ];
         Requestcar::where('id', $id)->update($data);
         return redirect(route('admin.requestcarlist'))->with('requestsuccess', 'Car request status successfully updated!');
+    }
+
+    public function storeCommentCarRequest(Request $request)
+    {
+        $request->validate([
+            'comment' => ['required', 'string', 'max:255']
+        ]);
+
+        $data = [
+            "comment" => $request->comment
+        ];
+        Requestcar::where('id', $request->carrequestid)->update($data);
+        return redirect(route('admin.requestcardetails', ['id' => $request->carrequestid]))->with('requestsuccesscomment', 'Car request comment successfully updated!');
+    }
+
+    public function addContactFor(Request $request)
+    {
+        Session::forget('name');
+        Session::forget('phone');
+        Session::put('name', $request->name);
+        Session::put('phone', $request->phone);
+
+        return redirect(route("admin.addcarowner"));
     }
 }

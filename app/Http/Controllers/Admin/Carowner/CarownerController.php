@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Carowner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 use App\Http\Requests\CreateContactsRequest;
 use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
@@ -25,7 +26,9 @@ class CarownerController extends Controller
 
     public function addCarOwner()
     {
-        return view('admin.carowner.addcarowner');
+        $name = Session::get("name");
+        $phone = Session::get("phone");
+        return view('admin.carowner.addcarowner', compact('name', 'phone'));
     }
 
     public function storeContacts(CreateContactsRequest $request)

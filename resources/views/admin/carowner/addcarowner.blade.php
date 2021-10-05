@@ -140,7 +140,7 @@
                                     <div class="row">
                                         <!--begin::Col-->
                                         <div class="col-lg-12 fv-row">
-                                            <input type="text" name="fname" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Full name" value="" />
+                                            <input type="text" name="fname" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" placeholder="Full name" value="@if($name != '') {{$name}} @else {{''}} @endif" />
                                             @error('fname') <span class="text-danger">{{ $message }}</span> @enderror
                                         </div>
                                         <!--end::Col-->
@@ -172,7 +172,7 @@
                                 <!--end::Label-->
                                 <!--begin::Col-->
                                 <div class="col-lg-8 fv-row">
-                                    <input type="text" name="phone" class="form-control form-control-lg form-control-solid" placeholder="01919999999" value="" />
+                                    <input type="text" name="phone" class="form-control form-control-lg form-control-solid" value="@if($phone != '') {{$phone}} @else {{''}} @endif" placeholder="01919999999"/>
                                     @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <!--end::Col-->
