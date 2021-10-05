@@ -146,7 +146,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Contact number
+                        <label class="col-lg-2 fw-bold text-muted">Contact number
                         <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active"></i></label>
                         <!--end::Label-->
                         <!--begin::Col-->
@@ -160,7 +160,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Date of journey</label>
+                        <label class="col-lg-2 fw-bold text-muted">Date of journey</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -172,7 +172,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Pickup time
+                        <label class="col-lg-2 fw-bold text-muted">Pickup time
                         <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i></label>
                         <!--end::Label-->
                         <!--begin::Col-->
@@ -185,7 +185,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Pessenger</label>
+                        <label class="col-lg-2 fw-bold text-muted">Pessenger</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -197,7 +197,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Pickup location</label>
+                        <label class="col-lg-2 fw-bold text-muted">Pickup location</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -209,7 +209,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Destination</label>
+                        <label class="col-lg-2 fw-bold text-muted">Destination</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -224,7 +224,7 @@
                         <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Other information</label>
+                        <label class="col-lg-2 fw-bold text-muted">Other information</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -237,7 +237,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-10">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">Status</label>
+                        <label class="col-lg-2 fw-bold text-muted">Status</label>
                         <!--begin::Label-->
                         <!--begin::Label-->
                         <div class="col-lg-8">
