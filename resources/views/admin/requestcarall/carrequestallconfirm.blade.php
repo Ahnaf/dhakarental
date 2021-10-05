@@ -101,8 +101,8 @@
                                         <th class="min-w-125px">Date Of Journey</th>
                                         <th class="min-w-125px">Pickup Time</th>
                                         <th class="min-w-125px">Pessenger</th>
-                                        <th class="min-w-125px">From Location</th>
-                                        <th class="win-w-125px">To Location</th>
+                                        <th class="min-w-125px">Pickup Location</th>
+                                        <th class="win-w-125px">Destination</th>
                                         <th class="text-center min-w-70px">Actions</th>
                                     </tr>
                                     <!--end::Table row-->

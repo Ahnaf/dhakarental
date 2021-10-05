@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Carowner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
+//use Illuminate\Support\Facades\Session;
 use App\Http\Requests\CreateContactsRequest;
 use App\Http\Requests\ContactUpdateRequest;
 use App\Models\Contact;
@@ -26,9 +26,7 @@ class CarownerController extends Controller
 
     public function addCarOwner()
     {
-        $name = Session::get("name");
-        $phone = Session::get("phone");
-        return view('admin.carowner.addcarowner', compact('name', 'phone'));
+        return view('admin.carowner.addcarowner');
     }
 
     public function storeContacts(CreateContactsRequest $request)
@@ -41,11 +39,11 @@ class CarownerController extends Controller
             'phone' => $validated['phone'],
             'address' => $validated['address'],
             'nid' => $validated['nid'],
-            'contats_type' => $validated['contact_type'],   
+            'contats_type' => $validated['contact_type']  
         ];
 
         try {
-            if($validated['avatar']){
+            if(isset($validated['avatar'])){
                 $serverimgname = uniqid('contacts') . '.' . $validated['avatar']->getClientOriginalExtension();
                 $validated['avatar']->storeAs('public/contacts/', $serverimgname);
                 $data['profile_pic'] = $serverimgname;

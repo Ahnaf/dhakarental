@@ -392,7 +392,12 @@
                                 <!--end::Product=-->
                                 <!--begin::Date=-->
                                 <td>
-                                    <img src="{{ asset('storage/contacts/'.$contact->profile_pic)}}" width="60" height="50">
+                                    @if ($contact->profile_pic != "")
+                                        <img src="{{ asset('storage/contacts/'.$contact->profile_pic)}}" width="60" height="50">  
+                                    @else
+                                        <img src="{{asset('assets/media/avatars/blank.png')}}" alt="image" width="60" height="60"/>   
+                                    @endif
+                                    
                                 </td>
                                 <!--end::Date=-->
                                 <!--begin::Action=-->

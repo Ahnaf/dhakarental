@@ -132,12 +132,9 @@
                     </div>
                     <!--end::Card title-->
                     <!--begin::Action-->
-                    <form action="{{ route('admin.addrequesttocontact') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="name" value="{{$requestcar->name}}">
-                        <input type="hidden" name="phone" value="{{$requestcar->contact_number}}">
-                        <button type="submit" class="btn btn-primary align-self-center mt-5">Add To Contact</button>
-                    </form>
+
+                        <a href="{{ route('admin.requesttocontact', ['name' => $requestcar->name, 'phone' => $requestcar->contact_number]) }}" class="btn btn-primary align-self-center mt-5">Add To Contact</a>
+                  
                     
                     <!--end::Action-->
                 </div>
@@ -200,7 +197,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">From location</label>
+                        <label class="col-lg-4 fw-bold text-muted">Pickup location</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">
@@ -212,7 +209,7 @@
                     <!--begin::Input group-->
                     <div class="row mb-7">
                         <!--begin::Label-->
-                        <label class="col-lg-4 fw-bold text-muted">To location</label>
+                        <label class="col-lg-4 fw-bold text-muted">Destination</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8">

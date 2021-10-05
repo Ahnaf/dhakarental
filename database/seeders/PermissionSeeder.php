@@ -448,8 +448,8 @@ class PermissionSeeder extends Seeder
 
         Permission::updateOrCreate([
             'module_id' => $moduleDashboardAdmin->id,
-            'name' => 'Add Request To Contact',
-            'slug' => 'admin.addrequesttocontact',
+            'name' => 'Request To Contact',
+            'slug' => 'admin.requesttocontact',
         ]);
 
 

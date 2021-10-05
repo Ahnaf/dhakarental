@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Requestcar;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Session;
+//use Illuminate\Support\Facades\Session;
 use App\Models\Requestcar;
 
 class RequestcarController extends Controller
@@ -117,13 +117,18 @@ class RequestcarController extends Controller
         return redirect(route('admin.requestcardetails', ['id' => $request->carrequestid]))->with('requestsuccesscomment', 'Car request comment successfully updated!');
     }
 
-    public function addContactFor(Request $request)
-    {
-        Session::forget('name');
-        Session::forget('phone');
-        Session::put('name', $request->name);
-        Session::put('phone', $request->phone);
+    // public function addContactFor(Request $request)
+    // {
+    //     Session::forget('name');
+    //     Session::forget('phone');
+    //     Session::put('name', $request->name);
+    //     Session::put('phone', $request->phone);
 
-        return redirect(route("admin.addcarowner"));
+    //     return redirect(route("admin.addcarowner"));
+    // }
+
+    public function requestToContact($name, $phone)
+    {
+        return view('admin.requestcarall.addrequesttocontact', compact('name', 'phone'));
     }
 }

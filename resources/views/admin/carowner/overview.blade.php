@@ -46,7 +46,12 @@
                         <!--begin: Pic-->
                         <div class="me-7 mb-4">
                             <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                                <img src="{{asset('storage/contacts/'.$contact->profile_pic)}}" alt="image" />
+                                @if ($contact->profile_pic != "")
+                                    <img src="{{asset('storage/contacts/'.$contact->profile_pic)}}" alt="image" />
+                                @else
+                                   <img src="{{asset('assets/media/avatars/blank.png')}}" alt="image"/>  
+                                @endif
+                                
                                
                             </div>
                         </div>

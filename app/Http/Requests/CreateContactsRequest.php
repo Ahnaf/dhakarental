@@ -24,7 +24,7 @@ class CreateContactsRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar' => ['required', 'mimes:jpg,gif,jpeg,png'],
+            'avatar' => ['nullable', 'mimes:jpg,gif,jpeg,png'],
             'fname' => ['required', 'string', 'max:50'],
             'email' => ['nullable', 'string', 'email', 'max:100'],
             'phone' => ['required', 'min:11', 'max:11', 'regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/', 'unique:contacts'],

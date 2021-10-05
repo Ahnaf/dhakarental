@@ -206,9 +206,9 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::post('/addcomment', [RequestcarController::class, 'storeCommentCarRequest'])->name('admin.addcomment');
 
-        Route::post('/addrequesttocontact', [RequestcarController::class, 'addContactFor'])->name('admin.addrequesttocontact');
+            //Route::post('/addrequesttocontact', [RequestcarController::class, 'addContactFor'])->name('admin.addrequesttocontact');
 
-
+        Route::get('/requesttocontact/{name}/{phone}', [RequestcarController::class, 'requestToContact'])->name('admin.requesttocontact');
 
     });
 
