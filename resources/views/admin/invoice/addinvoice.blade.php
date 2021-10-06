@@ -346,6 +346,13 @@ $(document).ready(function(){
    
 });
 
+$("#vat").on("keyup", function() {
+
+    var vat = $("#vat").val();
+    var newtotal = $('#total').val();
+    $('#grandtotal').val((Number(newtotal)) + (Number(vat)));
+});
+
 $(document).on("change keyup blur", "#discount", function() {
 
     var getvat = $("#vat").val();
