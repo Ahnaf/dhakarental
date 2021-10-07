@@ -49,7 +49,7 @@
                     <!--begin::Card body-->
                     <div class="card-body p-12">
                         <!--begin::Form-->
-                        <form action="{{ route('admin.storeinvoice')}}" method="POST" id="kt_invoice_form">
+                        <form action="{{ route('admin.updateinvoice')}}" method="POST" id="kt_invoice_form">
                             @csrf
                             <!--begin::Input group-->
                             <input type="hidden" name="invoiceid" value="{{ $invoice->id}}">
