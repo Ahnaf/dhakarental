@@ -52,6 +52,7 @@
                         <form action="{{ route('admin.storeinvoice')}}" method="POST" id="kt_invoice_form">
                             @csrf
                             <!--begin::Input group-->
+                            <input type="hidden" name="invoiceid" value="{{ $invoice->id}}">
                                 <div class="row mb-10">
                                     <!--begin::Col-->
                                     <div class="col-md-9 fv-row">
@@ -487,7 +488,7 @@
                                     </g>
                                 </svg>
                             </span>
-                            <!--end::Svg Icon-->Send Invoice</button>
+                            <!--end::Svg Icon-->Update Invoice</button>
                         </div>
                         <!--end::Actions-->
                     </div>

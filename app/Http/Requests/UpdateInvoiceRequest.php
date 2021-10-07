@@ -25,6 +25,12 @@ class UpdateInvoiceRequest extends FormRequest
     {
         return [
             "invoiceid" => "required",
+            "customer_name" => "required",
+            "phone" => "required|min:11|max:11|regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/",
+            "address" => "nullable",
+            "date_of_trip" => "required",
+            "ref_number" => "required",
+            "notes" => "nullable",
             "item.*" => "required|max:150",
             "itemid" => "nullable",
             "qty.*" => "required|digits_between:1,5",
