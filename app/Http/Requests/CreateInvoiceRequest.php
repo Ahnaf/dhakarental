@@ -24,7 +24,12 @@ class CreateInvoiceRequest extends FormRequest
     public function rules()
     {
         return [
-
+            "customer_name" => "required",
+            "phone" => "required|min:11|max:11|regex:/^\+?(88)?0?1[3456789][0-9]{8}\b/",
+            "address" => "nullable",
+            "date_of_trip" => "required",
+            "ref_number" => "required",
+            "notes" => "nullable",
             "item.*" => "required|max:150",
             "qty.*" => "required|digits_between:1,5",
             "price.*" => "required|digits_between:2,11",
@@ -32,7 +37,7 @@ class CreateInvoiceRequest extends FormRequest
             "vat" => "required|digits_between:2,11",
             "discount" => "required|digits_between:2,11",
             "paidamount" => "required|digits_between:2,11",
-            "dueamount" => "required|digits_between:2,11",
+            "dueamount" => "required|digits_between:1,11",
             "total"     => "required|digits_between:2,11",
             "grandtotal" => "required|digits_between:2,11",
 

@@ -38,6 +38,12 @@ class InvoiceController extends Controller
         $grandtotal = ($total - $validated['discount']) + $validated['vat'];
 
         $data = [
+            'customer_name' => $validated['customer_name'],
+            'phone' => $validated['phone'],
+            'address' => $validated['address'],
+            'date_of_trip' => $validated['date_of_trip'],
+            'ref_number' => $validated['ref_number'],
+            'notes' => $validated['notes'],
             'total' => $total,
             'vat' => $validated['vat'],
             'discount' => $validated['discount'],
@@ -49,6 +55,7 @@ class InvoiceController extends Controller
             'totalitem' => count($validated['item']),
             'status'    => 'pandding'
         ];
+
 
         try {
             DB::beginTransaction();
@@ -65,7 +72,7 @@ class InvoiceController extends Controller
                 Item::create($data2);
             }
             DB::commit();
-            return redirect(route('admin.invoicelist'))->with('invoicesuccess', 'Invoice successfully saved!'); 
+            return redirect(route('admin.invoicedetails', ['id' => $invoice->id]))->with('invoicesuccess', 'Invoice successfully saved!'); 
         } catch (\Throwable $exception) {
             return redirect(route('admin.addinvoiceview'))->with('invoicewarning', 'Invoice not save, Internal error');
             DB::rollBack();
@@ -191,5 +198,11 @@ class InvoiceController extends Controller
         Transection::create($transection);
         return redirect(route('admin.invoicelist'))->with('invoicesuccess', 'Invoice successfully confirm!');
 
+    }
+
+    public function customerInfo(Request $request)
+    {
+        $contact = Contact::where('id', $request->id)->limit(1)->get();
+        return response()->json(['success' => $contact]);
     }
 }

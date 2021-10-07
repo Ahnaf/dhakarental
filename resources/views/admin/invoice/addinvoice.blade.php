@@ -5,7 +5,7 @@
 
 
 @push('css')
-
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 @endpush
 
 @section('content')
@@ -51,58 +51,12 @@
                         <!--begin::Form-->
                         <form action="{{ route('admin.storeinvoice')}}" method="POST" id="kt_invoice_form">
                             @csrf
-                            <!--begin::Wrapper-->
-                             <div class="row gx-10 mb-5">
-                                    <!--begin::Col-->
-                                    <div class="col-lg-6">
-                                        <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Bill To</label>
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <input type="text" name="customer_name" class="form-control form-control-solid" placeholder="Name" />
-                                        </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <input type="text" name="phone" class="form-control form-control-solid" placeholder="Phone number" />
-                                        </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <textarea name="address" class="form-control form-control-solid" rows="3" placeholder="Address"></textarea>
-                                        </div>
-                                        <!--end::Input group-->
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-lg-6">
-                                        <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Trip Details</label>
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <input type="date" class="form-control form-control-solid" name="date_of_trip" placeholder="Date of trip"/>
-                                        </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <input type="text" name="ref_number" class="form-control form-control-solid" placeholder="Ref number" />
-                                        </div>
-                                        <!--end::Input group-->
-                                        <!--begin::Input group-->
-                                        <div class="mb-5">
-                                            <textarea name="notes" class="form-control form-control-solid" rows="3" placeholder="Note"></textarea>
-                                        </div>
-                                        <!--end::Input group-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                            <!--begin::Step 4-->
-                        <div data-kt-stepper-element="content">
-                            <div class="w-100 mt-7">
-                                <!--begin::Input group-->
+                            <!--begin::Input group-->
                                 <div class="row mb-10">
                                     <!--begin::Col-->
                                     <div class="col-md-9 fv-row">
                                         <label class="required fs-6 fw-bold form-label mb-2">Customer</label>
-                                        <select name="customer" aria-label="Select Type" data-control="select2" data-placeholder="Select Customer..." class="form-select form-select-solid form-select-lg fw-bold" required>
+                                        <select id="customer" name="customer" aria-label="Select Type" data-control="select2" data-placeholder="Select Customer..." class="form-select form-select-solid form-select-lg fw-bold" required>
                                         <option value="">Select Customer...</option>
                                         @foreach ($contacts as $contact)
                                          <option value="{{$contact->id}}" {{ (old('customer') == $contact->fname) ? 'selected' : '' }}>{{$contact->fname}}</option>   
@@ -126,6 +80,59 @@
                                     <!--end::Col-->
                                 </div>
                                 <!--end::Input group-->
+                            <!--begin::Wrapper-->
+                             <div class="row gx-10 mb-5">
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Bill To</label>
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" id="customer_name" name="customer_name" class="form-control form-control-solid" placeholder="Name" />
+                                            @error('customer_name') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" id="phone" name="phone" class="form-control form-control-solid" placeholder="Phone number" />
+                                            @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <textarea id="address" name="address" class="form-control form-control-solid" rows="3" placeholder="Address"></textarea>
+                                            @error('address') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <!--end::Input group-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Trip Details</label>
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" id="datepicker" class="form-control form-control-solid" name="date_of_trip" placeholder="Date of trip"/>
+                                            @error('date_of_trip') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" name="ref_number" class="form-control form-control-solid" placeholder="Ref number" />
+                                            @error('date_of_trip') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <textarea name="notes" class="form-control form-control-solid" rows="3" placeholder="Note"></textarea>
+                                            @error('notes') <span class="text-danger">{{ $message }}</span> @enderror
+                                        </div>
+                                        <!--end::Input group-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                            <!--begin::Step 4-->
+                        <div data-kt-stepper-element="content">
+                            <div class="w-100 mt-7">
+                                
                                 <!--begin::Input group-->
                                 <div class="row mb-10 item">
                                     <!--begin::Col-->
@@ -508,7 +515,17 @@
 @push('scripts')
 
 <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-<script src="{{asset('assets/js/custom/apps/user-management/car/carlist.js')}}"></script>
+{{-- <script src="{{asset('assets/js/custom/apps/user-management/car/carlist.js')}}"></script> --}}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker(
+        {
+        dateFormat: "dd-mm-yy"
+        }
+    );
+  } );
+  </script>
 <script>
 
 //console.log(array);
@@ -623,6 +640,30 @@ $(document).on("change keyup blur", "#discount", function() {
     }else{
         $('#grandtotal').val(Number(setwithvattotal));
     }
+});
+
+$("#customer").on("change", function(){
+    var customer = $("#customer").val();
+   
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        method: "POST",
+        url: "{{ route('admin.customerinfo')}}",
+        data: { id: customer}
+    }).done(function( msg ) {
+
+        $("#customer_name").val(msg.success[0].fname);
+        $("#phone").val(msg.success[0].phone);
+        $("#address").val(msg.success[0].address);
+
+        //console.log(msg.success[0].fname);
+        
+    });
 });
 
 

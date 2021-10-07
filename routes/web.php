@@ -188,6 +188,8 @@ Route::middleware(['auth:admin'])->group(function () {
 
         Route::get('/invoiceconfirm/{id}', [InvoiceController::class, 'confirmInvoice'])->name('admin.invoiceconfirm');
 
+        Route::post('/getcustomerinfo', [InvoiceController::class, 'customerInfo'])->name('admin.customerinfo');
+
         Route::get('/requestall', [RequestcarController::class, 'requestCarList'])->name('admin.requestcarlist');
 
         Route::get('/requestallhold', [RequestcarController::class, 'requestCarListHold'])->name('admin.requestcarlisthold');

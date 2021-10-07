@@ -19,7 +19,7 @@
             <!--begin::Page title-->
             <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
                 <!--begin::Title-->
-                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3" id="testtest">Edit Invoice</h1>
+                <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3" id="testtest">Add Invoice</h1>
                 <!--end::Title-->
                 <!--begin::Separator-->
                 <span class="h-20px border-gray-200 border-start mx-4"></span>
@@ -40,37 +40,23 @@
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <!--begin::Container-->
         <div id="kt_content_container" class="container mb-3">
-            <!--begin::Card-->
-            <div class="card">
-                @if(session('invoicewarning'))
-                    <!--begin::Alert-->
-                    <div class="alert alert-dismissible bg-warning d-flex flex-column flex-sm-row p-5 mb-10">
-                        <div class="d-flex flex-column text-light pe-0 pe-sm-10">
-                            <p class="fs-6 mt-3">{{ session('invoicewarning') }}</p>
-                        </div>
-                        <button type="button" class="position-absolute position-sm-relative m-2 m-sm-0 top-0 end-0 btn btn-icon ms-sm-auto" data-bs-dismiss="alert">
-                            <span class="svg-icon svg-icon-2x svg-icon-light">&times;</span>
-                        </button>
-                    </div>
-                    <!--end::Alert-->
-                @endif
-
-                <!--end::Card header-->
-                <!--begin::Card body-->
-                <div class="card-body pt-0">
-                    <!--begin::Input group-->
-                    <form action="{{ route('admin.updateinvoice')}}" method="POST" class="form">
-                        @csrf
-                        <!--begin::Step 4-->
-                        <div data-kt-stepper-element="content">
-                            <div class="w-100 mt-7">
-                                <!--begin::Input group-->
+           <!--begin::Layout-->
+        <div class="d-flex flex-column flex-lg-row">
+            <!--begin::Content-->
+            <div class="flex-lg-row-fluid mb-10 mb-lg-0 me-lg-7 me-xl-10">
+                <!--begin::Card-->
+                <div class="card">
+                    <!--begin::Card body-->
+                    <div class="card-body p-12">
+                        <!--begin::Form-->
+                        <form action="{{ route('admin.storeinvoice')}}" method="POST" id="kt_invoice_form">
+                            @csrf
+                            <!--begin::Input group-->
                                 <div class="row mb-10">
-                                    <input type="hidden" name="invoiceid" value="{{ $invoice->id}}">
                                     <!--begin::Col-->
                                     <div class="col-md-9 fv-row">
                                         <label class="required fs-6 fw-bold form-label mb-2">Customer</label>
-                                        <select name="customer" aria-label="Select Type" data-control="select2" data-placeholder="Select Customer..." class="form-select form-select-solid form-select-lg fw-bold" required>
+                                        <select id="customer" name="customer" aria-label="Select Type" data-control="select2" data-placeholder="Select Customer..." class="form-select form-select-solid form-select-lg fw-bold" required>
                                         <option value="">Select Customer...</option>
                                         @foreach ($contacts as $contact)
                                          <option value="{{$contact->id}}" {{ ($invoice->customer_id == $contact->id) ? 'selected' : '' }}>{{$contact->fname}}</option>   
@@ -94,6 +80,53 @@
                                     <!--end::Col-->
                                 </div>
                                 <!--end::Input group-->
+                            <!--begin::Wrapper-->
+                             <div class="row gx-10 mb-5">
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Bill To</label>
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" id="customer_name" name="customer_name" value="{{$invoice->customer_name}}" class="form-control form-control-solid" placeholder="Name" />
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" id="phone" name="phone" value="{{$invoice->phone}}" class="form-control form-control-solid" placeholder="Phone number" />
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <textarea id="address" name="address" class="form-control form-control-solid" rows="3" placeholder="Address">{{$invoice->address}}</textarea>
+                                        </div>
+                                        <!--end::Input group-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <label class="form-label fs-6 fw-bolder text-gray-700 mb-3">Trip Details</label>
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" id="datepicker" class="form-control form-control-solid" name="date_of_trip" value="{{$invoice->date_of_trip}}" placeholder="Date of trip"/>
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <input type="text" name="ref_number" value="{{$invoice->ref_number}}" class="form-control form-control-solid" placeholder="Ref number" />
+                                        </div>
+                                        <!--end::Input group-->
+                                        <!--begin::Input group-->
+                                        <div class="mb-5">
+                                            <textarea name="notes" class="form-control form-control-solid" rows="3" placeholder="Note">{{$invoice->notes}}</textarea>
+                                        </div>
+                                        <!--end::Input group-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                            <!--begin::Step 4-->
+                        <div data-kt-stepper-element="content">
+                            <div class="w-100 mt-7">
+                                
                                 <!--begin::Input group-->
                                 @foreach ($invoice->items as $item)
                                   <div class="row mb-10 item findid">
@@ -138,78 +171,203 @@
                                 <div id="setmoreitem">
                                 </div>
                                 <!--begin::Input group-->
-                                    <div class="row">
-
-                                        <!--begin::Col-->
-                                        <div class="col-md-4 mt-2">
-                                            <label class="required fs-6 fw-bold form-label mb-2">Total</label>
-                                            <input type="number" class="form-control form-control-solid" placeholder="10000" id="total" name="total" value="{{$invoice->total}}" required/>
-                                            @error('total') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                        <!--end::Col-->
-
-                                        <!--begin::Col-->
-                                        <div class="col-md-4 mt-2">
-                                            <label class="required fs-6 fw-bold form-label mb-2">Vat</label>
-                                            <input type="number" class="form-control form-control-solid" placeholder="1000" id="vat" name="vat" value="{{$invoice->vat}}" required/>
-                                            @error('vat') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                        <!--end::Col-->
-                                    
-                                        <!--begin::Col-->
-                                        <div class="col-md-4 mt-2">
-                                            <label class="required fs-6 fw-bold form-label mb-2">Discount</label>
-                                            <input type="number" class="form-control form-control-solid" placeholder="1000" id="discount" name="discount" value="{{$invoice->discount}}" required/>
-                                             @error('disount') <span class="text-danger">{{ $message }}</span> @enderror
-                                        </div>
-                                        <!--end::Col-->
+                                <div class="row form-inline">
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 mt-2">
                                     </div>
-                                    <!--end::Input group-->
-                               
-         
-                                <!--begin::Input group-->
-                                <div class="row">
+                                    <!--end::Col-->
+                                    <div class="col-md-2 mt-5">
+                                        <label class="required fs-6 fw-bold form-label mb-2">Total</label>
+                                    </div>
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2 ">
+                                        
+                                        <input type="number" class="form-control form-control-solid" placeholder="10000" id="total" name="total" value="{{$invoice->total}}" required/>
+                                        @error('total') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
 
-                                   <!--begin::Col-->
-                                    <div class="col-md-4 mt-2">
+
+                                <!--end::Input group-->
+                                <div class="row form-inline">
+
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 mt-2">
+
+                                    </div>
+                                    <!--end::Col-->
+                                    <div class="col-md-2 mt-5">
+                                        <label class="required fs-6 fw-bold form-label mb-2">Vat</label>
+                                    </div>
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2 ">
+                                        
+                                        <input type="number" class="form-control form-control-solid" placeholder="1000" id="vat" name="vat" value="{{$invoice->vat}}" required/>
+                                        @error('vat') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+
+                                <!--end::Input group-->
+                                <div class="row form-inline">
+
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 mt-2">
+
+                                    </div>
+                                    <!--end::Col-->
+                                    <div class="col-md-2 mt-5">
+                                        <label class="required fs-6 fw-bold form-label mb-2">Discount</label>
+                                    </div>
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2 ">
+                                        
+                                        <input type="number" class="form-control form-control-solid" placeholder="1000" id="discount" name="discount" value="{{$invoice->discount}}" required/>
+                                        @error('disount') <span class="text-danger">{{ $message }}</span> @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+
+
+                                <!--end::Input group-->
+                                <div class="row form-inline">
+
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 mt-2">
+
+                                    </div>
+                                    <!--end::Col-->
+                                    <div class="col-md-2 mt-5">
                                         <label class="required fs-6 fw-bold form-label mb-2">Grand Total</label>
+                                    </div>
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2 ">
+                                        
                                         <input type="number" class="form-control form-control-solid" placeholder="10000" id="grandtotal" name="grandtotal" value="{{$invoice->grandtotal}}" required/>
                                         @error('grandtotal') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--end::Input group-->
+                                <div class="row form-inline">
 
                                     <!--begin::Col-->
-                                    <div class="col-md-4 mt-2">
+                                    <div class="col-md-6 mt-2">
+
+                                    </div>
+                                    <!--end::Col-->
+                                    <div class="col-md-2 mt-5">
                                         <label class="required fs-6 fw-bold form-label mb-2">Paid Amount</label>
+                                    </div>
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2 ">
+                                        
                                         <input type="number" class="form-control form-control-solid" placeholder="10000" name="paidamount" value="{{$invoice->paidamount}}" required/>
                                         @error('paidamount') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+
+                                <!--end::Input group-->
+                                <div class="row form-inline">
 
                                     <!--begin::Col-->
-                                    <div class="col-md-4 mt-2">
+                                    <div class="col-md-6 mt-2">
+
+                                    </div>
+                                    <!--end::Col-->
+                                    <div class="col-md-2 mt-5">
                                         <label class="required fs-6 fw-bold form-label mb-2">Due Amount</label>
+                                    </div>
+                                    <!--begin::Col-->
+                                    <div class="col-md-4 mt-2 ">
+                                        
                                         <input type="number" class="form-control form-control-solid" placeholder="10000" name="dueamount" value="{{$invoice->dueamount}}" required/>
                                         @error('dueamount') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
                                 <!--end::Input group-->
-                                
 
-                               
 
-                                <!--begin::Input group-->
-                                <div class="row">
+                               <div class="row">
+                                   <!--begin::Col-->
+                                    <div class="col-md-3 mt-5">
+                                        <!--begin::Input group-->
+                                        {{-- <div class="d-flex flex-stack">
+                                            <!--begin::Label-->
+                                            <div class="me-5">
+
+                                            </div>
+                                            <!--end::Label-->
+                                            <!--begin::Switch-->
+                                            <span id="result"></span>
+                                            <label class="form-check form-switch form-check-custom form-check-solid">
+                                                <button type="submit" class="btn btn-primary me-3">
+                                               
+                                                Save Invoice</button>
+                                            </label>
+                                            <!--end::Switch-->
+                                        </div> --}}
+                                        <!--end::Input group-->
+                                    </div>
+                                    <!--end::Col-->
 
                                     <!--begin::Col-->
-                                    <div class="col-md-8 mt-2">
-                                   
+                                    <div class="col-md-3 mt-5">
+                                        <!--begin::Input group-->
+                                        {{-- <div class="d-flex flex-stack">
+                                            <!--begin::Label-->
+                                            <div class="me-5">
+
+                                            </div>
+                                            <!--end::Label-->
+                                            <!--begin::Switch-->
+                                            <span id="result"></span>
+                                            <label class="form-check form-switch form-check-custom form-check-solid">
+                                                <button type="submit" class="btn btn-primary me-3">
+                                               
+                                                Save Invoice</button>
+                                            </label>
+                                            <!--end::Switch-->
+                                        </div> --}}
+                                        <!--end::Input group-->
+                                    </div>
+                                    <!--end::Col-->
+
+                                    <!--begin::Col-->
+                                    <div class="col-md-3 mt-5">
+                                        <!--begin::Input group-->
+                                        {{-- <div class="d-flex flex-stack">
+                                            <!--begin::Label-->
+                                            <div class="me-5">
+
+                                            </div>
+                                            <!--end::Label-->
+                                            <!--begin::Switch-->
+                                            <span id="result"></span>
+                                            <label class="form-check form-switch form-check-custom form-check-solid">
+                                                <button type="submit" class="btn btn-primary me-3">
+                                               
+                                                Save Invoice</button>
+                                            </label>
+                                            <!--end::Switch-->
+                                        </div> --}}
+                                        <!--end::Input group-->
                                     </div>
                                     <!--end::Col-->
                                    
                                     <!--begin::Col-->
-                                    <div class="col-md-4 mt-2">
+                                    <div class="col-md-3 mt-5">
                                         <!--begin::Input group-->
                                         <div class="d-flex flex-stack">
                                             <!--begin::Label-->
@@ -222,7 +380,7 @@
                                             <label class="form-check form-switch form-check-custom form-check-solid">
                                                 <button type="submit" class="btn btn-primary me-3">
                                                
-                                                Update Invoice</button>
+                                                Save Invoice</button>
                                             </label>
                                             <!--end::Switch-->
                                         </div>
@@ -230,21 +388,116 @@
                                     </div>
                                     <!--end::Col-->
                                 </div>
-                                <!--end::Input group-->
 
                                 
                             </div>
                         </div>
                         <!--end::Step 4-->
-                        
-                    </form>
-                    <!--end::Input group-->
-                    
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card body-->
                 </div>
-                
-                <!--end::Card body-->
+                <!--end::Card-->
             </div>
-            <!--end::Card-->
+            <!--end::Content-->
+            <!--begin::Sidebar-->
+            <div class="flex-lg-auto min-w-lg-300px">
+                <!--begin::Card-->
+                <div class="card" data-kt-sticky="true" data-kt-sticky-name="invoice" data-kt-sticky-offset="{default: false, lg: '200px'}" data-kt-sticky-width="{lg: '250px', lg: '300px'}" data-kt-sticky-left="auto" data-kt-sticky-top="150px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95">
+                    <!--begin::Card body-->
+                    <div class="card-body p-10">
+                        <!--begin::Input group-->
+                        <div class="mb-10">
+                            <!--begin::Label-->
+                            <label class="form-label fw-bolder fs-6 text-gray-700">Currency</label>
+                            <!--end::Label-->
+                            <!--begin::Select-->
+                            <select name="currnecy" aria-label="Select a Timezone" data-control="select2" data-placeholder="Select currency" class="form-select form-select-solid">
+                                <option value=""></option>
+                                <option data-kt-flag="flags/united-states.svg" value="USD">
+                                <b>USD</b>&#160;-&#160;USA dollar</option>
+                                <option data-kt-flag="flags/united-kingdom.svg" value="GBP">
+                                <b>GBP</b>&#160;-&#160;British pound</option>
+                                <option data-kt-flag="flags/australia.svg" value="AUD">
+                                <b>AUD</b>&#160;-&#160;Australian dollar</option>
+                                <option data-kt-flag="flags/japan.svg" value="JPY">
+                                <b>JPY</b>&#160;-&#160;Japanese yen</option>
+                                <option data-kt-flag="flags/sweden.svg" value="SEK">
+                                <b>SEK</b>&#160;-&#160;Swedish krona</option>
+                                <option data-kt-flag="flags/canada.svg" value="CAD">
+                                <b>CAD</b>&#160;-&#160;Canadian dollar</option>
+                                <option data-kt-flag="flags/switzerland.svg" value="CHF">
+                                <b>CHF</b>&#160;-&#160;Swiss franc</option>
+                            </select>
+                            <!--end::Select-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Separator-->
+                        <div class="separator separator-dashed mb-8"></div>
+                        <!--end::Separator-->
+                        <!--begin::Input group-->
+                        <div class="mb-8">
+                            <!--begin::Option-->
+                            <label class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack mb-5">
+                                <span class="form-check-label ms-0 fw-bolder fs-6 text-gray-700">Payment method</span>
+                                <input class="form-check-input" type="checkbox" checked="checked" value="" />
+                            </label>
+                            <!--end::Option-->
+                            <!--begin::Option-->
+                            <label class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack mb-5">
+                                <span class="form-check-label ms-0 fw-bolder fs-6 text-gray-700">Late fees</span>
+                                <input class="form-check-input" type="checkbox" value="" />
+                            </label>
+                            <!--end::Option-->
+                            <!--begin::Option-->
+                            <label class="form-check form-switch form-switch-sm form-check-custom form-check-solid flex-stack">
+                                <span class="form-check-label ms-0 fw-bolder fs-6 text-gray-700">Notes</span>
+                                <input class="form-check-input" type="checkbox" value="" />
+                            </label>
+                            <!--end::Option-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Separator-->
+                        <div class="separator separator-dashed mb-8"></div>
+                        <!--end::Separator-->
+                        <!--begin::Actions-->
+                        <div class="mb-0">
+                            <!--begin::Row-->
+                            <div class="row mb-5">
+                                <!--begin::Col-->
+                                <div class="col">
+                                    <a href="#" class="btn btn-light btn-active-light-primary w-100">Preview</a>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col">
+                                    <a href="#" class="btn btn-light btn-active-light-primary w-100">Download</a>
+                                </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                            <button type="submit" href="#" class="btn btn-primary w-100" id="kt_invoice_submit_button">
+                            <!--begin::Svg Icon | path: icons/duotone/Map/Direction2.svg-->
+                            <span class="svg-icon svg-icon-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path d="M14,13.381038 L14,3.47213595 L7.99460483,15.4829263 L14,13.381038 Z M4.88230018,17.2353996 L13.2844582,0.431083506 C13.4820496,0.0359007077 13.9625881,-0.12427877 14.3577709,0.0733126292 C14.5125928,0.15072359 14.6381308,0.276261584 14.7155418,0.431083506 L23.1176998,17.2353996 C23.3152912,17.6305824 23.1551117,18.1111209 22.7599289,18.3087123 C22.5664522,18.4054506 22.3420471,18.4197165 22.1378777,18.3482572 L14,15.5 L5.86212227,18.3482572 C5.44509941,18.4942152 4.98871325,18.2744737 4.84275525,17.8574509 C4.77129597,17.6532815 4.78556182,17.4288764 4.88230018,17.2353996 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.000087, 9.191034) rotate(-315.000000) translate(-14.000087, -9.191034)" />
+                                    </g>
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->Send Invoice</button>
+                        </div>
+                        <!--end::Actions-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Sidebar-->
+        </div>
+        <!--end::Layout-->
           
 
         </div>
@@ -415,6 +668,30 @@ $('.removeitemserver').click(function () {
 
     $(this).closest(".findid").hide();
         
+});
+
+$("#customer").on("change", function(){
+    var customer = $("#customer").val();
+   
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        method: "POST",
+        url: "{{ route('admin.customerinfo')}}",
+        data: { id: customer}
+    }).done(function( msg ) {
+
+        $("#customer_name").val(msg.success[0].fname);
+        $("#phone").val(msg.success[0].phone);
+        $("#address").val(msg.success[0].address);
+
+        //console.log(msg.success[0].fname);
+        
+    });
 });
 </script>
 

@@ -393,6 +393,12 @@ class PermissionSeeder extends Seeder
             'slug' => 'admin.invoiceconfirm',
         ]);
 
+        Permission::updateOrCreate([
+            'module_id' => $moduleDashboardAdmin->id,
+            'name' => 'Get Customer Info',
+            'slug' => 'admin.customerinfo',
+        ]);
+
         $moduleDashboardAdmin = Module::updateOrCreate([
             'name' => 'Request For Car',
             'description' => 'Request For Car'
